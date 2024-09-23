@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1380107918718542799}
   - component: {fileID: 1380107918718542797}
   - component: {fileID: 1380107918718542798}
+  - component: {fileID: 789784682296013699}
   m_Layer: 5
-  m_Name: Grid Layout
+  m_Name: Add Selected Players [Grid Layout]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,6 +72,22 @@ MonoBehaviour:
   m_Spacing: {x: 25, y: 100}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &789784682296013699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380107918718542784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df20216b390f374da28991d75949752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setupManager: {fileID: 0}
+  playerButtonPrefab: {fileID: 150068715645880842, guid: 3552264266a472a4b819bc74dbfd366b,
+    type: 3}
+  addPlayerButton: {fileID: 1380107920431854071}
 --- !u!1 &1380107919133370586
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +392,12 @@ PrefabInstance:
 --- !u!224 &1380107920431854070 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 150068715645880843, guid: 9d722aca25c90cf4db651195effee77f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1239059877451791357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1380107920431854071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 150068715645880842, guid: 9d722aca25c90cf4db651195effee77f,
     type: 3}
   m_PrefabInstance: {fileID: 1239059877451791357}
   m_PrefabAsset: {fileID: 0}

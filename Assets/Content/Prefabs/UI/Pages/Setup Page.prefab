@@ -30,8 +30,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4515640697078050931}
-  - {fileID: 4515640698220425434}
   - {fileID: 4515640697081037837}
+  - {fileID: 4515640698220425434}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -351,7 +351,7 @@ RectTransform:
   m_Children:
   - {fileID: 4515640697709011163}
   m_Father: {fileID: 4515640697051600013}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -460,7 +460,7 @@ PrefabInstance:
     - target: {fileID: 1380107919133370585, guid: 40261a54148662043b2ac294d37287eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1380107919133370585, guid: 40261a54148662043b2ac294d37287eb,
         type: 3}
@@ -556,6 +556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Added Players Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380107920431854071, guid: 40261a54148662043b2ac294d37287eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40261a54148662043b2ac294d37287eb, type: 3}

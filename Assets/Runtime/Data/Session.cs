@@ -9,8 +9,8 @@ namespace Runtime.Data
         // Private Variables
         private static int id;
         private static string date;
-        private static Game[] games;
-        private static Player[] players;
+        private static List<Game> games;
+        private static List<Player> players;
         private static float duration;
 
 
@@ -27,13 +27,13 @@ namespace Runtime.Data
             set { date = value; }
         }
 
-        public static Game[] Games
+        public static List<Game> Games
         {
             get { return games; }
             set { games = value; }
         }
 
-        public static Player[] Players
+        public static List<Player> Players
         {
             get { return players; }
             set { players = value; }

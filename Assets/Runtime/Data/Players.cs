@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace Runtime.Data
     {
         [SerializeField] private List<PlayerData> allPlayers;
 
-        public List<PlayerData> GetAllPlayers()
+        public List<PlayerData> GetAllPlayerData()
         {
             return allPlayers;
         }

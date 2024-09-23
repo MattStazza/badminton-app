@@ -18,13 +18,13 @@ namespace Runtime.Managers
             homePage.SetActive(true);         
         }
 
-        public void StartButtonPressed()
+        public void ShowSetupPage()
         {
             HideAllPages();
             setupPage.SetActive(true);
         }
 
-        public void AddPlayerButtonPressed()
+        public void ShowPlayersPage()
         {
             HideAllPages();
             playersPage.SetActive(true);

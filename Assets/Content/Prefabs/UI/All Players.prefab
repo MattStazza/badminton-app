@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7690825336729714121}
   - component: {fileID: 1010696617279821890}
   m_Layer: 5
-  m_Name: Grid Layout
+  m_Name: Generate Player Buttons [Grid Layout]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
