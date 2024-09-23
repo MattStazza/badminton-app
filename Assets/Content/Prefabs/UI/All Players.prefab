@@ -75,6 +75,48 @@ MonoBehaviour:
   - playerName: ARYANA
     profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
     bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: FROSTY
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: CHRISTIE
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: RIAAN
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: BAILEY
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: LIANAH
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: FAITH
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: CALEB
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: EUGENE
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: DICKSON
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: CODY
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: RENAN
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: GUEST 1
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: GUEST 2
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
+  - playerName: GUEST 3
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 526ac25c0f66e4540b680d6b58aebb3d, type: 3}
 --- !u!1 &7690825336729714122
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2408c573bfef2c040bf7419987478780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setupManager: {fileID: 0}
   players: {fileID: 7684177725331566547}
   playerButtonPrefab: {fileID: 150068715645880842, guid: 3552264266a472a4b819bc74dbfd366b,
     type: 3}
