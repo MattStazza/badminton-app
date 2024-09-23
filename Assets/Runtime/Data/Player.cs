@@ -3,30 +3,32 @@ using UnityEngine;
 
 namespace Runtime.Data
 {
-    public class Player : MonoBehaviour
+    public class Player
     {
-        private static string name;
-        private static Sprite profileSprite;
-        private static Sprite bodyTexture;
-        private static int gamesPlayed;
-        private static int gamesWon;
-        private static int gamesLost;
-        private static int gamesDeuced;
+        private string name;
+        private Sprite profileSprite;
+        private Sprite bodyTexture;
+
+        private int gamesPlayed;
+        private int gamesWon;
+        private int gamesLost;
+        private int gamesDeuced;
 
 
 
-        public static string Name
+        public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        public static Sprite ProfileSprite
+        public Sprite ProfileSprite
         {
             get { return profileSprite; }
             set { profileSprite = value; }
         }
-        public static Sprite BodySprite
+
+        public Sprite BodySprite
         {
             get { return bodyTexture; }
             set { bodyTexture = value; }
@@ -34,23 +36,23 @@ namespace Runtime.Data
 
 
 
-        // Stats
-        public static int GamesPlayed
+        // Static Stats
+        public int GamesPlayed
         {
             get { return gamesPlayed; }
             set { gamesPlayed = value; }
         }
-        public static int GamesWon
+        public int GamesWon
         {
             get { return gamesWon; }
             set { gamesWon = value; }
         }
-        public static int GamesLost
+        public int GamesLost
         {
             get { return gamesLost; }
             set { gamesLost = value; }
         }
-        public static int GamesDeuced
+        public int GamesDeuced
         {
             get { return gamesDeuced; }
             set { gamesDeuced = value; }
