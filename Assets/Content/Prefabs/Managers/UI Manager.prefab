@@ -47,3 +47,4 @@ MonoBehaviour:
   homePage: {fileID: 0}
   setupPage: {fileID: 0}
   playersPage: {fileID: 0}
+  gamesPage: {fileID: 0}

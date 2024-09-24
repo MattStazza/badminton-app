@@ -9,6 +9,7 @@ namespace Runtime.Managers
         [SerializeField] private GameObject homePage;
         [SerializeField] private GameObject setupPage;
         [SerializeField] private GameObject playersPage;
+        [SerializeField] private GameObject gamesPage;
 
         private void Awake() => ValidateRequiredVariables();
 
@@ -29,12 +30,18 @@ namespace Runtime.Managers
             HideAllPages();
             playersPage.SetActive(true);
         }
+        public void ShowGamesPage()
+        {
+            HideAllPages();
+            gamesPage.SetActive(true);
+        }
 
         private void HideAllPages()
         {
             homePage.SetActive(false);
             setupPage.SetActive(false);
             playersPage.SetActive(false);
+            gamesPage.SetActive(false);
         }
 
         private void ValidateRequiredVariables()
@@ -42,6 +49,7 @@ namespace Runtime.Managers
             if (homePage == null) { Debug.LogError("Null References: " + homePage.name); }
             if (setupPage == null) { Debug.LogError("Null References: " + setupPage.name); }
             if (playersPage == null) { Debug.LogError("Null References: " + playersPage.name); }
+            if (gamesPage == null) { Debug.LogError("Null References: " + gamesPage.name); }
         }
     }
 }

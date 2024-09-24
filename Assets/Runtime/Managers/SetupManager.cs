@@ -4,13 +4,14 @@ using Runtime.Data;
 using System.Linq;
 using System;
 
+
 namespace Runtime.Managers
 {
     public class SetupManager : MonoBehaviour
     {
         // Data to send to Session
         private List<Player> players = new List<Player>();
-        //private List<Game> games = new List<Game>();
+        private List<Game> games = new List<Game>();
 
 
         // Selected Players
@@ -30,16 +31,19 @@ namespace Runtime.Managers
             FinalisePlayers();
             Session.Players = players;
 
-
             GenerateGames();
-            //Session.Games = games;
+            Session.Games = games;
 
 
 
-/*            foreach (Player player in Session.Players)
+            foreach (Game game in Session.Games)
             {
-                Debug.Log(player.Name);
-            }*/
+                // Create a summary log for the game
+                string teamASummary = string.Join(", ", game.TeamA.Select(pair => $"{pair.Key.Name} & {pair.Value.Name}"));
+                string teamBSummary = string.Join(", ", game.TeamB.Select(pair => $"{pair.Key.Name} & {pair.Value.Name}"));
+                Debug.Log($"Game ID: {game.ID} | Team A: [{teamASummary}] | Team B: [{teamBSummary}]");
+            }
+
         }
 
 
@@ -66,15 +70,8 @@ namespace Runtime.Managers
 
 
 
-
-
-
-
-
-
-        private void GenerateGames()
+    private void GenerateGames()
         {
-            List<Game> games = new List<Game>();
             int playerCount = players.Count;
 
             // Ensure we have an even number of players for pairing
@@ -122,19 +119,13 @@ namespace Runtime.Managers
                                     };
 
                                     games.Add(game);
-
-                                    // Create a summary log for the game
-                                    string teamASummary = string.Join(", ", teamA.Select(pair => $"{pair.Key.Name} & {pair.Value.Name}"));
-                                    string teamBSummary = string.Join(", ", teamB.Select(pair => $"{pair.Key.Name} & {pair.Value.Name}"));
-
-                                    Debug.Log($"Game ID: {game.ID} | Team A: [{teamASummary}] | Team B: [{teamBSummary}]");
                                 }
                             }
                         }
                     }
                 }
             }
-        }     
+        }
     }
 }
 
