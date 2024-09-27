@@ -261,26 +261,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5951575872207833636}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1838857540
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838857538}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7bb4e3f0337725a44bceb7b55a3529f0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1894175037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,27 +1004,12 @@ PrefabInstance:
     - target: {fileID: 5951575873892218726, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
@@ -1389,9 +1354,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1796333840}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowGamesPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1493235022827972964, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
       propertyPath: m_Pivot.x
