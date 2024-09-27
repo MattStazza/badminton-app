@@ -7,12 +7,13 @@ namespace Runtime.Data
     {
         private string name;
         private Sprite profileSprite;
-        private Sprite bodyTexture;
+        private Sprite bodySprite;
 
         private int gamesPlayed;
-        private int gamesWon;
-        private int gamesLost;
-        private int gamesDeuced;
+        private int wins;
+        private int losses;
+        private int deuceWins;
+        private int deuceLosses;
 
 
 
@@ -30,8 +31,8 @@ namespace Runtime.Data
 
         public Sprite BodySprite
         {
-            get { return bodyTexture; }
-            set { bodyTexture = value; }
+            get { return bodySprite; }
+            set { bodySprite = value; }
         }
 
 
@@ -42,20 +43,26 @@ namespace Runtime.Data
             get { return gamesPlayed; }
             set { gamesPlayed = value; }
         }
-        public int GamesWon
+        public int Wins
         {
-            get { return gamesWon; }
-            set { gamesWon = value; }
+            get { return wins; }
+            set { wins = value; }
         }
-        public int GamesLost
+        public int Losses
         {
-            get { return gamesLost; }
-            set { gamesLost = value; }
+            get { return losses; }
+            set { losses = value; }
         }
-        public int GamesDeuced
+        public int DeuceWins
         {
-            get { return gamesDeuced; }
-            set { gamesDeuced = value; }
+            get { return deuceWins; }
+            set { deuceWins = value; }
+        }
+
+        public int DeuceLosses
+        {
+            get { return deuceLosses; }
+            set { deuceLosses = value; }
         }
     }
 }
