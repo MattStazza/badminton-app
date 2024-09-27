@@ -86,13 +86,18 @@ namespace Runtime.UI
         }
 
 
-        private void UpdateContentHeight()
+        public void UpdateContentHeight()
         {
-            float gameHeight = 1000f; // Dynamically get button height for each game (different for played or not)
+            float allGameButtonsHeight = 0;
 
-            float contentHeight = (gameHeight * gameButtons.Count) + (contentVerticalLayout.spacing * gameButtons.Count);
+            foreach (GameButtonController gameButton in gameButtons)
+                allGameButtonsHeight = allGameButtonsHeight + gameButton.gameObject.GetComponent<RectTransform>().sizeDelta.y;
+
+            float contentHeight = allGameButtonsHeight + (contentVerticalLayout.spacing * gameButtons.Count);
 
             contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentHeight);
+
+            RefreshContentLayout();
         }
 
         private void RefreshContentLayout()

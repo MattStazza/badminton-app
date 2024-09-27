@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Runtime.Data;
+using Runtime.Managers;
 
 
 namespace Runtime.UI
@@ -24,11 +25,10 @@ namespace Runtime.UI
         [SerializeField] private TextMeshProUGUI teamAScore;
         [SerializeField] private TextMeshProUGUI teamBScore;
 
-
+        private UIManager uiManager;
+        private GenerateGameButtons generator;
 
         private void Awake() => ValidateRequiredVariables();
-
-
 
         public void SetGameNumber(int number)
         {
@@ -55,13 +55,6 @@ namespace Runtime.UI
             playerButton.ToggleButtonInteractive(false);
         }
 
-
-
-
-
-
-
-
         public void ToggleGamePlayed(bool played)
         {
             gamePanel.SetActive(!played);
@@ -71,6 +64,13 @@ namespace Runtime.UI
                 gameRectTransform.sizeDelta = new Vector2(700f, 500f);
             else
                 gameRectTransform.sizeDelta = new Vector2(700f, 1000);
+
+            generator.UpdateContentHeight();
+        }
+
+        public void OpenGameScene()
+        {
+            uiManager.ShowScoringPage();
         }
 
 
@@ -78,6 +78,12 @@ namespace Runtime.UI
 
         private void ValidateRequiredVariables()
         {
+            uiManager = FindObjectOfType<UIManager>();
+            if (uiManager == null) { Debug.LogError("Null References: " + uiManager.name); }
+
+            generator = FindObjectOfType<GenerateGameButtons>();
+            if (generator == null) { Debug.LogError("Null References: " + generator.name); }
+
             if (gameRectTransform == null) { Debug.LogError("Null References: " + gameRectTransform.name); }
             if (gameNumberText == null) { Debug.LogError("Null References: " + gameNumberText.name); }
             if (gamePanel == null) { Debug.LogError("Null References: " + gamePanel.name); }

@@ -177,7 +177,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.99215686, g: 0.99215686, b: 0.99215686, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -993,7 +993,12 @@ PrefabInstance:
     - target: {fileID: 5951575873892218726, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
       propertyPath: m_Name
-      value: Game Scene
+      value: Badminton Court
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951575873892218726, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
@@ -1096,6 +1101,11 @@ PrefabInstance:
       propertyPath: playersPage
       value: 
       objectReference: {fileID: 6296221319525213927}
+    - target: {fileID: 6493676079526294594, guid: 0435b6e4512952f498589fc1330ac36e,
+        type: 3}
+      propertyPath: scoringPage
+      value: 
+      objectReference: {fileID: 7117238175615942972}
     - target: {fileID: 6493676079526294594, guid: 0435b6e4512952f498589fc1330ac36e,
         type: 3}
       propertyPath: notEnoughPlayersWarning
@@ -1308,6 +1318,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8537852093952573060}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7117238175615942972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1493235020778586040, guid: e4b6636ab13d22c4383320f40f64f3c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537852093952573060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8537852093952573060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1319,6 +1335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Scoring Page
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493235020778586040, guid: e4b6636ab13d22c4383320f40f64f3c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
