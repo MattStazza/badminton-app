@@ -255,6 +255,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb9680131edf0f4cace2f2fa0cff182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1838857538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5951575873892218726, guid: 2844599e91d35dd47a683c7646338ceb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5951575872207833636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1838857540
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838857538}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bb4e3f0337725a44bceb7b55a3529f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1894175037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1033,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951575873892218727, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1106,6 +1147,11 @@ PrefabInstance:
       propertyPath: scoringPage
       value: 
       objectReference: {fileID: 7117238175615942972}
+    - target: {fileID: 6493676079526294594, guid: 0435b6e4512952f498589fc1330ac36e,
+        type: 3}
+      propertyPath: badmintonCourt
+      value: 
+      objectReference: {fileID: 1838857538}
     - target: {fileID: 6493676079526294594, guid: 0435b6e4512952f498589fc1330ac36e,
         type: 3}
       propertyPath: notEnoughPlayersWarning
