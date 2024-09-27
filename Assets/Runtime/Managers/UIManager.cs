@@ -10,12 +10,15 @@ namespace Runtime.Managers
         [SerializeField] private GameObject setupPage;
         [SerializeField] private GameObject playersPage;
         [SerializeField] private GameObject gamesPage;
+        [Space]
+        [SerializeField] private GameObject notEnoughPlayersWarning;
 
         private void Awake() => ValidateRequiredVariables();
 
         private void Start()
         {
             HideAllPages();
+            notEnoughPlayersWarning.SetActive(false);
             homePage.SetActive(true);         
         }
 
@@ -24,11 +27,16 @@ namespace Runtime.Managers
             HideAllPages();
             setupPage.SetActive(true);
         }
+        public void ShowWarningNotEnoughPlayers()
+        {
+            notEnoughPlayersWarning.SetActive(true);
+        }
 
         public void ShowPlayersPage()
         {
             HideAllPages();
             playersPage.SetActive(true);
+            notEnoughPlayersWarning.SetActive(false);
         }
         public void ShowGamesPage()
         {

@@ -9,6 +9,8 @@ namespace Runtime.Managers
 {
     public class SetupManager : MonoBehaviour
     {
+        [SerializeField] private UIManager uIManager;
+
         // Data to send to Session
         private List<Player> players = new List<Player>();
         private List<Game> games = new List<Game>();
@@ -21,22 +23,27 @@ namespace Runtime.Managers
         public void AddPlayerToSelected(PlayerData selectedPlayer) => selectedPlayersData.Add(selectedPlayer);
 
 
-
         public void GenerateSession()
         {
             if (selectedPlayersData.Count <= 3)
-                Debug.Log("Not enough players to generate games!");
-
+            {
+                uIManager.ShowWarningNotEnoughPlayers();
+                return;
+            }
 
             FinalisePlayers();
             Session.Players = players;
 
             GenerateGames();
-            games = OrganiseOrderOfGames(games);
+            games = BalancePairs(games);
+            games = PrioritiseGamesPerPlayer(games, players);
             Session.Games = games;
 
 
+            uIManager.ShowGamesPage();
 
+
+            // Debug
             foreach (Game game in Session.Games)
             {
                 // Create a summary log for the game
@@ -70,17 +77,10 @@ namespace Runtime.Managers
 
 
 
-
+        // Function to generate all unique combination of games
         private void GenerateGames()
         {
             int playerCount = players.Count;
-
-            // Ensure we have enough players to form teams
-            if (playerCount < 4)
-            {
-                Debug.LogError("Not enough players to form teams.");
-                return;
-            }
 
             // Use a HashSet to keep track of unique team combinations
             HashSet<string> uniqueGames = new HashSet<string>();
@@ -135,16 +135,10 @@ namespace Runtime.Managers
         }
 
 
-
-
-
-
-
-
-
-        private List<Game> OrganiseOrderOfGames(List<Game> unorderedGames)
+        // Function to balance pairs and prevent back-to-back repeated pairs
+        private List<Game> BalancePairs(List<Game> unorderedGames)
         {
-            List<Game> orderedGames = new List<Game>();
+            List<Game> balancedGames = new List<Game>();
 
             // Dictionary to track how many times a pair of players has been on the same team
             Dictionary<string, int> teamPairCount = new Dictionary<string, int>();
@@ -155,7 +149,6 @@ namespace Runtime.Managers
             // Helper function to get a unique string key for a pair of players
             string GetTeamKey(Player p1, Player p2)
             {
-                // Sort the players to ensure uniqueness (A, B) == (B, A)
                 return string.Join(",", new List<string> { p1.Name, p2.Name }.OrderBy(name => name));
             }
 
@@ -169,7 +162,7 @@ namespace Runtime.Managers
                 teamPairCount[teamBKey] = 0;
             }
 
-            // Helper function to find if a game can be added based on pair distribution
+            // Helper function to check if a game can be added based on pair repetition
             bool CanAddGame(Game game)
             {
                 string teamAKey = GetTeamKey(game.TeamA.Keys.First(), game.TeamA.Values.First());
@@ -184,11 +177,11 @@ namespace Runtime.Managers
                 return true;
             }
 
-            // Shuffle the games list to get a different order on each run
+            // Shuffle the games list for variation
             System.Random random = new System.Random();
             unorderedGames = unorderedGames.OrderBy(x => random.Next()).ToList();
 
-            // Iterate over the shuffled games and assign them based on pair priority
+            // Iterate through the shuffled games to prevent consecutive pairings
             while (unorderedGames.Count > 0)
             {
                 bool gameAdded = false;
@@ -199,8 +192,8 @@ namespace Runtime.Managers
 
                     if (CanAddGame(currentGame))
                     {
-                        // Add the game to the ordered list
-                        orderedGames.Add(currentGame);
+                        // Add the game to the balanced list
+                        balancedGames.Add(currentGame);
 
                         // Update the pair counts for the teams
                         string teamAKey = GetTeamKey(currentGame.TeamA.Keys.First(), currentGame.TeamA.Values.First());
@@ -209,38 +202,125 @@ namespace Runtime.Managers
                         teamPairCount[teamAKey]++;
                         teamPairCount[teamBKey]++;
 
-                        // Add the teams to the recent pairs set and keep it to the last game only
+                        // Add teams to recent pairs set and clear recent pairs after one game
                         recentPairs.Clear();
                         recentPairs.Add(teamAKey);
                         recentPairs.Add(teamBKey);
 
-                        // Remove the game from the remaining list
+                        // Remove game from unordered list
                         unorderedGames.RemoveAt(i);
                         gameAdded = true;
+
+                        break;
+                    }
+                }
+
+                // If no valid game was added, just add the rest
+                if (!gameAdded)
+                {
+                    balancedGames.AddRange(unorderedGames);
+                    break;
+                }
+            }
+
+            return balancedGames;
+        }
+
+
+        // Function to prioritize games based on games played per player and ensure no player waits too long
+        private List<Game> PrioritiseGamesPerPlayer(List<Game> balancedGames, List<Player> players)
+        {
+            // This will hold the newly ordered list of games
+            List<Game> prioritisedGames = new List<Game>();
+
+            // Dictionary to track how many games each player has played
+            Dictionary<Player, int> playerGameCount = new Dictionary<Player, int>();
+
+            // Dictionary to track when each player last played (game index)
+            Dictionary<Player, int> playerLastGame = new Dictionary<Player, int>();
+
+            // Initialize player game count and last game index to 0
+            foreach (var player in players)
+            {
+                playerGameCount[player] = 0;
+                playerLastGame[player] = -1; // Set to -1 since they haven't played any games yet
+            }
+
+            // Helper function to check if a game can be added based on current game distribution
+            bool CanAddGame(Game game, int currentGameIndex)
+            {
+                // Get all players in this game
+                var playersInGame = game.TeamA.Keys.Concat(game.TeamA.Values).Concat(game.TeamB.Keys).Concat(game.TeamB.Values).ToList();
+
+                // Find the player who has played the fewest games
+                int minGamesPlayed = playerGameCount.Values.Min();
+
+                // Ensure that no player has sat out for more than two consecutive games
+                foreach (var player in playersInGame)
+                {
+                    if (playerGameCount[player] > minGamesPlayed + 1)
+                    {
+                        return false; // If a player has played significantly more games, skip this game
+                    }
+
+                    // Ensure no player is sitting out for more than two games
+                    if (currentGameIndex - playerLastGame[player] > 2)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            // Create a copy of the balanced games to manipulate
+            List<Game> remainingGames = new List<Game>(balancedGames);
+
+            // Keep assigning games until we have processed all games
+            int currentGameIndex = 0;
+
+            while (remainingGames.Count > 0)
+            {
+                bool gameAdded = false;
+
+                // Loop through the games to find one that can be added based on player game count and last game
+                for (int i = 0; i < remainingGames.Count; i++)
+                {
+                    Game currentGame = remainingGames[i];
+
+                    if (CanAddGame(currentGame, currentGameIndex))
+                    {
+                        // Add the game to the prioritised list
+                        prioritisedGames.Add(currentGame);
+
+                        // Update the game count and last game index for each player in the game
+                        var playersInGame = currentGame.TeamA.Keys.Concat(currentGame.TeamA.Values).Concat(currentGame.TeamB.Keys).Concat(currentGame.TeamB.Values);
+                        foreach (var player in playersInGame)
+                        {
+                            playerGameCount[player]++;
+                            playerLastGame[player] = currentGameIndex;
+                        }
+
+                        // Remove the game from the remaining list
+                        remainingGames.RemoveAt(i);
+                        gameAdded = true;
+                        currentGameIndex++; // Increment the game index
 
                         // Break the loop to restart the selection process
                         break;
                     }
                 }
 
-                // If no game could be added, just add all remaining games to the ordered list
+                // If no valid game could be added, add all remaining games to the prioritised list
                 if (!gameAdded)
                 {
-                    orderedGames.AddRange(unorderedGames);
+                    prioritisedGames.AddRange(remainingGames);
                     break;
                 }
             }
 
-            // Try to balance games per player here (without repeating pairs back-to-back)
-            // At this point, we assume the game pairs are properly ordered and separated,
-            // but if some player is underrepresented, we might add further logic to swap games.
-            // However, this keeps the focus on the primary goal: avoiding consecutive pairs.
-
-            return orderedGames;
+            return prioritisedGames;
         }
-
-
-
 
     }
 }
