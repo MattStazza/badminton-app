@@ -25,7 +25,7 @@ namespace Runtime.UI
         {
             foreach (PlayerData playerData in players.GetAllPlayerData())
             {
-                // Spawn Button for every Player
+                // Spawn Player Buttons
                 GameObject playerButton = Instantiate(playerButtonPrefab, transform);
                 PlayerButtonController playerButtonController = playerButton.GetComponent<PlayerButtonController>();
                 playerButtons.Add(playerButtonController);
