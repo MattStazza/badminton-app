@@ -39,19 +39,7 @@ namespace Runtime.Managers
             games = PrioritiseGamesPerPlayer(games, players);
             Session.Games = games;
 
-
             uIManager.ShowGamesPage();
-
-
-            // Debug
-            foreach (Game game in Session.Games)
-            {
-                // Create a summary log for the game
-                string teamASummary = string.Join(", ", game.TeamA.Select(pair => $"{pair.Key.Name} & {pair.Value.Name}"));
-                string teamBSummary = string.Join(", ", game.TeamB.Select(pair => $"{pair.Key.Name} & {pair.Value.Name}"));
-                Debug.Log($"Game ID: {game.ID} | Team A: [{teamASummary}] | Team B: [{teamBSummary}]");
-            }
-
         }
 
 

@@ -26,6 +26,12 @@ namespace Runtime.UI
         {
             for (int g = 0; g < numberOfGamesToGenerate; g++)
             {
+                if (g >= Session.Games.Count)
+                {
+                    Debug.Log("No more unique games! Adding previously played games.");
+                    return;
+                }
+
                 // Spawn Game Buttons
                 GameObject gameButton = Instantiate(gameButtonPrefab, transform);
                 GameButtonController gameButtonController = gameButton.GetComponent<GameButtonController>();
@@ -33,10 +39,10 @@ namespace Runtime.UI
 
                 // Update Button Design with Session Data
                 UpdateGameButtonWithSessionData(gameButtonController, g);
-            }
 
-            UpdateContentHeight();
-            RefreshContentLayout();
+                UpdateContentHeight();
+                RefreshContentLayout();
+            }
         }
 
 
@@ -44,6 +50,12 @@ namespace Runtime.UI
 
         public void AddOneGame()
         {
+            if (gameButtons.Count >= Session.Games.Count)
+            {
+                Debug.Log("No more unique games! Adding previously played games.");
+                return;
+            }
+
             GameObject gameButton = Instantiate(gameButtonPrefab, transform);
             GameButtonController gameButtonController = gameButton.GetComponent<GameButtonController>();
             gameButtons.Add(gameButtonController);
@@ -76,12 +88,11 @@ namespace Runtime.UI
 
         private void UpdateContentHeight()
         {
-            float CONTENT_WDITH = 900f;
             float gameHeight = 1000f; // Dynamically get button height for each game (different for played or not)
 
             float contentHeight = (gameHeight * gameButtons.Count) + (contentVerticalLayout.spacing * gameButtons.Count);
 
-            contentRectTransform.sizeDelta = new Vector2(CONTENT_WDITH, contentHeight);
+            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentHeight);
         }
 
         private void RefreshContentLayout()
