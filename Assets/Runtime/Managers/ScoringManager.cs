@@ -7,8 +7,8 @@ namespace Runtime.Managers
     public class ScoringManager : MonoBehaviour
     {
         [SerializeField] private UIManager uIManager;
-        [SerializeField] private GameObject badmintonCourt;
-        [SerializeField] private DisplayScoreController scoreDisplay;
+        [SerializeField] private BadmintonCourtManager badmintonCourt;
+        [SerializeField] private ScoreDisplayController scoreDisplay;
         [SerializeField] private GenerateGameButtons gameButtonsDisplay;
 
         private Game currentGameData;
@@ -16,7 +16,6 @@ namespace Runtime.Managers
 
 
         private void Awake() => ValidateRequiredVariables();
-        private void Start() => badmintonCourt.SetActive(false);
 
         public void SetCurrentGameData(Game game) => currentGameData = game;
 
@@ -25,9 +24,10 @@ namespace Runtime.Managers
         public void OpenGame()
         {
             uIManager.ShowScoringPage();
-            badmintonCourt.SetActive(true);
             scoreDisplay.SetTitle("GAME #" + currentGameData.Number.ToString());
             scoreDisplay.DisplayGamePreview();
+            badmintonCourt.ToggleBadmintonCourt(true);
+            badmintonCourt.SetupPlayersOnCourt(currentGameData);
         }
         public void StartGame()
         {
@@ -44,8 +44,7 @@ namespace Runtime.Managers
         public void CloseGame()
         {
             uIManager.ShowGamesPage();
-            badmintonCourt.SetActive(false);
-            //gameTitle.text = " ";
+            badmintonCourt.ToggleBadmintonCourt(false);
         }
 
 

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2972695561659612958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -727,9 +727,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: {fileID: 1493235022710065093}
   gameDuration: {fileID: 4800697745194777502}
-  scoreDisplay: {fileID: 3660510513267555108}
   teamAScore: {fileID: 7465734724458499958}
   teamBScore: {fileID: 5362800160798583940}
+  scoreDisplay: {fileID: 3660510513267555108}
   scoreButtons: {fileID: 7956449387821986888}
   startButton: {fileID: 1493235022542024485}
   backButton: {fileID: 594287386514730505}
@@ -886,7 +886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1493235022542024484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCORE
+  m_text: TITLE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1533,7 +1533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2573538612400862493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2095,7 +2095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7923420024510418025
 RectTransform:
   m_ObjectHideFlags: 0

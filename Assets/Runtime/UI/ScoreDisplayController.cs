@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 namespace Runtime.UI
 {
-    public class DisplayScoreController : MonoBehaviour
+    public class ScoreDisplayController : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private TextMeshProUGUI gameDuration;
@@ -20,7 +17,6 @@ namespace Runtime.UI
         [SerializeField] private GameObject backButton;
 
         private void Awake() => ValidateRequiredVariables();
-
 
         public void SetTitle(string text) => title.text = text;
 

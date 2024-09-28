@@ -10,8 +10,8 @@ namespace Runtime.UI
     public class GeneratePlayerButtons : MonoBehaviour
     {
         [SerializeField] private SetupManager setupManager;
-        [Space]
         [SerializeField] private Players players;
+        [Space]
         [SerializeField] private GameObject playerButtonPrefab;
 
         private List<PlayerButtonController> playerButtons = new List<PlayerButtonController>();

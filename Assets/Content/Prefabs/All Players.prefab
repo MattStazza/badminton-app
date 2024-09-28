@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7684177725331566548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 568991345567419649}
+  - component: {fileID: 7971524143461936022}
+  - component: {fileID: 7684177725331566547}
+  m_Layer: 5
+  m_Name: All Players
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &568991345567419649
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684177725331566548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -13.7903, y: -80.44568}
+  m_SizeDelta: {x: 900, y: 1000}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7971524143461936022
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684177725331566548}
+  m_CullTransparentMesh: 1
+--- !u!114 &7684177725331566547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684177725331566548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cade6ecbc9bc6f64ca5f57c10a2e3f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPlayers:
+  - playerName: MATT
+    profileTexture: {fileID: 21300000, guid: 4a932078b16ae14479c6b776df5290c5, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8d96b57bef5e2ce419d0b0219d3502ec, type: 3}
+  - playerName: LUCI
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: NIKHIL
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: YASHAR
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: ARYANA
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: FROSTY
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: CHRISTIE
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: RIAAN
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: BAILEY
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: LIANAH
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: FAITH
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: CALEB
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: EUGENE
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: DICKSON
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: CODY
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: RENAN
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: GUEST 1
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: GUEST 2
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
+  - playerName: GUEST 3
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 8b9a80b2751604c43b4d63873aea4d3b, type: 3}
