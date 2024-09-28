@@ -15,12 +15,12 @@ namespace Runtime.Managers
         private List<Player> players = new List<Player>();
         private List<Game> games = new List<Game>();
 
-
         // Selected Players
         private List<PlayerData> selectedPlayersData = new List<PlayerData>();
         public List<PlayerData> GetSelectedPlayers() { return selectedPlayersData; }
         public void ClearSelectedPlayers() => selectedPlayersData.Clear();
         public void AddPlayerToSelected(PlayerData selectedPlayer) => selectedPlayersData.Add(selectedPlayer);
+
 
 
         public void GenerateSession()
@@ -44,7 +44,6 @@ namespace Runtime.Managers
 
 
 
-
         private void FinalisePlayers()
         {
             // For every selected player create a Player & set data.
@@ -60,9 +59,6 @@ namespace Runtime.Managers
                 players.Add(player);
             }
         }
-
-
-
 
 
         // Function to generate all unique combination of games
@@ -121,7 +117,6 @@ namespace Runtime.Managers
                 }
             }
         }
-
 
         // Function to balance pairs and prevent back-to-back repeated pairs
         private List<Game> BalancePairs(List<Game> unorderedGames)
@@ -213,7 +208,6 @@ namespace Runtime.Managers
 
             return balancedGames;
         }
-
 
         // Function to prioritize games based on games played per player and ensure no player waits too long
         private List<Game> PrioritiseGamesPerPlayer(List<Game> balancedGames, List<Player> players)

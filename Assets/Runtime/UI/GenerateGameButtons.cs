@@ -16,11 +16,8 @@ namespace Runtime.UI
 
         private List<GameButtonController> gameButtons = new List<GameButtonController>();
 
-
         private void Awake() => ValidateRequiredVariables();
         private void Start() => GenerateButtons();
-
-
 
         private void GenerateButtons()
         {
@@ -32,21 +29,9 @@ namespace Runtime.UI
                     return;
                 }
 
-                // Spawn Game Buttons
-                GameObject gameButton = Instantiate(gameButtonPrefab, transform);
-                GameButtonController gameButtonController = gameButton.GetComponent<GameButtonController>();
-                gameButtons.Add(gameButtonController);
-
-                // Update Button Design with Session Data
-                UpdateGameButtonWithSessionData(gameButtonController, g);
-
-                UpdateContentHeight();
-                RefreshContentLayout();
+                SpawnGameButton(g);
             }
         }
-
-
-
 
         public void AddOneGame()
         {
@@ -56,20 +41,26 @@ namespace Runtime.UI
                 return;
             }
 
+            SpawnGameButton(gameButtons.Count);
+        }
+
+
+        private void SpawnGameButton(int gameNumber)
+        {
             GameObject gameButton = Instantiate(gameButtonPrefab, transform);
             GameButtonController gameButtonController = gameButton.GetComponent<GameButtonController>();
             gameButtons.Add(gameButtonController);
 
-            UpdateGameButtonWithSessionData(gameButtonController, gameButtons.Count - 1);
+            UpdateGameButtonWithSessionData(gameButtonController, gameNumber);
 
             UpdateContentHeight();
             RefreshContentLayout();
         }
 
-
         private void UpdateGameButtonWithSessionData(GameButtonController gameButton ,int gameNumber)
         {
-            gameButton.SetGameNumber(gameNumber + 1);
+            Session.Games[gameNumber].Number = gameNumber + 1;
+            gameButton.SetGameNumber(Session.Games[gameNumber].Number);
 
             Player playerOne = null;
             Player playerTwo = null;
@@ -83,8 +74,9 @@ namespace Runtime.UI
             { playerThree = player.Key; playerFour = player.Value; }
 
             gameButton.SetTeams(playerOne, playerTwo, playerThree, playerFour);
-        }
 
+            gameButton.SetGameData(Session.Games[gameNumber]);
+        }
 
         public void UpdateContentHeight()
         {
@@ -105,9 +97,6 @@ namespace Runtime.UI
             contentVerticalLayout.enabled = false;
             contentVerticalLayout.enabled = true;
         }
-
-
-
 
         private void ValidateRequiredVariables()
         {

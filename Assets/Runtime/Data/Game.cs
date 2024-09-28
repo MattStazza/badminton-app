@@ -7,6 +7,7 @@ namespace Runtime.Data
     public class Game
     {
         private int id;
+        private int number;
         private Dictionary<int, int> score = new Dictionary<int, int>();
         private Dictionary<Player, Player> teamA = new Dictionary<Player, Player>();
         private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
@@ -17,6 +18,11 @@ namespace Runtime.Data
         {
             get { return id; }
             set { id = value; }
+        }
+        public int Number
+        {
+            get { return number; }
+            set { number = value; }
         }
 
         public Dictionary<int, int> Score

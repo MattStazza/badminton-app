@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Runtime.Data;
 using Runtime.Managers;
-
 
 namespace Runtime.UI
 {
@@ -25,15 +21,15 @@ namespace Runtime.UI
         [SerializeField] private TextMeshProUGUI teamAScore;
         [SerializeField] private TextMeshProUGUI teamBScore;
 
-        private UIManager uiManager;
-        private GenerateGameButtons generator;
+        private ScoringManager scoringManager;
+        private Game gameData;
 
         private void Awake() => ValidateRequiredVariables();
 
-        public void SetGameNumber(int number)
-        {
-            gameNumberText.text = "GAME #" + number.ToString();
-        }
+        public void SetGameData(Game game) => gameData = game;
+
+        public void SetGameNumber(int number) => gameNumberText.text = "GAME #" + number.ToString();
+
         public void SetTeams(Player player1, Player player2, Player player3, Player player4)
         {
             SetPlayer(playerOneButton, player1);
@@ -64,25 +60,19 @@ namespace Runtime.UI
                 gameRectTransform.sizeDelta = new Vector2(700f, 500f);
             else
                 gameRectTransform.sizeDelta = new Vector2(700f, 1000);
-
-            generator.UpdateContentHeight();
         }
 
-        public void OpenGameScene()
+        public void SelectGame()
         {
-            uiManager.ShowScoringPage();
+            scoringManager.SetCurrentGameData(gameData);
+            scoringManager.SetCurrentGameButton(this);
+            scoringManager.OpenGame();
         }
-
-
-
 
         private void ValidateRequiredVariables()
         {
-            uiManager = FindObjectOfType<UIManager>();
-            if (uiManager == null) { Debug.LogError("Null References: " + uiManager.name); }
-
-            generator = FindObjectOfType<GenerateGameButtons>();
-            if (generator == null) { Debug.LogError("Null References: " + generator.name); }
+            scoringManager = FindObjectOfType<ScoringManager>();
+            if (scoringManager == null) { Debug.LogError("Null References: " + scoringManager.name); }
 
             if (gameRectTransform == null) { Debug.LogError("Null References: " + gameRectTransform.name); }
             if (gameNumberText == null) { Debug.LogError("Null References: " + gameNumberText.name); }

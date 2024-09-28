@@ -13,8 +13,6 @@ namespace Runtime.Managers
         [SerializeField] private GameObject scoringPage;
         [Space]
         [SerializeField] private GameObject notEnoughPlayersWarning;
-        [Space]
-        [SerializeField] private GameObject badmintonCourt;
 
         private void Awake() => ValidateRequiredVariables();
 
@@ -50,7 +48,6 @@ namespace Runtime.Managers
         {
             HideAllPages();
             scoringPage.SetActive(true);
-            badmintonCourt.SetActive(true);
         }
 
         private void HideAllPages()
@@ -60,7 +57,6 @@ namespace Runtime.Managers
             playersPage.SetActive(false);
             gamesPage.SetActive(false);
             scoringPage.SetActive(false);
-            badmintonCourt.SetActive(false);
         }
 
         private void ValidateRequiredVariables()
@@ -70,7 +66,6 @@ namespace Runtime.Managers
             if (playersPage == null) { Debug.LogError("Null References: " + playersPage.name); }
             if (gamesPage == null) { Debug.LogError("Null References: " + gamesPage.name); }
             if (scoringPage == null) { Debug.LogError("Null References: " + scoringPage.name); }
-            if (badmintonCourt == null) { Debug.LogError("Null References: " + badmintonCourt.name); }
         }
     }
 }
