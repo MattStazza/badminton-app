@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Runtime.Data
 {
@@ -13,6 +11,7 @@ namespace Runtime.Data
         private int scoreA;
         private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
         private int scoreB;
+        private bool played;
 
 
         public int ID
@@ -20,6 +19,7 @@ namespace Runtime.Data
             get { return id; }
             set { id = value; }
         }
+
         public int Number
         {
             get { return number; }
@@ -31,6 +31,7 @@ namespace Runtime.Data
             get { return duration; }
             set { duration = value; }
         }
+
         public Dictionary<Player, Player> TeamA
         {
             get { return teamA; }
@@ -42,6 +43,7 @@ namespace Runtime.Data
             get { return scoreA; }
             set { scoreA = value; }
         }
+
         public Dictionary<Player, Player> TeamB
         {
             get { return teamB; }
@@ -52,6 +54,12 @@ namespace Runtime.Data
         {
             get { return scoreB; }
             set { scoreB = value; }
+        }
+
+        public bool Played
+        {
+            get { return played; }
+            set { played = value; }
         }
     }
 }
