@@ -20,6 +20,12 @@ namespace Runtime.UI
 
         public void SetTitle(string text) => title.text = text;
 
+        public void UpdateScoreDisplay(int scoreA, int scoreB)
+        {
+            teamAScore.text = scoreA.ToString();
+            teamBScore.text = scoreB.ToString();
+        }
+
         public void DisplayGamePreview()
         {
             HideAllUIElements();
@@ -34,6 +40,7 @@ namespace Runtime.UI
 
             SetTitle("SCORE");
             scoreDisplay.SetActive(true);
+            //UpdateScoreDisplay(0, 0);
             scoreButtons.SetActive(true);
             gameDuration.gameObject.SetActive(true);
         }

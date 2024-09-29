@@ -8,10 +8,11 @@ namespace Runtime.Data
     {
         private int id;
         private int number;
-        private Dictionary<int, int> score = new Dictionary<int, int>();
-        private Dictionary<Player, Player> teamA = new Dictionary<Player, Player>();
-        private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
         private float duration;
+        private Dictionary<Player, Player> teamA = new Dictionary<Player, Player>();
+        private int scoreA;
+        private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
+        private int scoreB;
 
 
         public int ID
@@ -23,30 +24,34 @@ namespace Runtime.Data
         {
             get { return number; }
             set { number = value; }
-        }
+        } 
 
-        public Dictionary<int, int> Score
+        public float Duration
         {
-            get { return score; }
-            set { score = value; }
+            get { return duration; }
+            set { duration = value; }
         }
-
         public Dictionary<Player, Player> TeamA
         {
             get { return teamA; }
             set { teamA = value; }
         }
 
+        public int ScoreA
+        {
+            get { return scoreA; }
+            set { scoreA = value; }
+        }
         public Dictionary<Player, Player> TeamB
         {
             get { return teamB; }
             set { teamB = value; }
         }
 
-        public float Duration
+        public int ScoreB
         {
-            get { return duration; }
-            set { duration = value; }
+            get { return scoreB; }
+            set { scoreB = value; }
         }
     }
 }

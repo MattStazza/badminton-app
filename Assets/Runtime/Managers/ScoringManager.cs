@@ -1,6 +1,7 @@
 using UnityEngine;
 using Runtime.Data;
 using Runtime.UI;
+using System.Collections.Generic;
 
 namespace Runtime.Managers
 {
@@ -32,6 +33,17 @@ namespace Runtime.Managers
         public void StartGame()
         {
             scoreDisplay.DisplayGameScoring();
+            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+        }
+
+        public void AddPoint(bool teamA)
+        {
+            if (teamA)
+                currentGameData.ScoreA = currentGameData.ScoreA + 1;
+            else
+                currentGameData.ScoreB = currentGameData.ScoreB + 1;
+
+            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
         }
 
         public void CompleteGame()
