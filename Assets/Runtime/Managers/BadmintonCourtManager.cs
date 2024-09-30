@@ -2,23 +2,42 @@ using UnityEngine;
 using Runtime.UI;
 using Runtime.Data;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.UI;
 
 namespace Runtime.Managers 
 {
     public class BadmintonCourtManager : MonoBehaviour
     {
         [SerializeField] private GameObject badmintonCourt;
+        [SerializeField] private GameObject serviceIndicator;
+        [Space]
+        [SerializeField] private GameObject selectServerMessage;
+        [SerializeField] private Button startButton;
         [Space]
         [Header("Team A")]
-        [SerializeField] PlayerOnCourtButtonController player1;
-        [SerializeField] PlayerOnCourtButtonController player2;
-        [Space]
+        [SerializeField] private PlayerOnCourt player1;
+        [SerializeField] private PlayerOnCourt player2;
         [Header("Team B")]
-        [SerializeField] PlayerOnCourtButtonController player3;
-        [SerializeField] PlayerOnCourtButtonController player4;
+        [SerializeField] private PlayerOnCourt player3;
+        [SerializeField] private PlayerOnCourt player4;
+
+        private PlayerOnCourt servingPlayer;
+        private Vector3 player1InitialPos;
+        private Vector3 player2InitialPos;
+        private Vector3 player3InitialPos;
+        private Vector3 player4InitialPos;
+        private bool playersMoving;
 
         private void Awake() => ValidateRequiredVariables();
-        private void Start() => ToggleBadmintonCourt(false);
+
+        private void Start()
+        {
+            CachePlayerInitialPositions();
+            ToggleBadmintonCourt(false);
+            ToggleAllPlayerColliders(false);
+            ToggleServiceSelectionPrompt(false);
+        }
 
         public void ToggleBadmintonCourt(bool visible) => badmintonCourt.SetActive(visible);
 
@@ -30,20 +49,139 @@ namespace Runtime.Managers
             Player player4Data = null;
 
             foreach (KeyValuePair<Player, Player> player in game.TeamA)
-            { player2Data = player.Key; player1Data = player.Value; }
+            { 
+                player2Data = player.Key;
+                player.Value.PositionOnCourt = PlayerPosition.Left;
+                player2.transform.position = player2InitialPos;
+
+                player1Data = player.Value;
+                player.Key.PositionOnCourt = PlayerPosition.Right;
+                player1.transform.position = player1InitialPos;
+            }
 
             foreach (KeyValuePair<Player, Player> player in game.TeamB)
-            { player3Data = player.Key; player4Data = player.Value; }
+            { 
+                player3Data = player.Key;
+                player.Key.PositionOnCourt = PlayerPosition.Left;
+                player3.transform.position = player3InitialPos;
 
-            player1.SetupPlayer(player1Data);
-            player2.SetupPlayer(player2Data);
-            player3.SetupPlayer(player3Data);
-            player4.SetupPlayer(player4Data);
+                player4Data = player.Value;
+                player.Value.PositionOnCourt = PlayerPosition.Right;
+                player4.transform.position = player4InitialPos;
+            }
+
+            player1.SetPlayerData(player1Data);
+            player2.SetPlayerData(player2Data);
+            player3.SetPlayerData(player3Data);
+            player4.SetPlayerData(player4Data);
         }
+
+        public void ToggleAllPlayerColliders(bool active)
+        {
+            player1.ToggleCollider(active);
+            player2.ToggleCollider(active);
+            player3.ToggleCollider(active);
+            player4.ToggleCollider(active);
+        }
+
+        public void ToggleServiceSelectionPrompt(bool active)
+        {
+            selectServerMessage.SetActive(active);
+            startButton.interactable = !active;
+            serviceIndicator.SetActive(!active);
+        }
+
+        public void SetPlayerAsServer(PlayerOnCourt player)
+        {
+            if (playersMoving) return;
+
+            ToggleServiceSelectionPrompt(false);
+
+            // Team A
+            if (player == player1 || player == player2)
+            {
+                AssignService(player);
+
+                if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
+                { MoveServiceIndicator(); return; }
+                else
+                    SwapPositions(player1, player2);
+            }
+
+            // Team B
+            if (player == player3 || player == player4)
+            {
+                AssignService(player);
+
+                if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
+                { MoveServiceIndicator(); return; }
+                else
+                    SwapPositions(player3, player4);
+            }
+        }
+
+        private void AssignService(PlayerOnCourt player) => servingPlayer = player;
+
+        private void MoveServiceIndicator()
+        {
+            serviceIndicator.SetActive(true);
+            serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, 1f, servingPlayer.transform.position.z);
+        }
+
+        private void SwapPositions(PlayerOnCourt player1, PlayerOnCourt player2)
+        {
+            PlayerPosition player1CurrentPosition = player1.PlayerData().PositionOnCourt;
+            PlayerPosition player2CurrentPosition = player2.PlayerData().PositionOnCourt;
+
+            player1.PlayerData().PositionOnCourt = player2CurrentPosition;
+            player2.PlayerData().PositionOnCourt = player1CurrentPosition;
+
+            Vector3 player1Position = player1.transform.position;
+            Vector3 player2Position = player2.transform.position;
+
+            MovePlayers(player1, player2Position, player2, player1Position);
+        }
+
+        private void MovePlayers(PlayerOnCourt player1, Vector3 player1Pos, PlayerOnCourt player2, Vector3 player2Pos)
+        {
+            playersMoving = true;
+            StartCoroutine(MovePlayerOverTime(player1, player1Pos, 0.25f));
+            StartCoroutine(MovePlayerOverTime(player2, player2Pos, 0.25f));
+        }
+
+        private IEnumerator MovePlayerOverTime(PlayerOnCourt player, Vector3 targetPos, float duration)
+        {
+            float elapsedTime = 0f;
+            Vector3 startingPos = player.transform.position;
+
+            while (elapsedTime < duration)
+            {
+                player.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            player.transform.position = targetPos;
+
+            MoveServiceIndicator();
+            playersMoving = false;
+        }
+
+        private void CachePlayerInitialPositions()
+        {
+            player1InitialPos = player1.transform.position;
+            player2InitialPos = player2.transform.position;
+            player3InitialPos = player3.transform.position;
+            player4InitialPos = player4.transform.position;
+        }
+
 
         private void ValidateRequiredVariables()
         {
             if (badmintonCourt == null) { Debug.LogError("Null References: " + badmintonCourt.name); }
+            if (serviceIndicator == null) { Debug.LogError("Null References: " + serviceIndicator.name); }
+            if (selectServerMessage == null) { Debug.LogError("Null References: " + selectServerMessage.name); }
+            if (startButton == null) { Debug.LogError("Null References: " + startButton.gameObject.name); }
             if (player1 == null) { Debug.LogError("Null References: " + player1.name); }
             if (player2 == null) { Debug.LogError("Null References: " + player2.name); }
             if (player3 == null) { Debug.LogError("Null References: " + player3.name); }

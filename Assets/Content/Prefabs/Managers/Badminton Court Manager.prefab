@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   badmintonCourt: {fileID: 7976798514821644936}
+  serviceIndicator: {fileID: 2031916912315926014}
   player1: {fileID: 2901873463861387882}
   player2: {fileID: 7932313770422577456}
   player3: {fileID: 1603207961052986981}
@@ -57,6 +58,126 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7976798516681194731}
     m_Modifications:
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7976798516681194728}
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlayerAsServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 572529250761408748}
+    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7976798516681194728}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlayerAsServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1603207961052986981}
+    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7976798516681194728}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlayerAsServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2901873463861387882}
+    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5951575873892218726, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
       propertyPath: m_Name
@@ -117,6 +238,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7976798516681194728}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlayerAsServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7932313770422577456}
+    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2844599e91d35dd47a683c7646338ceb, type: 3}
 --- !u!114 &572529250761408748 stripped
@@ -143,6 +304,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d79d27281a2e1458ace1b35384a36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2031916912315926014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2313065630000787472, guid: 2844599e91d35dd47a683c7646338ceb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4335692407727175150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2901873463861387882 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1472395395361970052, guid: 2844599e91d35dd47a683c7646338ceb,

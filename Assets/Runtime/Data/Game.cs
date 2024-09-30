@@ -7,6 +7,7 @@ namespace Runtime.Data
         private int id;
         private int number;
         private float duration;
+        private List<Round> rounds;
         private Dictionary<Player, Player> teamA = new Dictionary<Player, Player>();
         private int scoreA;
         private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
@@ -30,6 +31,12 @@ namespace Runtime.Data
         {
             get { return duration; }
             set { duration = value; }
+        }
+
+        public List<Round> Rounds
+        {
+            get { return rounds; }
+            set { rounds = value; }
         }
 
         public Dictionary<Player, Player> TeamA

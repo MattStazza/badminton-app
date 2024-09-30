@@ -74,7 +74,6 @@ namespace Runtime.UI
             { playerThree = player.Key; playerFour = player.Value; }
 
             gameButton.SetTeams(playerOne, playerTwo, playerThree, playerFour);
-
             gameButton.SetGameData(Session.Games[gameNumber]);
         }
 

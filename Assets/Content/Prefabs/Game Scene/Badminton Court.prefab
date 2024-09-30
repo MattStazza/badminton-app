@@ -67,6 +67,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5951575873892218727}
     m_Modifications:
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1472395395361970052}
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PrintPlayerPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourtButtonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_Name
@@ -179,6 +209,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9570d556127fc41adc583c97f5b1e1, type: 3}
+--- !u!114 &1472395395361970052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 797975281895621540, guid: 0e9570d556127fc41adc583c97f5b1e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2268694381573100576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d79d27281a2e1458ace1b35384a36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8327119289693978858 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
@@ -272,6 +314,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5951575873892218727}
     m_Modifications:
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_Name
@@ -472,6 +524,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5951575873892218727}
     m_Modifications:
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_Name
@@ -597,6 +659,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5951575873892218727}
     m_Modifications:
+    - target: {fileID: 3690570233104180967, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_Name

@@ -16,7 +16,7 @@ namespace Runtime.Data
         private string name;
         private Sprite profileSprite;
         private Sprite bodySprite;
-
+        private PlayerPosition positionOnCourt;
         private int gamesPlayed;
         private int wins;
         private int losses;
@@ -41,6 +41,12 @@ namespace Runtime.Data
         {
             get { return bodySprite; }
             set { bodySprite = value; }
+        }
+
+        public PlayerPosition PositionOnCourt
+        {
+            get { return positionOnCourt; }
+            set { positionOnCourt = value; }
         }
 
 

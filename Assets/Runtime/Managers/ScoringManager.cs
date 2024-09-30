@@ -14,6 +14,9 @@ namespace Runtime.Managers
 
         private Game currentGameData;
         private GameButtonController currentGameButton;
+        //private List<Round> rounds = new List<Round>();
+        //private bool teamAScoredLast = false;
+        //private bool teamBScoredLast = false;
 
 
         private void Awake() => ValidateRequiredVariables();
@@ -29,22 +32,62 @@ namespace Runtime.Managers
             scoreDisplay.DisplayGamePreview();
             badmintonCourt.ToggleBadmintonCourt(true);
             badmintonCourt.SetupPlayersOnCourt(currentGameData);
+            badmintonCourt.ToggleAllPlayerColliders(true);
+            badmintonCourt.ToggleServiceSelectionPrompt(true);
+
+            // Pull exisiting game rounds (if they exist)
+            //rounds = currentGameData.Rounds;
         }
         public void StartGame()
         {
             scoreDisplay.DisplayGameScoring();
             scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+            badmintonCourt.ToggleAllPlayerColliders(false);
+
+            //SaveRound(currentGameData);
         }
 
         public void AddPoint(bool teamA)
         {
             if (teamA)
+            {
                 currentGameData.ScoreA = currentGameData.ScoreA + 1;
+            }
             else
+            {
                 currentGameData.ScoreB = currentGameData.ScoreB + 1;
+            }
+                
 
             scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+            
+            
+            //SaveRound(currentGameData);
+            //badmintonCourt.MovePlayers(currentGameRounds[currentGameRounds.Count]);
         }
+
+        private void UpdatePlayerPositionData()
+        {
+            //foreach (KeyValuePair<Player, Player> player in game.TeamA)
+            //{ player2Data = player.Key; player1Data = player.Value; }
+
+
+            //foreach (KeyValuePair<Player, Player> player in game.TeamB)
+            //{ player3Data = player.Key; player4Data = player.Value; }
+        }
+
+/*        private void SaveRound(Game gameData)
+        {
+            Round round = null;
+
+            round.ScoreA = gameData.ScoreA;
+            round.ScoreB = gameData.ScoreB;
+
+            // Update Player Positions!
+
+            rounds.Add(round);
+            gameData.Rounds = rounds;
+        }*/
 
         public void CompleteGame()
         {
