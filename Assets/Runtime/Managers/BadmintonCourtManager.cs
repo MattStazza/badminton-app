@@ -37,6 +37,7 @@ namespace Runtime.Managers
             ToggleBadmintonCourt(false);
             ToggleAllPlayerColliders(false);
             ToggleServiceSelectionPrompt(false);
+            ToggleServiceIndicatorVisible(false);
         }
 
         public void ToggleBadmintonCourt(bool visible) => badmintonCourt.SetActive(visible);
@@ -88,7 +89,6 @@ namespace Runtime.Managers
         {
             selectServerMessage.SetActive(active);
             startButton.interactable = !active;
-            serviceIndicator.SetActive(!active);
         }
 
         public void SetPlayerAsServer(PlayerOnCourt player)
@@ -103,9 +103,9 @@ namespace Runtime.Managers
                 AssignService(player);
 
                 if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
-                { MoveServiceIndicator(); return; }
+                { MoveServiceIndicator(); ToggleServiceIndicatorVisible(true); return; }
                 else
-                    SwapPositions(player1, player2);
+                    SwapPositions(true);
             }
 
             // Team B
@@ -114,33 +114,37 @@ namespace Runtime.Managers
                 AssignService(player);
 
                 if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
-                { MoveServiceIndicator(); return; }
+                { MoveServiceIndicator(); ToggleServiceIndicatorVisible(true); return; }
                 else
-                    SwapPositions(player3, player4);
+                    SwapPositions(false);
             }
         }
 
-        private void AssignService(PlayerOnCourt player) => servingPlayer = player;
-
-        private void MoveServiceIndicator()
+        public void SwapPositions(bool teamA)
         {
-            serviceIndicator.SetActive(true);
-            serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, 1f, servingPlayer.transform.position.z);
+            PlayerOnCourt playerToSwap1 = null;
+            PlayerOnCourt playerToSwap2 = null;
+
+            if (teamA)
+            { playerToSwap1 = player1; playerToSwap2 = player2; }
+            else
+            { playerToSwap1 = player3; playerToSwap2 = player4; }
+
+            PlayerPosition player1CurrentPosition = playerToSwap1.PlayerData().PositionOnCourt;
+            PlayerPosition player2CurrentPosition = playerToSwap2.PlayerData().PositionOnCourt;
+            playerToSwap1.PlayerData().PositionOnCourt = player2CurrentPosition;
+            playerToSwap2.PlayerData().PositionOnCourt = player1CurrentPosition;
+            Vector3 player1Position = playerToSwap1.transform.position;
+            Vector3 player2Position = playerToSwap2.transform.position;
+
+            MovePlayers(playerToSwap1, player2Position, playerToSwap2, player1Position);
         }
 
-        private void SwapPositions(PlayerOnCourt player1, PlayerOnCourt player2)
-        {
-            PlayerPosition player1CurrentPosition = player1.PlayerData().PositionOnCourt;
-            PlayerPosition player2CurrentPosition = player2.PlayerData().PositionOnCourt;
+        public void ToggleServiceIndicatorVisible(bool visible) => serviceIndicator.SetActive(visible);
 
-            player1.PlayerData().PositionOnCourt = player2CurrentPosition;
-            player2.PlayerData().PositionOnCourt = player1CurrentPosition;
+        public void MoveServiceIndicator() => serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, 1f, servingPlayer.transform.position.z);
 
-            Vector3 player1Position = player1.transform.position;
-            Vector3 player2Position = player2.transform.position;
-
-            MovePlayers(player1, player2Position, player2, player1Position);
-        }
+        public void AssignService(PlayerOnCourt player) => servingPlayer = player;
 
         private void MovePlayers(PlayerOnCourt player1, Vector3 player1Pos, PlayerOnCourt player2, Vector3 player2Pos)
         {
@@ -164,6 +168,7 @@ namespace Runtime.Managers
             player.transform.position = targetPos;
 
             MoveServiceIndicator();
+            ToggleServiceIndicatorVisible(true);
             playersMoving = false;
         }
 

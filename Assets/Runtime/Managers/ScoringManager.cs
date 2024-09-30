@@ -14,7 +14,7 @@ namespace Runtime.Managers
 
         private Game currentGameData;
         private GameButtonController currentGameButton;
-        //private List<Round> rounds = new List<Round>();
+        private List<Round> rounds = new List<Round>();
         //private bool teamAScoredLast = false;
         //private bool teamBScoredLast = false;
 
@@ -34,6 +34,7 @@ namespace Runtime.Managers
             badmintonCourt.SetupPlayersOnCourt(currentGameData);
             badmintonCourt.ToggleAllPlayerColliders(true);
             badmintonCourt.ToggleServiceSelectionPrompt(true);
+            badmintonCourt.ToggleServiceIndicatorVisible(false);
 
             // Pull exisiting game rounds (if they exist)
             //rounds = currentGameData.Rounds;
@@ -43,51 +44,35 @@ namespace Runtime.Managers
             scoreDisplay.DisplayGameScoring();
             scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
             badmintonCourt.ToggleAllPlayerColliders(false);
-
-            //SaveRound(currentGameData);
+            SaveRound(currentGameData);
         }
 
         public void AddPoint(bool teamA)
         {
+            badmintonCourt.ToggleServiceIndicatorVisible(false);
+
+            // Team A
             if (teamA)
             {
                 currentGameData.ScoreA = currentGameData.ScoreA + 1;
+
+                badmintonCourt.SwapPositions(true);
+                badmintonCourt.MoveServiceIndicator();
             }
+
+            // Team B
             else
             {
                 currentGameData.ScoreB = currentGameData.ScoreB + 1;
+
+                badmintonCourt.SwapPositions(false);
+                badmintonCourt.MoveServiceIndicator();
             }
                 
 
-            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
-            
-            
-            //SaveRound(currentGameData);
-            //badmintonCourt.MovePlayers(currentGameRounds[currentGameRounds.Count]);
+            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);                  
+            SaveRound(currentGameData);
         }
-
-        private void UpdatePlayerPositionData()
-        {
-            //foreach (KeyValuePair<Player, Player> player in game.TeamA)
-            //{ player2Data = player.Key; player1Data = player.Value; }
-
-
-            //foreach (KeyValuePair<Player, Player> player in game.TeamB)
-            //{ player3Data = player.Key; player4Data = player.Value; }
-        }
-
-/*        private void SaveRound(Game gameData)
-        {
-            Round round = null;
-
-            round.ScoreA = gameData.ScoreA;
-            round.ScoreB = gameData.ScoreB;
-
-            // Update Player Positions!
-
-            rounds.Add(round);
-            gameData.Rounds = rounds;
-        }*/
 
         public void CompleteGame()
         {
@@ -102,7 +87,21 @@ namespace Runtime.Managers
             badmintonCourt.ToggleBadmintonCourt(false);
         }
 
+        private void SaveRound(Game gameData)
+        {
+            Round round = null;
+            round.ScoreA = gameData.ScoreA;
+            round.ScoreB = gameData.ScoreB;
 
+            foreach (KeyValuePair<Player, Player> player in currentGameData.TeamA)
+            { round.Player2Position = player.Key.PositionOnCourt; round.Player1Position = player.Value.PositionOnCourt; }
+
+            foreach (KeyValuePair<Player, Player> player in currentGameData.TeamB)
+            { round.Player3Position = player.Key.PositionOnCourt; round.Player4Position = player.Value.PositionOnCourt; }
+
+            rounds.Add(round);
+            gameData.Rounds = rounds;
+        }
 
 
         private void ValidateRequiredVariables()
