@@ -91,7 +91,7 @@ namespace Runtime.Managers
             startButton.interactable = !active;
         }
 
-        public void SetPlayerAsServer(PlayerOnCourt player)
+        public void SelectPlayerAsServer(PlayerOnCourt player)
         {
             if (playersMoving) return;
 
@@ -120,6 +120,45 @@ namespace Runtime.Managers
             }
         }
 
+
+        public void UpdateService(Game game, Round lastRound)
+        {
+            if (game.ScoreA > lastRound.ScoreA)
+            {
+                Debug.Log("Team A's Serve");
+
+                if (IsEven(game.ScoreA))
+                {
+                    if (player1.PlayerData().PositionOnCourt == PlayerPosition.Right)
+                        AssignService(player1); 
+                    else
+                        AssignService(player2); 
+
+                    MoveServiceIndicator(); 
+                    ToggleServiceIndicatorVisible(true);
+                }
+            }
+
+
+            if (game.ScoreB > lastRound.ScoreB)
+            {
+                Debug.Log("Team B's Serve");
+
+                if (IsEven(game.ScoreB))
+                {
+                    if (player3.PlayerData().PositionOnCourt == PlayerPosition.Right)
+                        AssignService(player3);
+                    else
+                        AssignService(player4);
+
+                    MoveServiceIndicator();
+                    ToggleServiceIndicatorVisible(true);
+                }
+
+            }
+        }
+
+
         public void SwapPositions(bool teamA)
         {
             PlayerOnCourt playerToSwap1 = null;
@@ -144,7 +183,13 @@ namespace Runtime.Managers
 
         public void MoveServiceIndicator() => serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, 1f, servingPlayer.transform.position.z);
 
-        public void AssignService(PlayerOnCourt player) => servingPlayer = player;
+
+
+
+
+
+
+        private void AssignService(PlayerOnCourt player) => servingPlayer = player;
 
         private void MovePlayers(PlayerOnCourt player1, Vector3 player1Pos, PlayerOnCourt player2, Vector3 player2Pos)
         {
@@ -180,6 +225,7 @@ namespace Runtime.Managers
             player4InitialPos = player4.transform.position;
         }
 
+        private bool IsEven(int number) { return number % 2 == 0; }
 
         private void ValidateRequiredVariables()
         {

@@ -15,8 +15,8 @@ namespace Runtime.Managers
         private Game currentGameData;
         private GameButtonController currentGameButton;
         private List<Round> rounds = new List<Round>();
-        //private bool teamAScoredLast = false;
-        //private bool teamBScoredLast = false;
+        private bool teamAScoredLast = false;
+        private bool teamBScoredLast = false;
 
 
         private void Awake() => ValidateRequiredVariables();
@@ -44,7 +44,7 @@ namespace Runtime.Managers
             scoreDisplay.DisplayGameScoring();
             scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
             badmintonCourt.ToggleAllPlayerColliders(false);
-            SaveRound(currentGameData);
+            SaveRound();
         }
 
         public void AddPoint(bool teamA)
@@ -55,23 +55,19 @@ namespace Runtime.Managers
             if (teamA)
             {
                 currentGameData.ScoreA = currentGameData.ScoreA + 1;
-
-                badmintonCourt.SwapPositions(true);
-                badmintonCourt.MoveServiceIndicator();
             }
 
             // Team B
             else
             {
                 currentGameData.ScoreB = currentGameData.ScoreB + 1;
-
-                badmintonCourt.SwapPositions(false);
-                badmintonCourt.MoveServiceIndicator();
             }
                 
+            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);      
+            
+            SaveRound();
 
-            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);                  
-            SaveRound(currentGameData);
+            badmintonCourt.UpdateService(currentGameData, rounds[rounds.Count - 2]);
         }
 
         public void CompleteGame()
@@ -87,11 +83,13 @@ namespace Runtime.Managers
             badmintonCourt.ToggleBadmintonCourt(false);
         }
 
-        private void SaveRound(Game gameData)
+        private void SaveRound()
         {
-            Round round = null;
-            round.ScoreA = gameData.ScoreA;
-            round.ScoreB = gameData.ScoreB;
+            Round round = new Round
+            {
+                ScoreA = currentGameData.ScoreA,
+                ScoreB = currentGameData.ScoreB
+            };
 
             foreach (KeyValuePair<Player, Player> player in currentGameData.TeamA)
             { round.Player2Position = player.Key.PositionOnCourt; round.Player1Position = player.Value.PositionOnCourt; }
@@ -100,7 +98,19 @@ namespace Runtime.Managers
             { round.Player3Position = player.Key.PositionOnCourt; round.Player4Position = player.Value.PositionOnCourt; }
 
             rounds.Add(round);
-            gameData.Rounds = rounds;
+            currentGameData.Rounds = rounds;
+
+            //PrintRound();
+        }
+
+        private void PrintRound()
+        {
+            Debug.Log("Round Number: " + rounds.Count + " --- Score: " + rounds[rounds.Count - 1].ScoreA + " | " + rounds[rounds.Count - 1].ScoreB);
+            Debug.Log("Player1 Pos: " + rounds[rounds.Count - 1].Player1Position);
+            Debug.Log("Player2 Pos: " + rounds[rounds.Count - 1].Player2Position);
+            Debug.Log("Player3 Pos: " + rounds[rounds.Count - 1].Player3Position);
+            Debug.Log("Player4 Pos: " + rounds[rounds.Count - 1].Player4Position);
+            Debug.Log("--------------------------------------------------------");
         }
 
 
