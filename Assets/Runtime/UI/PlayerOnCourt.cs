@@ -17,7 +17,7 @@ namespace Runtime.UI
 
         private void Awake() => ValidateRequiredVariables();
 
-        public Player PlayerData() { return playerData; }
+        public Player Data() { return playerData; }
 
         public void SetPlayerData(Player player)
         {

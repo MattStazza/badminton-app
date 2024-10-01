@@ -92,6 +92,8 @@ namespace Runtime.Managers
             startButton.interactable = !active;
         }
 
+        public bool PlayersMoving() { return playersMoving; }
+
         public void SelectPlayerAsServer(PlayerOnCourt player)
         {
             if (playersMoving) return;
@@ -104,7 +106,7 @@ namespace Runtime.Managers
                 teamAServedLast = true;
                 AssignService(player);
 
-                if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
+                if (player.Data().PositionOnCourt == PlayerPosition.Right)
                 { MoveServiceIndicator(); ToggleServiceIndicatorVisible(true); return; }
                 else
                     SwapPositions(true);
@@ -116,7 +118,7 @@ namespace Runtime.Managers
                 teamAServedLast = false;
                 AssignService(player);
 
-                if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
+                if (player.Data().PositionOnCourt == PlayerPosition.Right)
                 { MoveServiceIndicator(); ToggleServiceIndicatorVisible(true); return; }
                 else
                     SwapPositions(false);
@@ -128,62 +130,44 @@ namespace Runtime.Managers
         {
             if (game.ScoreA > lastRound.ScoreA)
             {
-                Debug.Log("Team A's Serve");
-                if (teamAServedLast)
-                    SwapPositions(true);
-
-                if (IsEven(game.ScoreA))
-                {
-                    if (player1.PlayerData().PositionOnCourt == PlayerPosition.Right)
-                        AssignService(player1); 
-                    else
-                        AssignService(player2);
-                }
-
-                if (!IsEven(game.ScoreA))
-                {
-                    if (player1.PlayerData().PositionOnCourt == PlayerPosition.Left)
-                        AssignService(player1);
-                    else
-                        AssignService(player2);
-                }
-
-                teamAServedLast = true;
-                MoveServiceIndicator();
-                ToggleServiceIndicatorVisible(true);
+                HandleServe(game.ScoreA, player1, player2, true, "Team A's Serve");
             }
-
-
-            if (game.ScoreB > lastRound.ScoreB)
+            else if (game.ScoreB > lastRound.ScoreB)
             {
-                Debug.Log("Team B's Serve");
-                if (!teamAServedLast)
-                    SwapPositions(false);
-
-                if (IsEven(game.ScoreB))
-                {
-                    if (player3.PlayerData().PositionOnCourt == PlayerPosition.Right)
-                        AssignService(player3);
-                    else
-                        AssignService(player4);
-                }
-
-                if (!IsEven(game.ScoreB))
-                {
-                    if (player3.PlayerData().PositionOnCourt == PlayerPosition.Left)
-                        AssignService(player3);
-                    else
-                        AssignService(player4);
-                }
-
-                teamAServedLast = false;
-                MoveServiceIndicator();
-                ToggleServiceIndicatorVisible(true);
+                HandleServe(game.ScoreB, player3, player4, false, "Team B's Serve");
             }
         }
 
 
-        public void SwapPositions(bool teamA)
+
+        public void ToggleServiceIndicatorVisible(bool visible) => serviceIndicator.SetActive(visible);
+
+        
+
+
+
+
+        private void AssignService(PlayerOnCourt player) => servingPlayer = player;
+
+        private void HandleServe(int score, PlayerOnCourt rightPlayer, PlayerOnCourt leftPlayer, bool isTeamA, string logMessage)
+        {
+            if (teamAServedLast == isTeamA)
+                SwapPositions(isTeamA);
+
+            PlayerOnCourt server = IsEven(score)
+                ? rightPlayer.Data().PositionOnCourt == PlayerPosition.Right ? rightPlayer : leftPlayer
+                : rightPlayer.Data().PositionOnCourt == PlayerPosition.Left ? rightPlayer : leftPlayer;
+
+            AssignService(server);
+
+            teamAServedLast = isTeamA;
+            MoveServiceIndicator();
+
+            if (!playersMoving)
+                ToggleServiceIndicatorVisible(true);
+        }
+
+        private void SwapPositions(bool teamA)
         {
             PlayerOnCourt playerToSwap1 = null;
             PlayerOnCourt playerToSwap2 = null;
@@ -193,27 +177,15 @@ namespace Runtime.Managers
             else
             { playerToSwap1 = player3; playerToSwap2 = player4; }
 
-            PlayerPosition player1CurrentPosition = playerToSwap1.PlayerData().PositionOnCourt;
-            PlayerPosition player2CurrentPosition = playerToSwap2.PlayerData().PositionOnCourt;
-            playerToSwap1.PlayerData().PositionOnCourt = player2CurrentPosition;
-            playerToSwap2.PlayerData().PositionOnCourt = player1CurrentPosition;
+            PlayerPosition player1CurrentPosition = playerToSwap1.Data().PositionOnCourt;
+            PlayerPosition player2CurrentPosition = playerToSwap2.Data().PositionOnCourt;
+            playerToSwap1.Data().PositionOnCourt = player2CurrentPosition;
+            playerToSwap2.Data().PositionOnCourt = player1CurrentPosition;
             Vector3 player1Position = playerToSwap1.transform.position;
             Vector3 player2Position = playerToSwap2.transform.position;
 
             MovePlayers(playerToSwap1, player2Position, playerToSwap2, player1Position);
         }
-
-        public void ToggleServiceIndicatorVisible(bool visible) => serviceIndicator.SetActive(visible);
-
-        public void MoveServiceIndicator() => serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, 1f, servingPlayer.transform.position.z);
-
-
-
-
-
-
-
-        private void AssignService(PlayerOnCourt player) => servingPlayer = player;
 
         private void MovePlayers(PlayerOnCourt player1, Vector3 player1Pos, PlayerOnCourt player2, Vector3 player2Pos)
         {
@@ -240,6 +212,8 @@ namespace Runtime.Managers
             ToggleServiceIndicatorVisible(true);
             playersMoving = false;
         }
+
+        private void MoveServiceIndicator() => serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, 1f, servingPlayer.transform.position.z);
 
         private void CachePlayerInitialPositions()
         {

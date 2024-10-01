@@ -15,9 +15,6 @@ namespace Runtime.Managers
         private Game currentGameData;
         private GameButtonController currentGameButton;
         private List<Round> rounds = new List<Round>();
-        private bool teamAScoredLast = false;
-        private bool teamBScoredLast = false;
-
 
         private void Awake() => ValidateRequiredVariables();
 
@@ -35,8 +32,6 @@ namespace Runtime.Managers
             badmintonCourt.ToggleAllPlayerColliders(true);
             badmintonCourt.ToggleServiceSelectionPrompt(true);
             badmintonCourt.ToggleServiceIndicatorVisible(false);
-
-            // Pull exisiting game rounds (if they exist)
             //rounds = currentGameData.Rounds;
         }
         public void StartGame()
@@ -49,24 +44,19 @@ namespace Runtime.Managers
 
         public void AddPoint(bool teamA)
         {
+            if (badmintonCourt.PlayersMoving())
+                return;
+
             badmintonCourt.ToggleServiceIndicatorVisible(false);
 
-            // Team A
             if (teamA)
-            {
                 currentGameData.ScoreA = currentGameData.ScoreA + 1;
-            }
-
-            // Team B
             else
-            {
                 currentGameData.ScoreB = currentGameData.ScoreB + 1;
-            }
-                
-            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);      
-            
-            SaveRound();
 
+            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+
+            SaveRound();            
             badmintonCourt.UpdateService(currentGameData, rounds[rounds.Count - 2]);
         }
 
