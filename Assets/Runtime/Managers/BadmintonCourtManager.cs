@@ -94,39 +94,27 @@ namespace Runtime.Managers
 
         public bool PlayersMoving() { return playersMoving; }
 
-        public void SelectPlayerAsServer(PlayerOnCourt player)
+        public void AssignInitialServer(PlayerOnCourt player)
         {
             if (playersMoving) return;
 
             ToggleServiceSelectionPrompt(false);
 
-            // Team A
-            if (player == player1 || player == player2)
+            bool isTeamA = (player == player1 || player == player2);
+            teamAServedLast = isTeamA;
+            AssignService(player);
+
+            if (player.Data().PositionOnCourt == PlayerPosition.Right)
             {
-                teamAServedLast = true;
-                AssignService(player);
-
-                if (player.Data().PositionOnCourt == PlayerPosition.Right)
-                { MoveServiceIndicator(); ToggleServiceIndicatorVisible(true); return; }
-                else
-                    SwapPositions(true);
+                MoveServiceIndicator();
+                ToggleServiceIndicatorVisible(true);
             }
-
-            // Team B
-            if (player == player3 || player == player4)
-            {
-                teamAServedLast = false;
-                AssignService(player);
-
-                if (player.Data().PositionOnCourt == PlayerPosition.Right)
-                { MoveServiceIndicator(); ToggleServiceIndicatorVisible(true); return; }
-                else
-                    SwapPositions(false);
-            }
+            else
+                SwapPositions(isTeamA);
         }
 
 
-        public void UpdateService(Game game, Round lastRound)
+        public void UpdateServerAfterPoint(Game game, Round lastRound)
         {
             if (game.ScoreA > lastRound.ScoreA)
             {

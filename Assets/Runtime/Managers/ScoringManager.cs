@@ -57,7 +57,7 @@ namespace Runtime.Managers
             scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
 
             SaveRound();            
-            badmintonCourt.UpdateService(currentGameData, rounds[rounds.Count - 2]);
+            badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[rounds.Count - 2]);
         }
 
         public void CompleteGame()
