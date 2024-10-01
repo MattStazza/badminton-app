@@ -10,6 +10,7 @@ namespace Runtime.Managers
         [SerializeField] private GameObject gamesPage;
         [SerializeField] private GameObject scoringPage;
         [Space]
+        [SerializeField] private GameObject popupMessage;
         [SerializeField] private GameObject notEnoughPlayersWarning;
 
         private void Awake() => ValidateRequiredVariables();
@@ -18,7 +19,8 @@ namespace Runtime.Managers
         {
             HideAllPages();
             notEnoughPlayersWarning.SetActive(false);
-            homePage.SetActive(true);         
+            homePage.SetActive(true);
+            popupMessage.SetActive(true);
         }
 
         public void ShowSetupPage()
@@ -64,6 +66,8 @@ namespace Runtime.Managers
             if (playersPage == null) { Debug.LogError("Null References: " + playersPage.name); }
             if (gamesPage == null) { Debug.LogError("Null References: " + gamesPage.name); }
             if (scoringPage == null) { Debug.LogError("Null References: " + scoringPage.name); }
+            if (popupMessage == null) { Debug.LogError("Null References: " + popupMessage.name); }
+            if (notEnoughPlayersWarning == null) { Debug.LogError("Null References: " + notEnoughPlayersWarning.name); }
         }
     }
 }
