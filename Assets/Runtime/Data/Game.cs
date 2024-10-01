@@ -12,7 +12,7 @@ namespace Runtime.Data
         private int scoreA;
         private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
         private int scoreB;
-        private bool played;
+        private bool complete;
 
 
         public int ID
@@ -63,10 +63,10 @@ namespace Runtime.Data
             set { scoreB = value; }
         }
 
-        public bool Played
+        public bool Complete
         {
-            get { return played; }
-            set { played = value; }
+            get { return complete; }
+            set { complete = value; }
         }
     }
 }

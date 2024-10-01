@@ -57,7 +57,11 @@ namespace Runtime.UI
             completedGamePanel.SetActive(played);
 
             if (played)
+            {
                 gameRectTransform.sizeDelta = new Vector2(700f, 500f);
+                teamAScore.text = gameData.ScoreA.ToString();
+                teamBScore.text = gameData.ScoreB.ToString();
+            }
             else
                 gameRectTransform.sizeDelta = new Vector2(700f, 1000);
         }

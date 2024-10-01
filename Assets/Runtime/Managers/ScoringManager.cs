@@ -10,6 +10,7 @@ namespace Runtime.Managers
         [SerializeField] private UIManager uIManager;
         [SerializeField] private BadmintonCourtManager badmintonCourt;
         [SerializeField] private ScoreDisplayController scoreDisplay;
+        [SerializeField] private PopupMessage popupMessage;
         [SerializeField] private GenerateGameButtons gameButtonsDisplay;
 
         private Game currentGameData;
@@ -24,6 +25,8 @@ namespace Runtime.Managers
 
         public void OpenGame()
         {
+            if (currentGameData.Complete) return; // Add Game Results Display
+
             uIManager.ShowScoringPage();
             scoreDisplay.SetTitle("GAME #" + currentGameData.Number.ToString());
             scoreDisplay.DisplayGamePreview();
@@ -33,8 +36,10 @@ namespace Runtime.Managers
             badmintonCourt.ToggleServiceSelectionPrompt(true);
             badmintonCourt.ToggleServiceIndicatorVisible(false);
 
-            if (currentGameData.Rounds != null)
-                rounds = currentGameData.Rounds;
+            /*            if (currentGameData.Rounds != null)
+                            rounds = currentGameData.Rounds;*/
+
+            rounds = new List<Round>();
         }
 
         public void StartGameButton()
@@ -58,6 +63,8 @@ namespace Runtime.Managers
                 currentGameData.ScoreB = currentGameData.ScoreB + 1;
 
             scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+
+            CheckGameProgress();
 
             SaveRound();            
             badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[rounds.Count - 2]);
@@ -99,9 +106,36 @@ namespace Runtime.Managers
             }
         }
 
+        private void CheckGameProgress()
+        {
+            if (currentGameData.ScoreA == 20 || currentGameData.ScoreB == 20)
+                popupMessage.DisplayPopupMessage("MATCH POINT!");
+
+            if ((currentGameData.ScoreA >= 20 || currentGameData.ScoreB >= 20) && currentGameData.ScoreB == currentGameData.ScoreA)
+                popupMessage.DisplayPopupMessage("DEUCE!");
+
+            if (currentGameData.ScoreA >= 21 || currentGameData.ScoreB >= 21)
+            {
+                // Win!
+                if (currentGameData.ScoreA >= currentGameData.ScoreB + 2)
+                { CompleteGame(); return; } // Team A Wins
+
+                if (currentGameData.ScoreB >= currentGameData.ScoreA + 2)
+                { CompleteGame(); return; }  // Team B Wins
+
+                // Advantage
+                if (currentGameData.ScoreA >= currentGameData.ScoreB + 1)
+                    popupMessage.DisplayPopupMessage("ADVANTAGE TEAM A");
+
+                if (currentGameData.ScoreB >= currentGameData.ScoreA + 1)
+                    popupMessage.DisplayPopupMessage("ADVANTAGE TEAM B");
+            }
+        }
+
         public void CompleteGame()
         {
-            currentGameButton.ToggleGamePlayed(true);
+            currentGameData.Complete = true;
+            currentGameButton.ToggleGamePlayed(currentGameData.Complete);
             gameButtonsDisplay.UpdateContentHeight();
             CloseGame();
         }
@@ -128,25 +162,6 @@ namespace Runtime.Managers
 
             rounds.Add(round);
             currentGameData.Rounds = rounds;
-
-            //PrintRound();
-        }
-
-
-
-
-
-
-
-
-        private void PrintRound()
-        {
-            Debug.Log("Round Number: " + rounds.Count + " --- Score: " + rounds[rounds.Count - 1].ScoreA + " | " + rounds[rounds.Count - 1].ScoreB);
-            Debug.Log("Player1 Pos: " + rounds[rounds.Count - 1].Player1Position);
-            Debug.Log("Player2 Pos: " + rounds[rounds.Count - 1].Player2Position);
-            Debug.Log("Player3 Pos: " + rounds[rounds.Count - 1].Player3Position);
-            Debug.Log("Player4 Pos: " + rounds[rounds.Count - 1].Player4Position);
-            Debug.Log("--------------------------------------------------------");
         }
 
 
@@ -156,6 +171,7 @@ namespace Runtime.Managers
             if (badmintonCourt == null) { Debug.LogError("Null References: " + badmintonCourt.name); }
             if (scoreDisplay == null) { Debug.LogError("Null References: " + scoreDisplay.name); }
             if (gameButtonsDisplay == null) { Debug.LogError("Null References: " + gameButtonsDisplay.name); }
+            if (popupMessage == null) { Debug.LogError("Null References: " + popupMessage.name); }
         }
     }
 }
