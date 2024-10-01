@@ -27,6 +27,7 @@ namespace Runtime.Managers
         private Vector3 player2InitialPos;
         private Vector3 player3InitialPos;
         private Vector3 player4InitialPos;
+        private bool teamAServedLast;
         private bool playersMoving;
 
         private void Awake() => ValidateRequiredVariables();
@@ -100,6 +101,7 @@ namespace Runtime.Managers
             // Team A
             if (player == player1 || player == player2)
             {
+                teamAServedLast = true;
                 AssignService(player);
 
                 if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
@@ -111,6 +113,7 @@ namespace Runtime.Managers
             // Team B
             if (player == player3 || player == player4)
             {
+                teamAServedLast = false;
                 AssignService(player);
 
                 if (player.PlayerData().PositionOnCourt == PlayerPosition.Right)
@@ -126,23 +129,36 @@ namespace Runtime.Managers
             if (game.ScoreA > lastRound.ScoreA)
             {
                 Debug.Log("Team A's Serve");
+                if (teamAServedLast)
+                    SwapPositions(true);
 
                 if (IsEven(game.ScoreA))
                 {
                     if (player1.PlayerData().PositionOnCourt == PlayerPosition.Right)
                         AssignService(player1); 
                     else
-                        AssignService(player2); 
-
-                    MoveServiceIndicator(); 
-                    ToggleServiceIndicatorVisible(true);
+                        AssignService(player2);
                 }
+
+                if (!IsEven(game.ScoreA))
+                {
+                    if (player1.PlayerData().PositionOnCourt == PlayerPosition.Left)
+                        AssignService(player1);
+                    else
+                        AssignService(player2);
+                }
+
+                teamAServedLast = true;
+                MoveServiceIndicator();
+                ToggleServiceIndicatorVisible(true);
             }
 
 
             if (game.ScoreB > lastRound.ScoreB)
             {
                 Debug.Log("Team B's Serve");
+                if (!teamAServedLast)
+                    SwapPositions(false);
 
                 if (IsEven(game.ScoreB))
                 {
@@ -150,11 +166,19 @@ namespace Runtime.Managers
                         AssignService(player3);
                     else
                         AssignService(player4);
-
-                    MoveServiceIndicator();
-                    ToggleServiceIndicatorVisible(true);
                 }
 
+                if (!IsEven(game.ScoreB))
+                {
+                    if (player3.PlayerData().PositionOnCourt == PlayerPosition.Left)
+                        AssignService(player3);
+                    else
+                        AssignService(player4);
+                }
+
+                teamAServedLast = false;
+                MoveServiceIndicator();
+                ToggleServiceIndicatorVisible(true);
             }
         }
 
