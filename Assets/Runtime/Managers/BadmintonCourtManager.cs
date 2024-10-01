@@ -28,7 +28,9 @@ namespace Runtime.Managers
         private Vector3 player3InitialPos;
         private Vector3 player4InitialPos;
         private bool teamAServedLast;
+        private bool teamAServedFirst;
         private bool playersMoving;
+
 
         private void Awake() => ValidateRequiredVariables();
 
@@ -41,7 +43,24 @@ namespace Runtime.Managers
             ToggleServiceIndicatorVisible(false);
         }
 
+        public bool PlayersMoving() { return playersMoving; }
         public void ToggleBadmintonCourt(bool visible) => badmintonCourt.SetActive(visible);
+        public void ToggleServiceIndicatorVisible(bool visible) => serviceIndicator.SetActive(visible);
+        public void ToggleAllPlayerColliders(bool active)
+        {
+            player1.ToggleCollider(active);
+            player2.ToggleCollider(active);
+            player3.ToggleCollider(active);
+            player4.ToggleCollider(active);
+        }
+        public void ToggleServiceSelectionPrompt(bool active)
+        {
+            selectServerMessage.SetActive(active);
+            startButton.interactable = !active;
+        }
+
+
+
 
         public void SetupPlayersOnCourt(Game game)
         {
@@ -51,7 +70,7 @@ namespace Runtime.Managers
             Player player4Data = null;
 
             foreach (KeyValuePair<Player, Player> player in game.TeamA)
-            { 
+            {
                 player2Data = player.Key;
                 player.Value.PositionOnCourt = PlayerPosition.Left;
                 player2.transform.position = player2InitialPos;
@@ -62,7 +81,7 @@ namespace Runtime.Managers
             }
 
             foreach (KeyValuePair<Player, Player> player in game.TeamB)
-            { 
+            {
                 player3Data = player.Key;
                 player.Key.PositionOnCourt = PlayerPosition.Left;
                 player3.transform.position = player3InitialPos;
@@ -78,21 +97,6 @@ namespace Runtime.Managers
             player4.SetPlayerData(player4Data);
         }
 
-        public void ToggleAllPlayerColliders(bool active)
-        {
-            player1.ToggleCollider(active);
-            player2.ToggleCollider(active);
-            player3.ToggleCollider(active);
-            player4.ToggleCollider(active);
-        }
-
-        public void ToggleServiceSelectionPrompt(bool active)
-        {
-            selectServerMessage.SetActive(active);
-            startButton.interactable = !active;
-        }
-
-        public bool PlayersMoving() { return playersMoving; }
 
         public void AssignInitialServer(PlayerOnCourt player)
         {
@@ -102,6 +106,7 @@ namespace Runtime.Managers
 
             bool isTeamA = (player == player1 || player == player2);
             teamAServedLast = isTeamA;
+            teamAServedFirst = isTeamA;
             AssignService(player);
 
             if (player.Data().PositionOnCourt == PlayerPosition.Right)
@@ -124,17 +129,22 @@ namespace Runtime.Managers
             {
                 HandleServe(game.ScoreB, player3, player4, false, "Team B's Serve");
             }
+
+            // Check which team served first??
+            if (game.ScoreA == 0 && game.ScoreB == 0)
+            {
+                if (teamAServedFirst)
+                    HandleServe(game.ScoreA, player1, player2, true, "Team A's Serve");
+
+                if (!teamAServedFirst)
+                    HandleServe(game.ScoreB, player3, player4, false, "Team B's Serve");
+            }
         }
-
-
-
-        public void ToggleServiceIndicatorVisible(bool visible) => serviceIndicator.SetActive(visible);
 
         
 
 
-
-
+        // PRIVATE FUNCTIONS
         private void AssignService(PlayerOnCourt player) => servingPlayer = player;
 
         private void HandleServe(int score, PlayerOnCourt rightPlayer, PlayerOnCourt leftPlayer, bool isTeamA, string logMessage)

@@ -32,9 +32,12 @@ namespace Runtime.Managers
             badmintonCourt.ToggleAllPlayerColliders(true);
             badmintonCourt.ToggleServiceSelectionPrompt(true);
             badmintonCourt.ToggleServiceIndicatorVisible(false);
-            //rounds = currentGameData.Rounds;
+
+            if (currentGameData.Rounds != null)
+                rounds = currentGameData.Rounds;
         }
-        public void StartGame()
+
+        public void StartGameButton()
         {
             scoreDisplay.DisplayGameScoring();
             scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
@@ -42,7 +45,7 @@ namespace Runtime.Managers
             SaveRound();
         }
 
-        public void AddPoint(bool teamA)
+        public void AddPointButton(bool teamA)
         {
             if (badmintonCourt.PlayersMoving())
                 return;
@@ -58,6 +61,38 @@ namespace Runtime.Managers
 
             SaveRound();            
             badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[rounds.Count - 2]);
+        }
+
+        public void UndoButton()
+        {
+            if (rounds.Count == 1)
+            {
+                Debug.Log("Can't go back any more");
+                return;
+            }
+
+            // Remove Last Round
+            rounds.RemoveAt(rounds.Count - 1);
+
+            // Update Game Data with the new last round
+            currentGameData.Rounds = rounds;
+            currentGameData.ScoreA = rounds[rounds.Count - 1].ScoreA;
+            currentGameData.ScoreB = rounds[rounds.Count - 1].ScoreB;
+
+            // Update score display
+            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+
+            // Check if there's only one round left
+            if (rounds.Count == 1)
+            {
+                // Use the only remaining round to update the server
+                badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[0]);
+            }
+            else
+            {
+                // Use the previous round to update the server
+                badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[rounds.Count - 2]);
+            }
         }
 
         public void CompleteGame()
@@ -92,6 +127,13 @@ namespace Runtime.Managers
 
             //PrintRound();
         }
+
+
+
+
+
+
+
 
         private void PrintRound()
         {

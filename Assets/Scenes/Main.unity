@@ -1654,7 +1654,7 @@ PrefabInstance:
     - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: StartGameButton
       objectReference: {fileID: 0}
     - target: {fileID: 1493235022542024487, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
@@ -1794,7 +1794,7 @@ PrefabInstance:
     - target: {fileID: 1604558521903130945, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddPoint
+      value: AddPointButton
       objectReference: {fileID: 0}
     - target: {fileID: 1604558521903130945, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
@@ -1834,7 +1834,7 @@ PrefabInstance:
     - target: {fileID: 2047614463427738610, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CompleteGame
+      value: UndoButton
       objectReference: {fileID: 0}
     - target: {fileID: 2047614463427738610, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
@@ -1869,7 +1869,7 @@ PrefabInstance:
     - target: {fileID: 2197135378860365807, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddPoint
+      value: AddPointButton
       objectReference: {fileID: 0}
     - target: {fileID: 2197135378860365807, guid: e4b6636ab13d22c4383320f40f64f3c9,
         type: 3}
