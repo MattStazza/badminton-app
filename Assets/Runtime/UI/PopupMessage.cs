@@ -25,7 +25,11 @@ namespace Runtime.UI
             StartMessageAnimation();
         }
 
-        private void StartMessageAnimation() => StartCoroutine(AnimateMessage());
+        private void StartMessageAnimation()
+        {
+            StopAllCoroutines();
+            StartCoroutine(AnimateMessage());
+        }
 
         private IEnumerator AnimateMessage()
         {
