@@ -71,6 +71,10 @@ namespace Runtime.Managers
                 return;
             }
 
+            if (badmintonCourt.PlayersMoving()) return;
+
+            badmintonCourt.ToggleServiceIndicatorVisible(false);
+
             // Remove Last Round
             rounds.RemoveAt(rounds.Count - 1);
 
