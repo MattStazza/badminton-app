@@ -44,6 +44,19 @@ namespace Runtime.UI
             SpawnGameButton(gameButtons.Count);
         }
 
+        public void UpdateContentHeight()
+        {
+            float allGameButtonsHeight = 0;
+
+            foreach (GameButtonController gameButton in gameButtons)
+                allGameButtonsHeight = allGameButtonsHeight + gameButton.gameObject.GetComponent<RectTransform>().sizeDelta.y;
+
+            float contentHeight = allGameButtonsHeight + (contentVerticalLayout.spacing * gameButtons.Count);
+
+            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentHeight);
+
+            RefreshContentLayout();
+        }
 
         private void SpawnGameButton(int gameNumber)
         {
@@ -59,6 +72,8 @@ namespace Runtime.UI
 
         private void UpdateGameButtonWithSessionData(GameButtonController gameButton ,int gameNumber)
         {
+            gameButton.SetGameData(Session.Games[gameNumber]);
+
             Session.Games[gameNumber].Number = gameNumber + 1;
             gameButton.SetGameNumber(Session.Games[gameNumber].Number);
 
@@ -74,21 +89,6 @@ namespace Runtime.UI
             { playerThree = player.Key; playerFour = player.Value; }
 
             gameButton.SetTeams(playerOne, playerTwo, playerThree, playerFour);
-            gameButton.SetGameData(Session.Games[gameNumber]);
-        }
-
-        public void UpdateContentHeight()
-        {
-            float allGameButtonsHeight = 0;
-
-            foreach (GameButtonController gameButton in gameButtons)
-                allGameButtonsHeight = allGameButtonsHeight + gameButton.gameObject.GetComponent<RectTransform>().sizeDelta.y;
-
-            float contentHeight = allGameButtonsHeight + (contentVerticalLayout.spacing * gameButtons.Count);
-
-            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentHeight);
-
-            RefreshContentLayout();
         }
 
         private void RefreshContentLayout()

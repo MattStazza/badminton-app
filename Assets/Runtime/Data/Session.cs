@@ -7,6 +7,7 @@ namespace Runtime.Data
         // Private Variables
         private static int id;
         private static string date;
+        private static Game currentGame;
         private static List<Game> games;
         private static List<Player> players;
         private static float duration;
@@ -23,6 +24,12 @@ namespace Runtime.Data
         {
             get { return date; }
             set { date = value; }
+        }
+
+        public static Game CurrentGame
+        {
+            get { return currentGame; }
+            set { currentGame = value; }
         }
 
         public static List<Game> Games

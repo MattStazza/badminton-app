@@ -27,8 +27,14 @@ namespace Runtime.UI
         private void Awake() => ValidateRequiredVariables();
 
         public void SetGameData(Game game) => gameData = game;
-
         public void SetGameNumber(int number) => gameNumberText.text = "GAME #" + number.ToString();
+
+        public void SelectGame()
+        {
+            Session.CurrentGame = gameData;
+            scoringManager.SetCurrentGameButton(this);
+            scoringManager.OpenGame();
+        }
 
         public void SetTeams(Player player1, Player player2, Player player3, Player player4)
         {
@@ -36,19 +42,6 @@ namespace Runtime.UI
             SetPlayer(playerTwoButton, player2);
             SetPlayer(playerThreeButton, player3);
             SetPlayer(playerFourButton, player4);
-        }
-
-        private void SetPlayer(PlayerButtonController playerButton, Player player)
-        {
-            PlayerData playerData = new PlayerData
-            {
-                playerName = player.Name,
-                profileTexture = player.ProfileSprite, 
-                bodyTexture = player.BodySprite
-            };
-
-            playerButton.SetupPlayerButton(playerData);
-            playerButton.ToggleButtonInteractive(false);
         }
 
         public void ToggleGamePlayed(bool played)
@@ -66,11 +59,17 @@ namespace Runtime.UI
                 gameRectTransform.sizeDelta = new Vector2(700f, 1000);
         }
 
-        public void SelectGame()
+        private void SetPlayer(PlayerButtonController playerButton, Player player)
         {
-            scoringManager.SetCurrentGameData(gameData);
-            scoringManager.SetCurrentGameButton(this);
-            scoringManager.OpenGame();
+            PlayerData playerData = new PlayerData
+            {
+                playerName = player.Name,
+                profileTexture = player.ProfileSprite,
+                bodyTexture = player.BodySprite
+            };
+
+            playerButton.SetupPlayerButton(playerData);
+            playerButton.ToggleButtonInteractive(false);
         }
 
         private void ValidateRequiredVariables()

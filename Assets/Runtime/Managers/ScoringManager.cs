@@ -13,31 +13,25 @@ namespace Runtime.Managers
         [SerializeField] private PopupMessage popupMessage;
         [SerializeField] private GenerateGameButtons gameButtonsDisplay;
 
-        private Game currentGameData;
         private GameButtonController currentGameButton;
         private List<Round> rounds = new List<Round>();
 
         private void Awake() => ValidateRequiredVariables();
 
-        public void SetCurrentGameData(Game game) => currentGameData = game;
-
         public void SetCurrentGameButton(GameButtonController gameButton) => currentGameButton = gameButton;
 
         public void OpenGame()
         {
-            if (currentGameData.Complete) return; // Add Game Results Display
+            if (Session.CurrentGame.Complete) return; // Add Game Results Display
 
             uIManager.ShowScoringPage();
-            scoreDisplay.SetTitle("GAME #" + currentGameData.Number.ToString());
+            scoreDisplay.SetTitle("GAME #" + Session.CurrentGame.Number.ToString());
             scoreDisplay.DisplayGamePreview();
             badmintonCourt.ToggleBadmintonCourt(true);
-            badmintonCourt.SetupPlayersOnCourt(currentGameData);
+            badmintonCourt.SetupPlayersOnCourt(Session.CurrentGame);
             badmintonCourt.ToggleAllPlayerColliders(true);
             badmintonCourt.ToggleServiceSelectionPrompt(true);
             badmintonCourt.ToggleServiceIndicatorVisible(false);
-
-            /*            if (currentGameData.Rounds != null)
-                            rounds = currentGameData.Rounds;*/
 
             rounds = new List<Round>();
         }
@@ -45,7 +39,7 @@ namespace Runtime.Managers
         public void StartGameButton()
         {
             scoreDisplay.DisplayGameScoring();
-            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+            scoreDisplay.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
             badmintonCourt.ToggleAllPlayerColliders(false);
             SaveRound();
         }
@@ -58,16 +52,16 @@ namespace Runtime.Managers
             badmintonCourt.ToggleServiceIndicatorVisible(false);
 
             if (teamA)
-                currentGameData.ScoreA = currentGameData.ScoreA + 1;
+                Session.CurrentGame.ScoreA = Session.CurrentGame.ScoreA + 1;
             else
-                currentGameData.ScoreB = currentGameData.ScoreB + 1;
+                Session.CurrentGame.ScoreB = Session.CurrentGame.ScoreB + 1;
 
-            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+            scoreDisplay.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
 
             CheckGameProgress();
 
             SaveRound();            
-            badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[rounds.Count - 2]);
+            badmintonCourt.UpdateServerAfterPoint(Session.CurrentGame, rounds[rounds.Count - 2]);
         }
 
         public void UndoButton()
@@ -82,60 +76,24 @@ namespace Runtime.Managers
 
             badmintonCourt.ToggleServiceIndicatorVisible(false);
 
-            // Remove Last Round
             rounds.RemoveAt(rounds.Count - 1);
 
-            // Update Game Data with the new last round
-            currentGameData.Rounds = rounds;
-            currentGameData.ScoreA = rounds[rounds.Count - 1].ScoreA;
-            currentGameData.ScoreB = rounds[rounds.Count - 1].ScoreB;
+            Session.CurrentGame.Rounds = rounds;
+            Session.CurrentGame.ScoreA = rounds[rounds.Count - 1].ScoreA;
+            Session.CurrentGame.ScoreB = rounds[rounds.Count - 1].ScoreB;
 
-            // Update score display
-            scoreDisplay.UpdateScoreDisplay(currentGameData.ScoreA, currentGameData.ScoreB);
+            scoreDisplay.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
 
-            // Check if there's only one round left
             if (rounds.Count == 1)
-            {
-                // Use the only remaining round to update the server
-                badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[0]);
-            }
+                badmintonCourt.UpdateServerAfterPoint(Session.CurrentGame, rounds[0]);
             else
-            {
-                // Use the previous round to update the server
-                badmintonCourt.UpdateServerAfterPoint(currentGameData, rounds[rounds.Count - 2]);
-            }
-        }
-
-        private void CheckGameProgress()
-        {
-            if (currentGameData.ScoreA == 20 || currentGameData.ScoreB == 20)
-                popupMessage.DisplayPopupMessage("MATCH POINT!");
-
-            if ((currentGameData.ScoreA >= 20 || currentGameData.ScoreB >= 20) && currentGameData.ScoreB == currentGameData.ScoreA)
-                popupMessage.DisplayPopupMessage("DEUCE!");
-
-            if (currentGameData.ScoreA >= 21 || currentGameData.ScoreB >= 21)
-            {
-                // Win!
-                if (currentGameData.ScoreA >= currentGameData.ScoreB + 2)
-                { CompleteGame(); return; } // Team A Wins
-
-                if (currentGameData.ScoreB >= currentGameData.ScoreA + 2)
-                { CompleteGame(); return; }  // Team B Wins
-
-                // Advantage
-                if (currentGameData.ScoreA >= currentGameData.ScoreB + 1)
-                    popupMessage.DisplayPopupMessage("ADVANTAGE TEAM A");
-
-                if (currentGameData.ScoreB >= currentGameData.ScoreA + 1)
-                    popupMessage.DisplayPopupMessage("ADVANTAGE TEAM B");
-            }
+                badmintonCourt.UpdateServerAfterPoint(Session.CurrentGame, rounds[rounds.Count - 2]);
         }
 
         public void CompleteGame()
         {
-            currentGameData.Complete = true;
-            currentGameButton.ToggleGamePlayed(currentGameData.Complete);
+            Session.CurrentGame.Complete = true;
+            currentGameButton.ToggleGamePlayed(Session.CurrentGame.Complete);
             gameButtonsDisplay.UpdateContentHeight();
             CloseGame();
         }
@@ -146,22 +104,50 @@ namespace Runtime.Managers
             badmintonCourt.ToggleBadmintonCourt(false);
         }
 
+
+
+        private void CheckGameProgress()
+        {
+            if (Session.CurrentGame.ScoreA == 20 || Session.CurrentGame.ScoreB == 20)
+                popupMessage.DisplayPopupMessage("MATCH POINT!");
+
+            if ((Session.CurrentGame.ScoreA >= 20 || Session.CurrentGame.ScoreB >= 20) && Session.CurrentGame.ScoreB == Session.CurrentGame.ScoreA)
+                popupMessage.DisplayPopupMessage("DEUCE!");
+
+            if (Session.CurrentGame.ScoreA >= 21 || Session.CurrentGame.ScoreB >= 21)
+            {
+                // Win!
+                if (Session.CurrentGame.ScoreA >= Session.CurrentGame.ScoreB + 2)
+                { CompleteGame(); return; } // Team A Wins
+
+                if (Session.CurrentGame.ScoreB >= Session.CurrentGame.ScoreA + 2)
+                { CompleteGame(); return; }  // Team B Wins
+
+                // Advantage
+                if (Session.CurrentGame.ScoreA >= Session.CurrentGame.ScoreB + 1)
+                    popupMessage.DisplayPopupMessage("ADVANTAGE TEAM A");
+
+                if (Session.CurrentGame.ScoreB >= Session.CurrentGame.ScoreA + 1)
+                    popupMessage.DisplayPopupMessage("ADVANTAGE TEAM B");
+            }
+        }
+
         private void SaveRound()
         {
             Round round = new Round
             {
-                ScoreA = currentGameData.ScoreA,
-                ScoreB = currentGameData.ScoreB
+                ScoreA = Session.CurrentGame.ScoreA,
+                ScoreB = Session.CurrentGame.ScoreB
             };
 
-            foreach (KeyValuePair<Player, Player> player in currentGameData.TeamA)
+            foreach (KeyValuePair<Player, Player> player in Session.CurrentGame.TeamA)
             { round.Player2Position = player.Key.PositionOnCourt; round.Player1Position = player.Value.PositionOnCourt; }
 
-            foreach (KeyValuePair<Player, Player> player in currentGameData.TeamB)
+            foreach (KeyValuePair<Player, Player> player in Session.CurrentGame.TeamB)
             { round.Player3Position = player.Key.PositionOnCourt; round.Player4Position = player.Value.PositionOnCourt; }
 
             rounds.Add(round);
-            currentGameData.Rounds = rounds;
+            Session.CurrentGame.Rounds = rounds;
         }
 
 
