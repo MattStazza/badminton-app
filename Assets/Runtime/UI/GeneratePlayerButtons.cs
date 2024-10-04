@@ -14,7 +14,7 @@ namespace Runtime.UI
         [Space]
         [SerializeField] private GameObject playerButtonPrefab;
 
-        private List<PlayerButtonController> playerButtons = new List<PlayerButtonController>();
+        private List<PlayerButton> playerButtons = new List<PlayerButton>();
 
 
         private void Awake() => ValidateRequiredVariables();
@@ -27,11 +27,11 @@ namespace Runtime.UI
             {
                 // Spawn Player Buttons
                 GameObject playerButton = Instantiate(playerButtonPrefab, transform);
-                PlayerButtonController playerButtonController = playerButton.GetComponent<PlayerButtonController>();
+                PlayerButton playerButtonController = playerButton.GetComponent<PlayerButton>();
                 playerButtons.Add(playerButtonController);
 
                 // Setup Button Display & Toggle Active
-                playerButtonController.SetupPlayerButton(playerData);
+                playerButtonController.UpdatePlayerButtonDisplay(playerData);
                 playerButtonController.ToggleButtonInteractive(true);
             }
         }
@@ -40,7 +40,7 @@ namespace Runtime.UI
         {
             setupManager.ClearSelectedPlayers();
 
-            foreach (PlayerButtonController button in playerButtons)
+            foreach (PlayerButton button in playerButtons)
             {
                 if (button.GetSelected())
                     setupManager.AddPlayerToSelected(button.GetPlayerData());

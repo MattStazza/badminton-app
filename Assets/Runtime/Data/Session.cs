@@ -10,7 +10,7 @@ namespace Runtime.Data
         private static Game currentGame;
         private static List<Game> games;
         private static List<Player> players;
-        private static float duration;
+        private static string duration;
 
 
         // Public Functions
@@ -44,7 +44,7 @@ namespace Runtime.Data
             set { players = value; }
         }
 
-        public static float Duration
+        public static string Duration
         {
             get { return duration; }
             set { duration = value; }

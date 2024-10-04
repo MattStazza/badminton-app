@@ -14,7 +14,7 @@ namespace Runtime.UI
         [SerializeField] private RectTransform contentRectTransform;
         [SerializeField] private VerticalLayoutGroup contentVerticalLayout;
 
-        private List<GameButtonController> gameButtons = new List<GameButtonController>();
+        private List<GameButton> gameButtons = new List<GameButton>();
 
         private void Awake() => ValidateRequiredVariables();
         private void Start() => GenerateButtons();
@@ -48,7 +48,7 @@ namespace Runtime.UI
         {
             float allGameButtonsHeight = 0;
 
-            foreach (GameButtonController gameButton in gameButtons)
+            foreach (GameButton gameButton in gameButtons)
                 allGameButtonsHeight = allGameButtonsHeight + gameButton.gameObject.GetComponent<RectTransform>().sizeDelta.y;
 
             float contentHeight = allGameButtonsHeight + (contentVerticalLayout.spacing * gameButtons.Count);
@@ -61,7 +61,7 @@ namespace Runtime.UI
         private void SpawnGameButton(int gameNumber)
         {
             GameObject gameButton = Instantiate(gameButtonPrefab, transform);
-            GameButtonController gameButtonController = gameButton.GetComponent<GameButtonController>();
+            GameButton gameButtonController = gameButton.GetComponent<GameButton>();
             gameButtons.Add(gameButtonController);
 
             UpdateGameButtonWithSessionData(gameButtonController, gameNumber);
@@ -70,7 +70,7 @@ namespace Runtime.UI
             RefreshContentLayout();
         }
 
-        private void UpdateGameButtonWithSessionData(GameButtonController gameButton ,int gameNumber)
+        private void UpdateGameButtonWithSessionData(GameButton gameButton ,int gameNumber)
         {
             gameButton.SetGameData(Session.Games[gameNumber]);
 

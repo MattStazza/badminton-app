@@ -10,19 +10,24 @@ namespace Runtime.Managers
         [SerializeField] private UIManager uIManager;
         [SerializeField] private BadmintonCourtManager badmintonCourt;
         [SerializeField] private ScoreDisplayController scoreDisplay;
+        [SerializeField] private Timer timer;
         [SerializeField] private PopupMessage popupMessage;
         [SerializeField] private GenerateGameButtons gameButtonsDisplay;
 
-        private GameButtonController currentGameButton;
+        private GameButton currentGameButton;
         private List<Round> rounds = new List<Round>();
 
         private void Awake() => ValidateRequiredVariables();
 
-        public void SetCurrentGameButton(GameButtonController gameButton) => currentGameButton = gameButton;
+        public void SetCurrentGameButton(GameButton gameButton) => currentGameButton = gameButton;
 
         public void OpenGame()
         {
-            if (Session.CurrentGame.Complete) return; // Add Game Results Display
+            if (Session.CurrentGame.Complete)
+            {
+                ShowGameResults();
+                return;
+            }
 
             uIManager.ShowScoringPage();
             scoreDisplay.SetTitle("GAME #" + Session.CurrentGame.Number.ToString());
@@ -34,6 +39,12 @@ namespace Runtime.Managers
             badmintonCourt.ToggleServiceIndicatorVisible(false);
 
             rounds = new List<Round>();
+        }
+
+        public void BackButton()
+        {
+            uIManager.ShowGamesPage();
+            badmintonCourt.ToggleBadmintonCourt(false);
         }
 
         public void StartGameButton()
@@ -93,14 +104,19 @@ namespace Runtime.Managers
         public void CompleteGame()
         {
             Session.CurrentGame.Complete = true;
+            Session.CurrentGame.Duration = timer.GetFormatTime();
+
+            // Update Player Stats
+
             currentGameButton.ToggleGamePlayed(Session.CurrentGame.Complete);
             gameButtonsDisplay.UpdateContentHeight();
-            CloseGame();
+
+            ShowGameResults();
         }
 
-        public void CloseGame()
+        private void ShowGameResults()
         {
-            uIManager.ShowGamesPage();
+            uIManager.ShowGameResultsPage();
             badmintonCourt.ToggleBadmintonCourt(false);
         }
 
@@ -156,6 +172,7 @@ namespace Runtime.Managers
             if (uIManager == null) { Debug.LogError("Null References: " + uIManager.name); }
             if (badmintonCourt == null) { Debug.LogError("Null References: " + badmintonCourt.name); }
             if (scoreDisplay == null) { Debug.LogError("Null References: " + scoreDisplay.name); }
+            if (timer == null) { Debug.LogError("Null References: " + timer.name); }
             if (gameButtonsDisplay == null) { Debug.LogError("Null References: " + gameButtonsDisplay.name); }
             if (popupMessage == null) { Debug.LogError("Null References: " + popupMessage.name); }
         }

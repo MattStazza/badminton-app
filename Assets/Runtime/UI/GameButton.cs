@@ -5,17 +5,17 @@ using Runtime.Managers;
 
 namespace Runtime.UI
 {
-    public class GameButtonController : MonoBehaviour
+    public class GameButton : MonoBehaviour
     {
         [SerializeField] private RectTransform gameRectTransform;
         [Space]
         [SerializeField] private TextMeshProUGUI gameNumberText;
         [Space]
         [SerializeField] private GameObject gamePanel;
-        [SerializeField] private PlayerButtonController playerOneButton;
-        [SerializeField] private PlayerButtonController playerTwoButton;
-        [SerializeField] private PlayerButtonController playerThreeButton;
-        [SerializeField] private PlayerButtonController playerFourButton;
+        [SerializeField] private PlayerButton playerOneButton;
+        [SerializeField] private PlayerButton playerTwoButton;
+        [SerializeField] private PlayerButton playerThreeButton;
+        [SerializeField] private PlayerButton playerFourButton;
         [Space]
         [SerializeField] private GameObject completedGamePanel;
         [SerializeField] private TextMeshProUGUI teamAScore;
@@ -59,7 +59,7 @@ namespace Runtime.UI
                 gameRectTransform.sizeDelta = new Vector2(700f, 1000);
         }
 
-        private void SetPlayer(PlayerButtonController playerButton, Player player)
+        private void SetPlayer(PlayerButton playerButton, Player player)
         {
             PlayerData playerData = new PlayerData
             {
@@ -68,7 +68,7 @@ namespace Runtime.UI
                 bodyTexture = player.BodySprite
             };
 
-            playerButton.SetupPlayerButton(playerData);
+            playerButton.UpdatePlayerButtonDisplay(playerData);
             playerButton.ToggleButtonInteractive(false);
         }
 

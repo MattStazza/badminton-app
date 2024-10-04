@@ -5,7 +5,7 @@ using Runtime.Data;
 
 namespace Runtime.UI
 {
-    public class PlayerButtonController : MonoBehaviour
+    public class PlayerButton : MonoBehaviour
     {
         [SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI nameText;
@@ -29,7 +29,7 @@ namespace Runtime.UI
 
 
 
-        public void SetupPlayerButton(PlayerData data)
+        public void UpdatePlayerButtonDisplay(PlayerData data)
         {
             playerData = data;
             nameText.text = data.playerName;

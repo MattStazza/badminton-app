@@ -14,7 +14,7 @@ namespace Runtime.UI
         [SerializeField] private GameObject playerButtonPrefab;
         [SerializeField] private GameObject addPlayerButton;
 
-        private List<PlayerButtonController> selectedPlayers = new List<PlayerButtonController>();
+        private List<PlayerButton> selectedPlayers = new List<PlayerButton>();
 
 
         private void Awake() => ValidateRequiredVariables();
@@ -23,7 +23,7 @@ namespace Runtime.UI
 
         private void RefreshSelectedPlayers()
         {
-            foreach (PlayerButtonController playerButton in selectedPlayers)
+            foreach (PlayerButton playerButton in selectedPlayers)
                 Destroy(playerButton.gameObject);
 
             selectedPlayers.Clear();
@@ -42,11 +42,11 @@ namespace Runtime.UI
             {
                 // Spawn Selected Players
                 GameObject player = Instantiate(playerButtonPrefab, transform);
-                PlayerButtonController playerButtonController = player.GetComponent<PlayerButtonController>();
+                PlayerButton playerButtonController = player.GetComponent<PlayerButton>();
                 selectedPlayers.Add(playerButtonController);
 
                 // Setup Players Display & Toggle Inactive
-                playerButtonController.SetupPlayerButton(playerData);
+                playerButtonController.UpdatePlayerButtonDisplay(playerData);
                 playerButtonController.ToggleButtonInteractive(false);
             }
         }

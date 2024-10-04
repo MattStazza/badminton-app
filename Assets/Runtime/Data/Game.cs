@@ -6,7 +6,7 @@ namespace Runtime.Data
     {
         private int id;
         private int number;
-        private float duration;
+        private string duration;
         private List<Round> rounds;
         private Dictionary<Player, Player> teamA = new Dictionary<Player, Player>();
         private int scoreA;
@@ -27,7 +27,7 @@ namespace Runtime.Data
             set { number = value; }
         } 
 
-        public float Duration
+        public string Duration
         {
             get { return duration; }
             set { duration = value; }

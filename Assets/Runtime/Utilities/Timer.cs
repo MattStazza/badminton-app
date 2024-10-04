@@ -7,44 +7,45 @@ public class Timer : MonoBehaviour
 
     private float timer = 0f;
     private bool isRunning = false;
+    private string formatTime;
 
     private void Awake() => ValidateRequiredVariables();
 
     private void OnEnable() => StartTimer();
 
-    // Function to start the timer
+
     public void StartTimer()
     {
         isRunning = true;
-        timer = 0f; // Reset the timer when starting
+        timer = 0f;
     }
 
-    // Function to stop the timer
     public void StopTimer() => isRunning = false;
 
-    // Function to get the current timer time in seconds
-    public float GetTimerTime()
+    public string GetFormatTime() { return formatTime; }
+
+    private string FormatTime(float timeToDisplay)
     {
-        return timer;
+        string formattedTime;
+        int minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        int seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        formattedTime = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        return formattedTime;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (isRunning)
         {
             timer += Time.deltaTime;
-            DisplayTime(timer);
+            formatTime = FormatTime(timer);
+            timerText.text = formatTime;
         }
     }
 
-    // Function to display time in minutes:seconds format
-    void DisplayTime(float timeToDisplay)
-    {
-        int minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        int seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
+
 
     private void ValidateRequiredVariables()
     {
