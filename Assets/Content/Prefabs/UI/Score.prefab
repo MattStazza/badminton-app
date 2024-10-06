@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3615137180927318099}
   - component: {fileID: 3615137180927318102}
   - component: {fileID: 3615137180927318097}
+  - component: {fileID: 8559627393298835801}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae86eb407a9e7cb42b54d41da8e8e920, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7e8ee4ae1d157c4e8160e8d3ff5b88d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,6 +78,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8559627393298835801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615137180927318098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b145385ca95efeb48866bbfd2428b693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winColor: {r: 0.003921569, g: 0.9921569, b: 0.5294118, a: 1}
+  lossColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+  winScore: 3
+  lossScore: 0
+  dueceWinScore: 2
+  dueceLossScore: 1
+  score: {fileID: 9215956120026646732}
+  background: {fileID: 3615137180927318097}
 --- !u!1 &5722794646519310366
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +110,7 @@ GameObject:
   - component: {fileID: 2458752039177078604}
   - component: {fileID: 9215956120026646732}
   m_Layer: 5
-  m_Name: Name - Text
+  m_Name: Score - Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

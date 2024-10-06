@@ -13,10 +13,19 @@ namespace Runtime.UI
         [SerializeField] private TextMeshProUGUI scoreA;
         [SerializeField] private TextMeshProUGUI scoreB;
         [SerializeField] private TextMeshProUGUI gameDuration;
+        [Space]
+        [Header ("Players")]
         [SerializeField] private PlayerButton player1Button;
+        [SerializeField] private ScoreIcon score1;
+        [Space]
         [SerializeField] private PlayerButton player2Button;
+        [SerializeField] private ScoreIcon score2;
+        [Space]
         [SerializeField] private PlayerButton player3Button;
+        [SerializeField] private ScoreIcon score3;
+        [Space]
         [SerializeField] private PlayerButton player4Button;
+        [SerializeField] private ScoreIcon score4;
 
         private void Awake() => ValidateRequiredVariables();
 
@@ -28,6 +37,7 @@ namespace Runtime.UI
             DisplayScore();
             DisplayDuration();
             DisplayPlayers();
+            DisplayScoreIcons();
         }
 
         private void DisplayTitle()
@@ -68,6 +78,16 @@ namespace Runtime.UI
             button.ToggleButtonInteractive(false);
         }
 
+        private void DisplayScoreIcons()
+        {
+            bool teamAWon = Session.CurrentGame.ScoreA > Session.CurrentGame.ScoreB;
+            bool duece = Session.CurrentGame.ScoreA > 21 || Session.CurrentGame.ScoreB > 21;
+
+            score1.DisplayScoreIcon(teamAWon, duece);
+            score2.DisplayScoreIcon(teamAWon, duece);
+            score3.DisplayScoreIcon(!teamAWon, duece);
+            score4.DisplayScoreIcon(!teamAWon, duece);
+        }
 
 
         private void ValidateRequiredVariables()
@@ -80,6 +100,10 @@ namespace Runtime.UI
             if (player2Button == null) { Debug.LogError("Null References: " + player2Button.name); }
             if (player3Button == null) { Debug.LogError("Null References: " + player3Button.name); }
             if (player4Button == null) { Debug.LogError("Null References: " + player4Button.name); }
+            if (score1 == null) { Debug.LogError("Null References: " + score1.name); }
+            if (score2 == null) { Debug.LogError("Null References: " + score2.name); }
+            if (score3 == null) { Debug.LogError("Null References: " + score3.name); }
+            if (score4 == null) { Debug.LogError("Null References: " + score4.name); }
         }
     }
 }
