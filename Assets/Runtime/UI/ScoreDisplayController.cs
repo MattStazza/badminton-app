@@ -10,6 +10,7 @@ namespace Runtime.UI
         [SerializeField] private TextMeshProUGUI teamAScore;
         [SerializeField] private TextMeshProUGUI teamBScore;
         [Space]
+        [SerializeField] private GameObject swapButton;
         [SerializeField] private GameObject scoreDisplay;
         [SerializeField] private GameObject scoreButtons;
         [Space]
@@ -30,6 +31,7 @@ namespace Runtime.UI
         {
             HideAllUIElements();
 
+            swapButton.SetActive(true);
             startButton.SetActive(true);
             backButton.SetActive(true);
         }
@@ -46,6 +48,7 @@ namespace Runtime.UI
 
         private void HideAllUIElements()
         {
+            swapButton.SetActive(false);
             scoreDisplay.SetActive(false);
             scoreButtons.SetActive(false);
             gameDuration.gameObject.SetActive(false);
@@ -61,6 +64,7 @@ namespace Runtime.UI
             if (title == null) { Debug.LogError("Null References: " + title.name); }
             if (gameDuration == null) { Debug.LogError("Null References: " + gameDuration.name); }
 
+            if (swapButton == null) { Debug.LogError("Null References: " + swapButton.name); }
             if (scoreDisplay == null) { Debug.LogError("Null References: " + scoreDisplay.name); }
             if (teamAScore == null) { Debug.LogError("Null References: " + teamAScore.name); }
             if (teamBScore == null) { Debug.LogError("Null References: " + teamBScore.name); }

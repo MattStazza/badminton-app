@@ -92,6 +92,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4251334083869377596, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
@@ -160,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.81
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -185,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.1
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -319,6 +324,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4251334083869377596, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
@@ -387,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.86
+      value: 3.63
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -412,7 +422,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.46
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -529,6 +539,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4251334083869377596, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
@@ -597,7 +612,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.01
+      value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -622,7 +637,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.44
+      value: -2.62
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -663,6 +678,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4251334083869377596, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -732,7 +752,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.956
+      value: -3.72
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}

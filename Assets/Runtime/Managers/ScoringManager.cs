@@ -45,6 +45,18 @@ namespace Runtime.Managers
         {
             uIManager.ShowGamesPage();
             badmintonCourt.ToggleBadmintonCourt(false);
+            
+        }
+
+        public void SwapButton()
+        {
+            // Cache TeamA
+            Dictionary<Player, Player> team = Session.CurrentGame.TeamA;
+
+            Session.CurrentGame.TeamA = Session.CurrentGame.TeamB;
+            Session.CurrentGame.TeamB = team;
+
+            badmintonCourt.SetupPlayersOnCourt(Session.CurrentGame);
         }
 
         public void StartGameButton()

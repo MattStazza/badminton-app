@@ -59,9 +59,6 @@ namespace Runtime.Managers
             startButton.interactable = !active;
         }
 
-
-
-
         public void SetupPlayersOnCourt(Game game)
         {
             Player player1Data = null;
