@@ -304,6 +304,59 @@ namespace Runtime.Managers
             return prioritisedGames;
         }
 
+
+        /*private List<Game> MyPrioritizeGamesPerPlayer(List<Game> balancedGames, List<Player> players)
+        {
+            List<Game> prioritizedGames = new List<Game>();
+            Dictionary<Player, int> playerGameCount = new Dictionary<Player, int>();
+
+            // Initialize the game count for each player
+            foreach (var player in players)
+            {
+                playerGameCount[player] = player.GamesPlayed; // Use the GamesPlayed property
+            }
+
+            List<Game> remainingGames = new List<Game>(balancedGames);
+
+            while (remainingGames.Count > 0)
+            {
+                // Find the player with the minimum game count
+                Player playerWithLeastGames = playerGameCount.OrderBy(p => p.Value).First().Key;
+
+                // Select a game that includes this player
+                Game selectedGame = remainingGames.FirstOrDefault(game =>
+                {
+                    var playersInGame = game.TeamA.Keys.Concat(game.TeamA.Values).Concat(game.TeamB.Keys).Concat(game.TeamB.Values);
+                    return playersInGame.Any(p => p.Name == playerWithLeastGames.Name);
+                });
+
+                // If a game is found, add it to the prioritized list and update counts
+                if (selectedGame != null)
+                {
+                    prioritizedGames.Add(selectedGame);
+                    var playersInSelectedGame = selectedGame.TeamA.Keys.Concat(selectedGame.TeamA.Values).Concat(selectedGame.TeamB.Keys).Concat(selectedGame.TeamB.Values);
+
+                    foreach (var player in playersInSelectedGame)
+                    {
+                        player.GamesPlayed++; // Increment the games played for each player
+                        playerGameCount[player]++;
+                    }
+
+                    remainingGames.Remove(selectedGame);
+                }
+                else
+                {
+                    // If no game includes the player with the least games, just break
+                    break;
+                }
+            }
+
+            // If there are any remaining games, add them to the prioritized list
+            prioritizedGames.AddRange(remainingGames);
+
+            return prioritizedGames;
+        }*/
+
     }
 }
 
