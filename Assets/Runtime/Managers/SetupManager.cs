@@ -36,7 +36,7 @@ namespace Runtime.Managers
 
             GenerateGames();
             games = BalancePairs(games);
-            games = PrioritiseGamesPerPlayer(games, players);
+            games = PrioritizeGamesPerPlayer(games, players);
             Session.Games = games;
 
             uIManager.ShowGamesPage();
@@ -122,20 +122,15 @@ namespace Runtime.Managers
         private List<Game> BalancePairs(List<Game> unorderedGames)
         {
             List<Game> balancedGames = new List<Game>();
-
-            // Dictionary to track how many times a pair of players has been on the same team
             Dictionary<string, int> teamPairCount = new Dictionary<string, int>();
-
-            // To track the most recent pairs to avoid consecutive pairings
             HashSet<string> recentPairs = new HashSet<string>();
 
-            // Helper function to get a unique string key for a pair of players
+
             string GetTeamKey(Player p1, Player p2)
             {
                 return string.Join(",", new List<string> { p1.Name, p2.Name }.OrderBy(name => name));
             }
 
-            // Initialize the team pair count
             foreach (var game in unorderedGames)
             {
                 string teamAKey = GetTeamKey(game.TeamA.Keys.First(), game.TeamA.Values.First());
@@ -145,26 +140,20 @@ namespace Runtime.Managers
                 teamPairCount[teamBKey] = 0;
             }
 
-            // Helper function to check if a game can be added based on pair repetition
             bool CanAddGame(Game game)
             {
                 string teamAKey = GetTeamKey(game.TeamA.Keys.First(), game.TeamA.Values.First());
                 string teamBKey = GetTeamKey(game.TeamB.Keys.First(), game.TeamB.Values.First());
 
-                // Ensure no pair from the recent games is repeated
                 if (recentPairs.Contains(teamAKey) || recentPairs.Contains(teamBKey))
-                {
                     return false;
-                }
 
                 return true;
             }
 
-            // Shuffle the games list for variation
             System.Random random = new System.Random();
             unorderedGames = unorderedGames.OrderBy(x => random.Next()).ToList();
 
-            // Iterate through the shuffled games to prevent consecutive pairings
             while (unorderedGames.Count > 0)
             {
                 bool gameAdded = false;
@@ -175,22 +164,18 @@ namespace Runtime.Managers
 
                     if (CanAddGame(currentGame))
                     {
-                        // Add the game to the balanced list
                         balancedGames.Add(currentGame);
 
-                        // Update the pair counts for the teams
                         string teamAKey = GetTeamKey(currentGame.TeamA.Keys.First(), currentGame.TeamA.Values.First());
                         string teamBKey = GetTeamKey(currentGame.TeamB.Keys.First(), currentGame.TeamB.Values.First());
 
                         teamPairCount[teamAKey]++;
                         teamPairCount[teamBKey]++;
 
-                        // Add teams to recent pairs set and clear recent pairs after one game
                         recentPairs.Clear();
                         recentPairs.Add(teamAKey);
                         recentPairs.Add(teamBKey);
 
-                        // Remove game from unordered list
                         unorderedGames.RemoveAt(i);
                         gameAdded = true;
 
@@ -198,7 +183,6 @@ namespace Runtime.Managers
                     }
                 }
 
-                // If no valid game was added, just add the rest
                 if (!gameAdded)
                 {
                     balancedGames.AddRange(unorderedGames);
@@ -209,156 +193,85 @@ namespace Runtime.Managers
             return balancedGames;
         }
 
-        // Function to prioritize games based on games played per player and ensure no player waits too long
-        private List<Game> PrioritiseGamesPerPlayer(List<Game> balancedGames, List<Player> players)
-        {
-            // This will hold the newly ordered list of games
-            List<Game> prioritisedGames = new List<Game>();
 
-            // Dictionary to track how many games each player has played
-            Dictionary<Player, int> playerGameCount = new Dictionary<Player, int>();
-
-            // Dictionary to track when each player last played (game index)
-            Dictionary<Player, int> playerLastGame = new Dictionary<Player, int>();
-
-            // Initialize player game count and last game index to 0
-            foreach (var player in players)
-            {
-                playerGameCount[player] = 0;
-                playerLastGame[player] = -1; // Set to -1 since they haven't played any games yet
-            }
-
-            // Helper function to check if a game can be added based on current game distribution
-            bool CanAddGame(Game game, int currentGameIndex)
-            {
-                // Get all players in this game
-                var playersInGame = game.TeamA.Keys.Concat(game.TeamA.Values).Concat(game.TeamB.Keys).Concat(game.TeamB.Values).ToList();
-
-                // Find the player who has played the fewest games
-                int minGamesPlayed = playerGameCount.Values.Min();
-
-                // Ensure that no player has sat out for more than two consecutive games
-                foreach (var player in playersInGame)
-                {
-                    if (playerGameCount[player] > minGamesPlayed + 1)
-                    {
-                        return false; // If a player has played significantly more games, skip this game
-                    }
-
-                    // Ensure no player is sitting out for more than two games
-                    if (currentGameIndex - playerLastGame[player] > 2)
-                    {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
-            // Create a copy of the balanced games to manipulate
-            List<Game> remainingGames = new List<Game>(balancedGames);
-
-            // Keep assigning games until we have processed all games
-            int currentGameIndex = 0;
-
-            while (remainingGames.Count > 0)
-            {
-                bool gameAdded = false;
-
-                // Loop through the games to find one that can be added based on player game count and last game
-                for (int i = 0; i < remainingGames.Count; i++)
-                {
-                    Game currentGame = remainingGames[i];
-
-                    if (CanAddGame(currentGame, currentGameIndex))
-                    {
-                        // Add the game to the prioritised list
-                        prioritisedGames.Add(currentGame);
-
-                        // Update the game count and last game index for each player in the game
-                        var playersInGame = currentGame.TeamA.Keys.Concat(currentGame.TeamA.Values).Concat(currentGame.TeamB.Keys).Concat(currentGame.TeamB.Values);
-                        foreach (var player in playersInGame)
-                        {
-                            playerGameCount[player]++;
-                            playerLastGame[player] = currentGameIndex;
-                        }
-
-                        // Remove the game from the remaining list
-                        remainingGames.RemoveAt(i);
-                        gameAdded = true;
-                        currentGameIndex++; // Increment the game index
-
-                        // Break the loop to restart the selection process
-                        break;
-                    }
-                }
-
-                // If no valid game could be added, add all remaining games to the prioritised list
-                if (!gameAdded)
-                {
-                    prioritisedGames.AddRange(remainingGames);
-                    break;
-                }
-            }
-
-            return prioritisedGames;
-        }
-
-
-        /*private List<Game> MyPrioritizeGamesPerPlayer(List<Game> balancedGames, List<Player> players)
+        private List<Game> PrioritizeGamesPerPlayer(List<Game> balancedGames, List<Player> players)
         {
             List<Game> prioritizedGames = new List<Game>();
-            Dictionary<Player, int> playerGameCount = new Dictionary<Player, int>();
-
-            // Initialize the game count for each player
-            foreach (var player in players)
-            {
-                playerGameCount[player] = player.GamesPlayed; // Use the GamesPlayed property
-            }
-
-            List<Game> remainingGames = new List<Game>(balancedGames);
+            HashSet<Game> remainingGames = new HashSet<Game>(balancedGames);
 
             while (remainingGames.Count > 0)
             {
-                // Find the player with the minimum game count
-                Player playerWithLeastGames = playerGameCount.OrderBy(p => p.Value).First().Key;
+                bool gameAddedInThisIteration = false;
 
-                // Select a game that includes this player
-                Game selectedGame = remainingGames.FirstOrDefault(game =>
+                foreach (Game game in remainingGames.ToList())
                 {
-                    var playersInGame = game.TeamA.Keys.Concat(game.TeamA.Values).Concat(game.TeamB.Keys).Concat(game.TeamB.Values);
-                    return playersInGame.Any(p => p.Name == playerWithLeastGames.Name);
-                });
+                    List<Player> gamePlayers = GetLowestAssignedPlayers(players);
 
-                // If a game is found, add it to the prioritized list and update counts
-                if (selectedGame != null)
-                {
-                    prioritizedGames.Add(selectedGame);
-                    var playersInSelectedGame = selectedGame.TeamA.Keys.Concat(selectedGame.TeamA.Values).Concat(selectedGame.TeamB.Keys).Concat(selectedGame.TeamB.Values);
-
-                    foreach (var player in playersInSelectedGame)
+                    if (GameIncludesPlayers(game, gamePlayers))
                     {
-                        player.GamesPlayed++; // Increment the games played for each player
-                        playerGameCount[player]++;
+                        prioritizedGames.Add(game);
+                        IncrementGamesAssigned(gamePlayers);
+                        remainingGames.Remove(game);
+                        gameAddedInThisIteration = true; 
                     }
+                }
 
-                    remainingGames.Remove(selectedGame);
-                }
-                else
-                {
-                    // If no game includes the player with the least games, just break
+                if (!gameAddedInThisIteration)
                     break;
-                }
             }
 
-            // If there are any remaining games, add them to the prioritized list
-            prioritizedGames.AddRange(remainingGames);
-
             return prioritizedGames;
-        }*/
+        }
 
+        private bool GameIncludesPlayers(Game game, List<Player> players)
+        {
+            bool hasPlayers = false;
+            List<String> playerNames = new List<String>();
+
+            foreach (KeyValuePair<Player, Player> player in game.TeamA)
+            { playerNames.Add(player.Key.Name); playerNames.Add(player.Value.Name); }
+
+            foreach (KeyValuePair<Player, Player> player in game.TeamB)
+            { playerNames.Add(player.Key.Name); playerNames.Add(player.Value.Name); }
+
+            foreach (Player player in players)
+            {
+                if (playerNames.Contains(player.Name))
+                    hasPlayers = true;
+                else
+                {
+                    hasPlayers = false;
+                    break;
+                }                
+            }
+
+            return hasPlayers;
+        }
+
+        private void IncrementGamesAssigned(List<Player> players)
+        {
+            foreach (Player player in players)
+            {
+                player.GamesAssigned++;
+            }
+        }
+
+        private List<Player> GetLowestAssignedPlayers(List<Player> allPlayers) 
+        {
+            List<Player> shuffledPlayers = ShufflePlayers(allPlayers);
+
+            List<Player> lowestAssignedPlayers = shuffledPlayers
+                .OrderBy(p => p.GamesAssigned)
+                .Take(4)
+                .ToList();
+
+            return lowestAssignedPlayers;
+        }
+
+        private List<Player> ShufflePlayers(List<Player> players)
+        {
+            System.Random rng = new System.Random();
+            return players.OrderBy(p => rng.Next()).ToList();
+        }
     }
 }
-
-
-

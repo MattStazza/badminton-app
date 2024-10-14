@@ -17,6 +17,8 @@ namespace Runtime.Data
         private Sprite profileSprite;
         private Sprite bodySprite;
         private PlayerPosition positionOnCourt;
+
+        private int gamesAssigned;
         private int gamesPlayed;
         private int wins;
         private int losses;
@@ -52,6 +54,11 @@ namespace Runtime.Data
 
 
         // Static Stats
+        public int GamesAssigned
+        {
+            get { return gamesAssigned; }
+            set { gamesAssigned = value; }
+        }
         public int GamesPlayed
         {
             get { return gamesPlayed; }
