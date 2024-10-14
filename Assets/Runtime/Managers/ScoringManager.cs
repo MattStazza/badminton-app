@@ -121,7 +121,7 @@ namespace Runtime.Managers
             // Update Player Stats
 
             currentGameButton.ToggleGamePlayed(Session.CurrentGame.Complete);
-            gameButtonsDisplay.UpdateContentHeight();
+            //gameButtonsDisplay.UpdateContentHeight();
 
             ShowGameResults();
         }

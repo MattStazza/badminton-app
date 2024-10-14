@@ -44,7 +44,7 @@ namespace Runtime.UI
             SpawnGameButton(gameButtons.Count);
         }
 
-        public void UpdateContentHeight()
+/*        public void UpdateContentHeight()
         {
             float allGameButtonsHeight = 0;
 
@@ -56,7 +56,7 @@ namespace Runtime.UI
             contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentHeight);
 
             RefreshContentLayout();
-        }
+        }*/
 
         private void SpawnGameButton(int gameNumber)
         {
@@ -66,8 +66,8 @@ namespace Runtime.UI
 
             UpdateGameButtonWithSessionData(gameButtonController, gameNumber);
 
-            UpdateContentHeight();
-            RefreshContentLayout();
+            //UpdateContentHeight();
+            //RefreshContentLayout();
         }
 
         private void UpdateGameButtonWithSessionData(GameButton gameButton ,int gameNumber)
@@ -91,11 +91,11 @@ namespace Runtime.UI
             gameButton.SetTeams(playerOne, playerTwo, playerThree, playerFour);
         }
 
-        private void RefreshContentLayout()
+/*        private void RefreshContentLayout()
         {
             contentVerticalLayout.enabled = false;
             contentVerticalLayout.enabled = true;
-        }
+        }*/
 
         private void ValidateRequiredVariables()
         {

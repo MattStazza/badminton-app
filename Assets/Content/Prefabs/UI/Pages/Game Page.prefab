@@ -891,6 +891,7 @@ GameObject:
   - component: {fileID: 7985440789743634726}
   - component: {fileID: 4731190522913269350}
   - component: {fileID: 4747368605136869593}
+  - component: {fileID: 4587740440875085156}
   m_Layer: 5
   m_Name: Content - Generate Game Buttons
   m_TagString: Untagged
@@ -983,3 +984,18 @@ MonoBehaviour:
   numberOfGamesToGenerate: 10
   contentRectTransform: {fileID: 371879063213141825}
   contentVerticalLayout: {fileID: 7985440789743634726}
+--- !u!114 &4587740440875085156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879462628498894768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29afdb599a1ff6642876fa36c81b4a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentRectTransform: {fileID: 371879063213141825}
+  verticalLayout: {fileID: 7985440789743634726}
+  gridLayout: {fileID: 0}
