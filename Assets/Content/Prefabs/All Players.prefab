@@ -66,20 +66,20 @@ MonoBehaviour:
     profileTexture: {fileID: 21300000, guid: 5f1643cf4c85d7140ba91362d7927ff0, type: 3}
     bodyTexture: {fileID: 21300000, guid: f4768788d3e0eb344a511c4d8db65d24, type: 3}
   - playerName: NIKHIL
-    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
-    bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
+    profileTexture: {fileID: 21300000, guid: 24b2f16c43516784189d4fb603e87be9, type: 3}
+    bodyTexture: {fileID: 21300000, guid: ef0bff81b14f9c74c81f4a1fde56d95f, type: 3}
   - playerName: YASHAR
-    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
-    bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
+    profileTexture: {fileID: 21300000, guid: 1ddef969671f0e14a85d6491c7e6df0e, type: 3}
+    bodyTexture: {fileID: 21300000, guid: abf91f75789ed7c478b0bdbd0142f5ed, type: 3}
   - playerName: ARYANA
-    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
-    bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
+    profileTexture: {fileID: 21300000, guid: 62cfa4d46b1b81b49b0ed32fee918009, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 6b72e808a09f11449b8c541367f14a40, type: 3}
   - playerName: FROSTY
-    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
-    bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
+    profileTexture: {fileID: 21300000, guid: ad1cff65dea60ba4ab693c2054ac2ebc, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 70ff71f2424455446abb1751e9e75f0f, type: 3}
   - playerName: CHRISTIE
-    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
-    bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
+    profileTexture: {fileID: 21300000, guid: ab0f6264395e30d4dbcca07c01cff109, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 3720d63986c23704f94b091f116b7c9e, type: 3}
   - playerName: RIAAN
     profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
     bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}

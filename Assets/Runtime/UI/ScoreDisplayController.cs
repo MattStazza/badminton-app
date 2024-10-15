@@ -27,6 +27,8 @@ namespace Runtime.UI
             teamBScore.text = scoreB.ToString();
         }
 
+        // SEPERATE GAME PREVIEW AND SCORING INTO 2 PAGES!?
+
         public void DisplayGamePreview()
         {
             HideAllUIElements();
@@ -40,7 +42,7 @@ namespace Runtime.UI
         {
             HideAllUIElements();
 
-            SetTitle(" ");
+            SetTitle(" "); // Hide Title Instead?
             scoreDisplay.SetActive(true);
             scoreButtons.SetActive(true);
             gameDuration.gameObject.SetActive(true);

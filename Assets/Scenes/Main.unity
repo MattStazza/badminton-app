@@ -1875,11 +1875,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Badminton Court Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 7976798516681194730, guid: 1f0371d6ca65d6643806cc28fb52017c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7976798516681194731, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1903,7 +1898,7 @@ PrefabInstance:
     - target: {fileID: 7976798516681194731, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9990483
       objectReference: {fileID: 0}
     - target: {fileID: 7976798516681194731, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}
@@ -1913,7 +1908,7 @@ PrefabInstance:
     - target: {fileID: 7976798516681194731, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.043619405
       objectReference: {fileID: 0}
     - target: {fileID: 7976798516681194731, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}
@@ -1928,7 +1923,7 @@ PrefabInstance:
     - target: {fileID: 7976798516681194731, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 7976798516681194731, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}

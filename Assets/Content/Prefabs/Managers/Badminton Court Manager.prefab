@@ -62,124 +62,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7976798516681194728}
-    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AssignInitialServer
-      objectReference: {fileID: 0}
-    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 572529250761408748}
-    - target: {fileID: 982450221315090184, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7976798516681194728}
     - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AssignInitialServer
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 1603207961052986981}
-    - target: {fileID: 2049111656629197185, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7976798516681194728}
     - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AssignInitialServer
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2901873463861387882}
-    - target: {fileID: 2456101851407173006, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7976798516681194728}
     - target: {fileID: 5951575873892218726, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
       propertyPath: m_Name
@@ -242,44 +137,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
         type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7976798516681194728}
-    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AssignInitialServer
-      objectReference: {fileID: 0}
-    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 7932313770422577456}
-    - target: {fileID: 7225295853905301204, guid: 2844599e91d35dd47a683c7646338ceb,
-        type: 3}
-      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2844599e91d35dd47a683c7646338ceb, type: 3}
 --- !u!114 &572529250761408748 stripped

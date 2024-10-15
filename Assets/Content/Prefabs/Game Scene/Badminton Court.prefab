@@ -100,7 +100,37 @@ PrefabInstance:
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AssignInitialServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1472395395361970052}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -154,6 +184,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -195,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.995
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -332,7 +372,37 @@ PrefabInstance:
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AssignInitialServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 3032264367909079947}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -386,6 +456,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -427,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.995
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -446,6 +526,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9570d556127fc41adc583c97f5b1e1, type: 3}
+--- !u!114 &3032264367909079947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 797975281895621540, guid: 0e9570d556127fc41adc583c97f5b1e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2379657803265853487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d79d27281a2e1458ace1b35384a36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5617648238211390693 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
@@ -547,7 +639,37 @@ PrefabInstance:
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AssignInitialServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4312602449145246978}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -601,6 +723,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -642,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.995
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -661,6 +793,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9570d556127fc41adc583c97f5b1e1, type: 3}
+--- !u!114 &4312602449145246978 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 797975281895621540, guid: 0e9570d556127fc41adc583c97f5b1e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3516057172320876198}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d79d27281a2e1458ace1b35384a36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6645149466988110444 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
@@ -687,7 +831,37 @@ PrefabInstance:
     - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AssignInitialServer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.Managers.BadmintonCourtManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5926249051767282910}
+    - target: {fileID: 4425303524294463918, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: OnTouchOrClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Runtime.UI.PlayerOnCourt, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4541393803410705554, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -741,6 +915,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -782,7 +966,7 @@ PrefabInstance:
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.995
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,
         type: 3}
@@ -807,6 +991,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6425720052141252474}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5926249051767282910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 797975281895621540, guid: 0e9570d556127fc41adc583c97f5b1e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6425720052141252474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d79d27281a2e1458ace1b35384a36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8256518388659304169
 PrefabInstance:
   m_ObjectHideFlags: 0
