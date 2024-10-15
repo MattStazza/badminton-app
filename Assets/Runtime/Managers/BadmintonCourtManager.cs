@@ -208,7 +208,7 @@ namespace Runtime.Managers
             playersMoving = false;
         }
 
-        private void MoveServiceIndicator() => serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, 1f, servingPlayer.transform.position.z);
+        private void MoveServiceIndicator() => serviceIndicator.transform.position = new Vector3(servingPlayer.transform.position.x, (servingPlayer.transform.position.y - 1), servingPlayer.transform.position.z);
 
         private void CachePlayerInitialPositions()
         {

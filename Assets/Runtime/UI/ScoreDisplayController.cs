@@ -40,7 +40,7 @@ namespace Runtime.UI
         {
             HideAllUIElements();
 
-            SetTitle("SCORE");
+            SetTitle(" ");
             scoreDisplay.SetActive(true);
             scoreButtons.SetActive(true);
             gameDuration.gameObject.SetActive(true);

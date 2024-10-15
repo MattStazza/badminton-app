@@ -9,10 +9,11 @@ namespace Runtime.Managers
     {
         [SerializeField] private UIManager uIManager;
         [SerializeField] private BadmintonCourtManager badmintonCourt;
+        [Space]
         [SerializeField] private ScoreDisplayController scoreDisplay;
-        [SerializeField] private Timer timer;
-        [SerializeField] private PopupMessage popupMessage;
         [SerializeField] private GenerateGameButtons gameButtonsDisplay;
+        [SerializeField] private PopupMessage popupMessage;
+        [SerializeField] private Timer timer;
 
         private GameButton currentGameButton;
         private List<Round> rounds = new List<Round>();
@@ -50,8 +51,7 @@ namespace Runtime.Managers
 
         public void SwapButton()
         {
-            // Cache TeamA
-            Dictionary<Player, Player> team = Session.CurrentGame.TeamA;
+            Dictionary<Player, Player> team = Session.CurrentGame.TeamA; // Cache TeamA
 
             Session.CurrentGame.TeamA = Session.CurrentGame.TeamB;
             Session.CurrentGame.TeamB = team;

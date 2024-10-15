@@ -1860,16 +1860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 912507862687917373, guid: 1f0371d6ca65d6643806cc28fb52017c,
-        type: 3}
-      propertyPath: m_Name
-      value: Service Indicator UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7976798515816732173, guid: 1f0371d6ca65d6643806cc28fb52017c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7976798516681194728, guid: 1f0371d6ca65d6643806cc28fb52017c,
         type: 3}
       propertyPath: startButton

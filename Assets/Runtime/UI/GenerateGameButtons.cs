@@ -11,8 +11,9 @@ namespace Runtime.UI
         [SerializeField] private GameObject gameButtonPrefab;
         [SerializeField] private int numberOfGamesToGenerate;
         [Space]
-        [SerializeField] private RectTransform contentRectTransform;
-        [SerializeField] private VerticalLayoutGroup contentVerticalLayout;
+        [SerializeField] private GameObject buttons;
+        //[SerializeField] private RectTransform contentRectTransform;
+        //[SerializeField] private VerticalLayoutGroup contentVerticalLayout;
 
         private List<GameButton> gameButtons = new List<GameButton>();
 
@@ -66,6 +67,8 @@ namespace Runtime.UI
 
             UpdateGameButtonWithSessionData(gameButtonController, gameNumber);
 
+            buttons.transform.SetAsLastSibling();
+
             //UpdateContentHeight();
             //RefreshContentLayout();
         }
@@ -100,8 +103,7 @@ namespace Runtime.UI
         private void ValidateRequiredVariables()
         {
             if (gameButtonPrefab == null) { Debug.LogError("Null References: " + gameButtonPrefab.name); }
-            if (contentRectTransform == null) { Debug.LogError("Null References: " + contentRectTransform.name); }
-            if (contentVerticalLayout == null) { Debug.LogError("Null References: " + contentVerticalLayout.name); }
+            if (buttons == null) { Debug.LogError("Null References: " + buttons.name); }
         }
     }
 }
