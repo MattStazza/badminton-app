@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 4251334083869377596}
   - component: {fileID: 1069219316169854072}
   m_Layer: 5
-  m_Name: Player On Court
+  m_Name: Player Body Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
