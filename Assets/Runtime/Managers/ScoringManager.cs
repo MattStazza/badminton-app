@@ -113,17 +113,62 @@ namespace Runtime.Managers
                 badmintonCourt.UpdateServerAfterPoint(Session.CurrentGame, rounds[rounds.Count - 2]);
         }
 
+
+
         public void CompleteGame()
         {
             Session.CurrentGame.Complete = true;
             Session.CurrentGame.Duration = timer.GetFormatTime();
 
-            // Update Player Stats
-
             currentGameButton.ToggleGamePlayed(Session.CurrentGame.Complete);
-            //gameButtonsDisplay.UpdateContentHeight();
 
+            UpdatePlayerStats();
             ShowGameResults();
+        }
+
+        private void UpdatePlayerStats()
+        {
+            var currentGame = Session.CurrentGame;
+
+            // Determine winning and losing teams
+            var winningTeam = currentGame.ScoreA > currentGame.ScoreB ? currentGame.TeamA : currentGame.TeamB;
+            var losingTeam = currentGame.ScoreA > currentGame.ScoreB ? currentGame.TeamB : currentGame.TeamA;
+
+            // Check for a deuce win
+            bool isDeuceWin = Mathf.Max(currentGame.ScoreA, currentGame.ScoreB) > 21;
+
+            foreach (var player in Session.CurrentGame.TeamA) { player.Key.GamesPlayed++; player.Value.GamesPlayed++; }
+            foreach (var player in Session.CurrentGame.TeamB) { player.Key.GamesPlayed++; player.Value.GamesPlayed++; }
+
+            // Update stats for the winning team
+            foreach (var player in winningTeam)
+            {
+                if (isDeuceWin)
+                {
+                    player.Key.DeuceWins++;
+                    player.Value.DeuceWins++;
+                }
+                else
+                {
+                    player.Key.Wins++;
+                    player.Value.Wins++;
+                }
+            }
+
+            // Update stats for the losing team
+            foreach (var player in losingTeam)
+            {
+                if (isDeuceWin)
+                {
+                    player.Key.DeuceLosses++;
+                    player.Value.DeuceLosses++;
+                }
+                else
+                {
+                    player.Key.Losses++;
+                    player.Value.Losses++;
+                }
+            }
         }
 
         private void ShowGameResults()

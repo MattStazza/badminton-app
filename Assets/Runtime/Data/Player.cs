@@ -85,7 +85,13 @@ namespace Runtime.Data
             get { return deuceLosses; }
             set { deuceLosses = value; }
         }
+
+
+
+        public int CalculatePlayerScore()
+        {
+            int score = (wins * 3) + (deuceWins * 2) + deuceLosses;
+            return score;
+        }
     }
 }
-
-

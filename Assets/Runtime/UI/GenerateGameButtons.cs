@@ -9,11 +9,9 @@ namespace Runtime.UI
     public class GenerateGameButtons : MonoBehaviour
     {
         [SerializeField] private GameObject gameButtonPrefab;
-        [SerializeField] private int numberOfGamesToGenerate;
+        [SerializeField] private int numberOfGamesToGenerate;   // TODO: Make this customisable on the Setup Page with a slider?
         [Space]
         [SerializeField] private GameObject buttons;
-        //[SerializeField] private RectTransform contentRectTransform;
-        //[SerializeField] private VerticalLayoutGroup contentVerticalLayout;
 
         private List<GameButton> gameButtons = new List<GameButton>();
 
@@ -45,19 +43,6 @@ namespace Runtime.UI
             SpawnGameButton(gameButtons.Count);
         }
 
-/*        public void UpdateContentHeight()
-        {
-            float allGameButtonsHeight = 0;
-
-            foreach (GameButton gameButton in gameButtons)
-                allGameButtonsHeight = allGameButtonsHeight + gameButton.gameObject.GetComponent<RectTransform>().sizeDelta.y;
-
-            float contentHeight = allGameButtonsHeight + (contentVerticalLayout.spacing * gameButtons.Count);
-
-            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentHeight);
-
-            RefreshContentLayout();
-        }*/
 
         private void SpawnGameButton(int gameNumber)
         {
@@ -68,9 +53,6 @@ namespace Runtime.UI
             UpdateGameButtonWithSessionData(gameButtonController, gameNumber);
 
             buttons.transform.SetAsLastSibling();
-
-            //UpdateContentHeight();
-            //RefreshContentLayout();
         }
 
         private void UpdateGameButtonWithSessionData(GameButton gameButton ,int gameNumber)
@@ -94,11 +76,6 @@ namespace Runtime.UI
             gameButton.SetTeams(playerOne, playerTwo, playerThree, playerFour);
         }
 
-/*        private void RefreshContentLayout()
-        {
-            contentVerticalLayout.enabled = false;
-            contentVerticalLayout.enabled = true;
-        }*/
 
         private void ValidateRequiredVariables()
         {
