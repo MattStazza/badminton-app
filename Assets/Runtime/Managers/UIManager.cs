@@ -10,6 +10,7 @@ namespace Runtime.Managers
         [SerializeField] private GameObject gamesPage;
         [SerializeField] private GameObject scoringPage;
         [SerializeField] private GameObject gameResultsPage;
+        [SerializeField] private GameObject sessionResultsPage;
         [Space]
         [SerializeField] private GameObject popupMessage;
         [SerializeField] private GameObject notEnoughPlayersWarning;
@@ -55,6 +56,11 @@ namespace Runtime.Managers
             HideAllPages();
             gameResultsPage.SetActive(true);
         }
+        public void ShowSessionResultsPage()
+        {
+            HideAllPages();
+            sessionResultsPage.SetActive(true);
+        }
 
         private void HideAllPages()
         {
@@ -64,6 +70,7 @@ namespace Runtime.Managers
             gamesPage.SetActive(false);
             scoringPage.SetActive(false);
             gameResultsPage.SetActive(false);
+            sessionResultsPage.SetActive(false);
         }
 
         private void ValidateRequiredVariables()
@@ -74,6 +81,7 @@ namespace Runtime.Managers
             if (gamesPage == null) { Debug.LogError("Null References: " + gamesPage.name); }
             if (scoringPage == null) { Debug.LogError("Null References: " + scoringPage.name); }
             if (gameResultsPage == null) { Debug.LogError("Null References: " + gameResultsPage.name); }
+            if (sessionResultsPage == null) { Debug.LogError("Null References: " + sessionResultsPage.name); }
             if (popupMessage == null) { Debug.LogError("Null References: " + popupMessage.name); }
             if (notEnoughPlayersWarning == null) { Debug.LogError("Null References: " + notEnoughPlayersWarning.name); }
         }

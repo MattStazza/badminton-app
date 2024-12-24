@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 800722757700895721}
   - component: {fileID: 800722757700895724}
   - component: {fileID: 218481539240507405}
+  - component: {fileID: 8969766042272542212}
   m_Layer: 5
   m_Name: Popup Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &800722757700895720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800722757700895723}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -69,8 +70,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Popup Message!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6460ce0b5536cda46839f837a4f2c943, type: 2}
+  m_sharedMaterial: {fileID: -8755443212031052400, guid: 6460ce0b5536cda46839f837a4f2c943,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -149,4 +151,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: {fileID: 800722757700895724}
-  duration: 1
+  moveAnimation: {fileID: 8969766042272542212}
+--- !u!114 &8969766042272542212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800722757700895723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163f57f210ee13f4e8e554facbd13f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 250
+  moveDirection: {x: 0, y: -1, z: 0}
+  moveTime: 0.25
+  returnToOriginalPosition: 1
+  stayTime: 2
