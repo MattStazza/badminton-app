@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FINISH
+  m_text: RESULTS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6460ce0b5536cda46839f837a4f2c943, type: 2}
   m_sharedMaterial: {fileID: -8755443212031052400, guid: 6460ce0b5536cda46839f837a4f2c943,
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 64445933774378006}
   - component: {fileID: 6579152722720207868}
   m_Layer: 5
-  m_Name: Finish Button
+  m_Name: Results Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
