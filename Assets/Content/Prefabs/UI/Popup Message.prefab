@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &800722757700895720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163f57f210ee13f4e8e554facbd13f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDistance: 250
+  moveDistance: 150
   moveDirection: {x: 0, y: -1, z: 0}
   moveTime: 0.25
   returnToOriginalPosition: 1
