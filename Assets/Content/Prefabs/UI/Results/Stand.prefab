@@ -76,8 +76,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281512701
-  m_fontColor: {r: 0.9921569, g: 0.69803923, b: 0.19607845, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -145,6 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6044134092600518985}
+  - component: {fileID: 8771770376434386038}
   - component: {fileID: 2266434992235625114}
   - component: {fileID: 570832162283544640}
   m_Layer: 5
@@ -177,6 +178,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &8771770376434386038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112269066379837259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5397427ac3678f140acfe8175d6fab94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  number: {fileID: 6732099551149285673}
+  playerOnStand: {fileID: 989979646274430090}
+  standImage: {fileID: 570832162283544640}
+  platformImage: {fileID: 5392386391494489181}
+  rectTransform: {fileID: 6044134092600518985}
+  firstColor: {r: 1, g: 0.8865862, b: 0, a: 1}
+  secondColor: {r: 0.7254902, g: 0.7254902, b: 0.7254902, a: 1}
+  thirdColor: {r: 0.81960785, g: 0.49411765, b: 0, a: 1}
 --- !u!222 &2266434992235625114
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -466,6 +488,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9570d556127fc41adc583c97f5b1e1, type: 3}
+--- !u!114 &989979646274430090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 797975281895621540, guid: 0e9570d556127fc41adc583c97f5b1e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 481858173773522734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d79d27281a2e1458ace1b35384a36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7664066712323896292 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7850859802763039946, guid: 0e9570d556127fc41adc583c97f5b1e1,

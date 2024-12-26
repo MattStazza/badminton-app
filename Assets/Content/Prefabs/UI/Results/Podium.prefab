@@ -54,6 +54,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9293d2b3a3184e469aba7478e0b0ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: 3
+  middlePodiumStand: {fileID: 7545241349813673229}
+  leftPodiumStand: {fileID: 4624394261878067157}
+  rightPodiumStand: {fileID: 4712017756658592360}
 --- !u!222 &2779343378502761386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -208,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 5112269066379837259, guid: dbd562209d5c36b4ba7d0e226ae441e9,
         type: 3}
       propertyPath: m_Name
-      value: 1st Stand
+      value: Middle Stand
       objectReference: {fileID: 0}
     - target: {fileID: 6044134092600518985, guid: dbd562209d5c36b4ba7d0e226ae441e9,
         type: 3}
@@ -323,6 +327,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1228783025459894651}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7545241349813673229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8771770376434386038, guid: dbd562209d5c36b4ba7d0e226ae441e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1228783025459894651}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5397427ac3678f140acfe8175d6fab94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4098246530465361438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 5112269066379837259, guid: dbd562209d5c36b4ba7d0e226ae441e9,
         type: 3}
       propertyPath: m_Name
-      value: 3rd Stand
+      value: Right Stand
       objectReference: {fileID: 0}
     - target: {fileID: 6044134092600518985, guid: dbd562209d5c36b4ba7d0e226ae441e9,
         type: 3}
@@ -440,8 +456,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8771770376434386038, guid: dbd562209d5c36b4ba7d0e226ae441e9,
+        type: 3}
+      propertyPath: level
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbd562209d5c36b4ba7d0e226ae441e9, type: 3}
+--- !u!114 &4712017756658592360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8771770376434386038, guid: dbd562209d5c36b4ba7d0e226ae441e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4098246530465361438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5397427ac3678f140acfe8175d6fab94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7727884965439162199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6044134092600518985, guid: dbd562209d5c36b4ba7d0e226ae441e9,
@@ -458,7 +491,7 @@ PrefabInstance:
     - target: {fileID: 5112269066379837259, guid: dbd562209d5c36b4ba7d0e226ae441e9,
         type: 3}
       propertyPath: m_Name
-      value: 2nd Stand
+      value: Left Stand
       objectReference: {fileID: 0}
     - target: {fileID: 6044134092600518985, guid: dbd562209d5c36b4ba7d0e226ae441e9,
         type: 3}
@@ -565,8 +598,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8771770376434386038, guid: dbd562209d5c36b4ba7d0e226ae441e9,
+        type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbd562209d5c36b4ba7d0e226ae441e9, type: 3}
+--- !u!114 &4624394261878067157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8771770376434386038, guid: dbd562209d5c36b4ba7d0e226ae441e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4149698420555271075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5397427ac3678f140acfe8175d6fab94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7671780076362031850 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6044134092600518985, guid: dbd562209d5c36b4ba7d0e226ae441e9,
