@@ -20,6 +20,7 @@ namespace Runtime.UI
 
         private void OnEnable()
         {
+            // Hacky Fix to make sure player is visible
             canvas.overrideSorting = true;
             canvas.overrideSorting = false;
         }

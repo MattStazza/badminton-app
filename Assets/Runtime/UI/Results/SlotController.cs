@@ -42,6 +42,19 @@ namespace Runtime.UI.Results
             }
         }
 
+        public int GetSlotGames()
+        {
+            if (int.TryParse(gamesPlayed.text, out int result))
+            {
+                return result;
+            }
+            else
+            {
+                Debug.LogWarning("Text is not a valid integer: " + gamesPlayed.text);
+                return -1;
+            }
+        }
+
         private void ValidateRequiredVariables()
         {
             if (playerButton == null) { Debug.LogError("Null References: " + playerButton.name); }

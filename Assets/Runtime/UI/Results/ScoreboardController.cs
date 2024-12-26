@@ -40,11 +40,14 @@ namespace Runtime.UI.Results
 
         private void OrderSlots()
         {
-            var orderedSlots = slots.OrderByDescending(slot => slot.GetSlotScore()).ToList();
+            var orderedSlots = slots
+                .OrderByDescending(slot => slot.GetSlotScore()) 
+                .ThenBy(slot => slot.GetSlotGames())            
+                .ToList();
 
             for (int i = 0; i < orderedSlots.Count; i++)
             {
-                orderedSlots[i].transform.SetSiblingIndex(i); 
+                orderedSlots[i].transform.SetSiblingIndex(i);
             }
 
             title.transform.SetSiblingIndex(0);

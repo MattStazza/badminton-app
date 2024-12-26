@@ -75,39 +75,36 @@ namespace Runtime.UI.Results
 
         private void GetTopThreePlayers(List<Player> players)
         {
-            topTheePlayers = allPlayers
-                .OrderByDescending(player => player.Score())   
-                .ThenBy(player => player.GamesPlayed)          
+            topTheePlayers = players
+                .OrderByDescending(player => player.Score())
+                .ThenBy(player => player.GamesPlayed)
                 .Take(3)                                       
                 .ToList();
         }
 
         private PodiumConfiguration DeterminePodiumConfiguration()
         {
-            // Ensure we have exactly 3 players
             if (topTheePlayers.Count < 3)
             {
                 Debug.LogWarning("Not enough players to determine podium configuration.");
                 return PodiumConfiguration.FirstSecondThird;
             }
 
-            // Check for ties
             bool firstPlaceTie = topTheePlayers[0].Score() == topTheePlayers[1].Score();
             bool secondPlaceTie = topTheePlayers[1].Score() == topTheePlayers[2].Score();
 
-            // FirstFirstSecond: A tie for first, and a clear third place
-            if (firstPlaceTie && !secondPlaceTie)
-                return PodiumConfiguration.FirstFirstSecond;
+            bool firstPlaceTieEqualGames = topTheePlayers[0].GamesPlayed == topTheePlayers[1].GamesPlayed;
+            bool secondPlaceTieEqualGames = topTheePlayers[1].GamesPlayed == topTheePlayers[2].GamesPlayed;
 
-            // FirstSecondSecond: A clear first, and a tie for second
-            if (!firstPlaceTie && secondPlaceTie)
-                return PodiumConfiguration.FirstSecondSecond;
+            if (firstPlaceTie && secondPlaceTie && firstPlaceTieEqualGames && secondPlaceTieEqualGames) return PodiumConfiguration.FirstFirstFirst;
+            if (firstPlaceTie && secondPlaceTie && firstPlaceTieEqualGames && !secondPlaceTieEqualGames) return PodiumConfiguration.FirstFirstSecond;
+            if (firstPlaceTie && firstPlaceTieEqualGames && !secondPlaceTie) return PodiumConfiguration.FirstFirstSecond;
+            if (firstPlaceTie && secondPlaceTie && !firstPlaceTieEqualGames && secondPlaceTieEqualGames) return PodiumConfiguration.FirstSecondSecond;
+            if (!firstPlaceTie && secondPlaceTie && secondPlaceTieEqualGames) return PodiumConfiguration.FirstSecondSecond;        
+            if (firstPlaceTie && !firstPlaceTieEqualGames && !secondPlaceTie) return PodiumConfiguration.FirstSecondThird;
+            if (!firstPlaceTie && secondPlaceTie && !secondPlaceTieEqualGames) return PodiumConfiguration.FirstSecondThird;
 
-            // FirstFirstFirst: All three have the same score
-            if (firstPlaceTie && secondPlaceTie)
-                return PodiumConfiguration.FirstFirstFirst;
 
-            // Default: First, Second, Third (no ties)
             return PodiumConfiguration.FirstSecondThird;
         }
 
