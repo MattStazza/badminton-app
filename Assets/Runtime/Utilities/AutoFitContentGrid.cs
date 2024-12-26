@@ -12,7 +12,7 @@ namespace Runtime.Utilities
 
         private void Awake() => ValidateRequiredVariables();
 
-
+        
 
         private void OnEnable() => UpdateContentHeight();
 

@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 3647749935321432009}
   - component: {fileID: 1777432810}
   - component: {fileID: 6206684794981947970}
+  - component: {fileID: 7332663532120674384}
   m_Layer: 5
   m_Name: Content - Generate Player Buttons
   m_TagString: Untagged
@@ -469,7 +470,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 200, y: 200}
@@ -506,6 +507,20 @@ MonoBehaviour:
   players: {fileID: 0}
   playerButtonPrefab: {fileID: 150068715645880842, guid: 3552264266a472a4b819bc74dbfd366b,
     type: 3}
+--- !u!114 &7332663532120674384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206684794981947969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e536198e0e277ef4ba6f8d28e832f464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentRectTransform: {fileID: 8111055319351712543}
+  gridLayout: {fileID: 3647749935321432009}
 --- !u!1 &6213402773782120543
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8479112264387959912
 RectTransform:
   m_ObjectHideFlags: 0

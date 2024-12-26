@@ -1,3 +1,4 @@
+using Runtime.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,9 +14,13 @@ namespace Runtime.UI
 
         private void Awake() => ValidateRequiredVariables();
 
-        private void OnEnable() => ToggleStartButtonInteractable(false);
+        private void OnEnable() => SetupPage();
 
-        public void SetTitle(string text) => title.text = text;
+        private void SetupPage()
+        {
+            title.text = "GAME #" + Session.CurrentGame.Number.ToString();
+            ToggleStartButtonInteractable(false);
+        }
 
         public void ToggleStartButtonInteractable(bool interactable)
         {
