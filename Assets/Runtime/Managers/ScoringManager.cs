@@ -63,6 +63,7 @@ namespace Runtime.Managers
         public void StartGameButton()
         {
             uIManager.ShowScoringPage();
+            timer.ResetTimer();
             scoringPage.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
             badmintonCourt.ToggleAllPlayerColliders(false);
             SaveRound();
@@ -122,15 +123,29 @@ namespace Runtime.Managers
 
 
 
+        
+
+
+        public void ShowGameResults()
+        {
+            if (!Session.CurrentGame.Complete)
+            {
+                Session.CurrentGame.Duration = timer.GetFormatTime();
+                timer.StopTimer();
+            }
+
+            uIManager.ShowGameResultsPage();
+            badmintonCourt.ToggleBadmintonCourt(false);
+        }
+
         public void CompleteGame()
         {
-            Session.CurrentGame.Complete = true;
-            Session.CurrentGame.Duration = timer.GetFormatTime();
-
-            currentGameButton.ToggleGamePlayed(Session.CurrentGame.Complete);
+            if (Session.CurrentGame.Complete) return;
 
             UpdatePlayerStats();
-            ShowGameResults();
+            Session.CurrentGame.Complete = true;
+            Session.CurrentGame.Duration = timer.GetFormatTime();
+            currentGameButton.ToggleGamePlayed(Session.CurrentGame.Complete);
         }
 
 
@@ -180,14 +195,6 @@ namespace Runtime.Managers
             }
         }
 
-        private void ShowGameResults()
-        {
-            uIManager.ShowGameResultsPage();
-            badmintonCourt.ToggleBadmintonCourt(false);
-        }
-
-
-
         private void CheckGameProgress()
         {
             if (Session.CurrentGame.ScoreA == 20 || Session.CurrentGame.ScoreB == 20)
@@ -200,10 +207,10 @@ namespace Runtime.Managers
             {
                 // Win!
                 if (Session.CurrentGame.ScoreA >= Session.CurrentGame.ScoreB + 2)
-                { CompleteGame(); return; } // Team A Wins
+                { ShowGameResults(); return; } // Team A Wins
 
                 if (Session.CurrentGame.ScoreB >= Session.CurrentGame.ScoreA + 2)
-                { CompleteGame(); return; }  // Team B Wins
+                { ShowGameResults(); return; }  // Team B Wins
 
                 // Advantage
                 if (Session.CurrentGame.ScoreA >= Session.CurrentGame.ScoreB + 1)

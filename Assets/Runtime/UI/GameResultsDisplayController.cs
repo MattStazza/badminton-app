@@ -13,6 +13,7 @@ namespace Runtime.UI
         [SerializeField] private TextMeshProUGUI scoreA;
         [SerializeField] private TextMeshProUGUI scoreB;
         [SerializeField] private TextMeshProUGUI gameDuration;
+        [SerializeField] private GameObject backButton;
         [Space]
         [Header ("Players")]
         [SerializeField] private PlayerButton player1Button;
@@ -38,6 +39,7 @@ namespace Runtime.UI
             DisplayDuration();
             DisplayPlayers();
             DisplayScoreIcons();
+            DisplayBackButton();
         }
 
         private void DisplayTitle()
@@ -89,6 +91,11 @@ namespace Runtime.UI
             score4.DisplayScoreIcon(!teamAWon, duece);
         }
 
+        private void DisplayBackButton()
+        {
+            backButton.SetActive(!Session.CurrentGame.Complete);
+        }
+
 
         private void ValidateRequiredVariables()
         {
@@ -96,6 +103,7 @@ namespace Runtime.UI
             if (scoreA == null) { Debug.LogError("Null References: " + scoreA.name); }
             if (scoreB == null) { Debug.LogError("Null References: " + scoreB.name); }
             if (gameDuration == null) { Debug.LogError("Null References: " + gameDuration.name); }
+            if (backButton == null) { Debug.LogError("Null References: " + backButton.name); }
             if (player1Button == null) { Debug.LogError("Null References: " + player1Button.name); }
             if (player2Button == null) { Debug.LogError("Null References: " + player2Button.name); }
             if (player3Button == null) { Debug.LogError("Null References: " + player3Button.name); }

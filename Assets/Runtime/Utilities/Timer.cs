@@ -14,7 +14,9 @@ public class Timer : MonoBehaviour
     private void OnEnable() => StartTimer();
 
 
-    public void StartTimer()
+    public void StartTimer() => isRunning = true;
+
+    public void ResetTimer()
     {
         isRunning = true;
         timer = 0f;
