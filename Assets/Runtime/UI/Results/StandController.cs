@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Runtime.Data;
 
 namespace Runtime.UI.Results
 {
@@ -28,7 +29,7 @@ namespace Runtime.UI.Results
         private void Awake() => ValidateRequiredVariables();
 
 
-        public void SetupStand(StandLevel level)
+        public void SetupStand(StandLevel level, Player player)
         {
             switch (level)
             {
@@ -57,6 +58,14 @@ namespace Runtime.UI.Results
                     Debug.LogWarning("Unsupported StandLevel: " + level);
                     break;
             }
+
+            DisplayPlayerOnStand(player);
+        }
+
+        private void DisplayPlayerOnStand(Player player)
+        {
+            playerOnStand.SetPlayerData(player);
+            playerOnStand.ToggleCollider(false);            
         }
 
         private Color SetAlpha(Color color, float alpha)

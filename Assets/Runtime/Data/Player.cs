@@ -86,9 +86,7 @@ namespace Runtime.Data
             set { deuceLosses = value; }
         }
 
-
-
-        public int CalculatePlayerScore()
+        public int Score()
         {
             int score = (wins * 3) + (deuceWins * 2) + deuceLosses;
             return score;

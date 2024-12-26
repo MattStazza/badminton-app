@@ -123,7 +123,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2703322400734584556}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &3720932304164194529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3322105803329542021}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &6063355222557511240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +349,7 @@ MonoBehaviour:
   playerName: {fileID: 3720932304164194529}
   playerImage: {fileID: 6063355222557511240}
   playerCollider: {fileID: 4770978776806369373}
+  canvas: {fileID: 7923951432059893590}
 --- !u!114 &4463852751463544677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +383,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &4251334083869377596
 MonoBehaviour:

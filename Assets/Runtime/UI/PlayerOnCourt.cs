@@ -12,10 +12,17 @@ namespace Runtime.UI
         [SerializeField] private TextMeshProUGUI playerName;
         [SerializeField] private Image playerImage;
         [SerializeField] private Collider playerCollider;
+        [SerializeField] private Canvas canvas;
 
         private Player playerData;
 
         private void Awake() => ValidateRequiredVariables();
+
+        private void OnEnable()
+        {
+            canvas.overrideSorting = true;
+            canvas.overrideSorting = false;
+        }
 
         public Player Data() { return playerData; }
 
@@ -36,6 +43,7 @@ namespace Runtime.UI
             if (playerName == null) { Debug.LogError("Null References: " + playerName.name); }
             if (playerImage == null) { Debug.LogError("Null References: " + playerImage.name); }
             if (playerCollider == null) { Debug.LogError("Null References: " + playerCollider.name); }
+            if (canvas == null) { Debug.LogError("Null References: " + canvas.name); }
         }
     }
 }

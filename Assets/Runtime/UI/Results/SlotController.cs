@@ -24,7 +24,7 @@ namespace Runtime.UI.Results
             playerButton.UpdatePlayerButtonDisplay(playerData);
             playerButton.ToggleButtonInteractive(false);
 
-            score.text = player.CalculatePlayerScore().ToString();
+            score.text = player.Score().ToString();
             gamesPlayed.text = player.GamesPlayed.ToString();
 
         }
