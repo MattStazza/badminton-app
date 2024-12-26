@@ -45,10 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109baad799c875e498d65f7973505c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePage: {fileID: 0}
   badmintonCourt: {fileID: 7976798514821644936}
   serviceIndicator: {fileID: 2031916912315926014}
-  selectServerMessage: {fileID: 0}
-  startButton: {fileID: 0}
   player1: {fileID: 2901873463861387882}
   player2: {fileID: 7932313770422577456}
   player3: {fileID: 1603207961052986981}

@@ -39,7 +39,7 @@ namespace Runtime.Managers
             games = PrioritizeGamesPerPlayer(games, players);
             Session.Games = games;
 
-            uIManager.ShowGamesPage();
+            uIManager.ShowAllGamesPage();
         }
 
 

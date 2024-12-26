@@ -10,8 +10,8 @@ namespace Runtime.Managers
         [SerializeField] private UIManager uIManager;
         [SerializeField] private BadmintonCourtManager badmintonCourt;
         [Space]
-        [SerializeField] private ScoreDisplayController scoreDisplay;
-        [SerializeField] private GenerateGameButtons gameButtonsDisplay;
+        [SerializeField] private GameSetupController gamePage;
+        [SerializeField] private ScoreDisplayController scoringPage;
         [SerializeField] private PopupMessage popupMessage;
         [SerializeField] private Timer timer;
 
@@ -31,12 +31,13 @@ namespace Runtime.Managers
             }
 
             uIManager.ShowScoringPage();
-            scoreDisplay.SetTitle("GAME #" + Session.CurrentGame.Number.ToString());
-            scoreDisplay.DisplayGamePreview();
+
+            gamePage.SetTitle("GAME #" + Session.CurrentGame.Number.ToString());
+            uIManager.ShowGamePage();
+
             badmintonCourt.ToggleBadmintonCourt(true);
             badmintonCourt.SetupPlayersOnCourt(Session.CurrentGame);
             badmintonCourt.ToggleAllPlayerColliders(true);
-            badmintonCourt.ToggleServiceSelectionPrompt(true);
             badmintonCourt.ToggleServiceIndicatorVisible(false);
 
             rounds = new List<Round>();
@@ -44,7 +45,7 @@ namespace Runtime.Managers
 
         public void BackButton()
         {
-            uIManager.ShowGamesPage();
+            uIManager.ShowAllGamesPage();
             badmintonCourt.ToggleBadmintonCourt(false);
             
         }
@@ -61,8 +62,8 @@ namespace Runtime.Managers
 
         public void StartGameButton()
         {
-            scoreDisplay.DisplayGameScoring();
-            scoreDisplay.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
+            uIManager.ShowScoringPage();
+            scoringPage.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
             badmintonCourt.ToggleAllPlayerColliders(false);
             SaveRound();
         }
@@ -79,7 +80,7 @@ namespace Runtime.Managers
             else
                 Session.CurrentGame.ScoreB = Session.CurrentGame.ScoreB + 1;
 
-            scoreDisplay.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
+            scoringPage.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
 
             CheckGameProgress();
 
@@ -91,7 +92,13 @@ namespace Runtime.Managers
         {
             if (rounds.Count == 1)
             {
-                Debug.Log("Can't go back any more");
+                uIManager.ShowGamePage();
+                badmintonCourt.ToggleServiceIndicatorVisible(false);
+                badmintonCourt.ToggleAllPlayerColliders(true);
+
+                rounds.Clear();
+                Session.CurrentGame.Rounds = rounds;
+
                 return;
             }
 
@@ -105,7 +112,7 @@ namespace Runtime.Managers
             Session.CurrentGame.ScoreA = rounds[rounds.Count - 1].ScoreA;
             Session.CurrentGame.ScoreB = rounds[rounds.Count - 1].ScoreB;
 
-            scoreDisplay.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
+            scoringPage.UpdateScoreDisplay(Session.CurrentGame.ScoreA, Session.CurrentGame.ScoreB);
 
             if (rounds.Count == 1)
                 badmintonCourt.UpdateServerAfterPoint(Session.CurrentGame, rounds[0]);
@@ -125,6 +132,8 @@ namespace Runtime.Managers
             UpdatePlayerStats();
             ShowGameResults();
         }
+
+
 
         private void UpdatePlayerStats()
         {
@@ -228,9 +237,9 @@ namespace Runtime.Managers
         {
             if (uIManager == null) { Debug.LogError("Null References: " + uIManager.name); }
             if (badmintonCourt == null) { Debug.LogError("Null References: " + badmintonCourt.name); }
-            if (scoreDisplay == null) { Debug.LogError("Null References: " + scoreDisplay.name); }
+            if (scoringPage == null) { Debug.LogError("Null References: " + scoringPage.name); }
+            if (gamePage == null) { Debug.LogError("Null References: " + gamePage.name); }
             if (timer == null) { Debug.LogError("Null References: " + timer.name); }
-            if (gameButtonsDisplay == null) { Debug.LogError("Null References: " + gameButtonsDisplay.name); }
             if (popupMessage == null) { Debug.LogError("Null References: " + popupMessage.name); }
         }
     }

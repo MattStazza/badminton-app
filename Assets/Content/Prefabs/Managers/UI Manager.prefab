@@ -47,7 +47,8 @@ MonoBehaviour:
   homePage: {fileID: 0}
   setupPage: {fileID: 0}
   playersPage: {fileID: 0}
-  gamesPage: {fileID: 0}
+  allGamesPage: {fileID: 0}
+  gamePage: {fileID: 0}
   scoringPage: {fileID: 0}
   gameResultsPage: {fileID: 0}
   sessionResultsPage: {fileID: 0}

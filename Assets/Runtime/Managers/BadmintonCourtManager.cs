@@ -9,11 +9,9 @@ namespace Runtime.Managers
 {
     public class BadmintonCourtManager : MonoBehaviour
     {
+        [SerializeField] private GameSetupController gamePage;
         [SerializeField] private GameObject badmintonCourt;
         [SerializeField] private GameObject serviceIndicator;
-        [Space]
-        [SerializeField] private GameObject selectServerMessage;
-        [SerializeField] private Button startButton;
         [Space]
         [Header("Team A")]
         [SerializeField] private PlayerOnCourt player1;
@@ -39,7 +37,6 @@ namespace Runtime.Managers
             CachePlayerInitialPositions();
             ToggleBadmintonCourt(false);
             ToggleAllPlayerColliders(false);
-            ToggleServiceSelectionPrompt(false);
             ToggleServiceIndicatorVisible(false);
         }
 
@@ -52,11 +49,6 @@ namespace Runtime.Managers
             player2.ToggleCollider(active);
             player3.ToggleCollider(active);
             player4.ToggleCollider(active);
-        }
-        public void ToggleServiceSelectionPrompt(bool active)
-        {
-            selectServerMessage.SetActive(active);
-            startButton.interactable = !active;
         }
 
         public void SetupPlayersOnCourt(Game game)
@@ -99,7 +91,7 @@ namespace Runtime.Managers
         {
             if (playersMoving) return;
 
-            ToggleServiceSelectionPrompt(false);
+            gamePage.ToggleStartButtonInteractable(true);
 
             bool isTeamA = (player == player1 || player == player2);
             teamAServedLast = isTeamA;
@@ -224,8 +216,7 @@ namespace Runtime.Managers
         {
             if (badmintonCourt == null) { Debug.LogError("Null References: " + badmintonCourt.name); }
             if (serviceIndicator == null) { Debug.LogError("Null References: " + serviceIndicator.name); }
-            if (selectServerMessage == null) { Debug.LogError("Null References: " + selectServerMessage.name); }
-            if (startButton == null) { Debug.LogError("Null References: " + startButton.gameObject.name); }
+            if (gamePage == null) { Debug.LogError("Null References: " + gamePage.name); }
             if (player1 == null) { Debug.LogError("Null References: " + player1.name); }
             if (player2 == null) { Debug.LogError("Null References: " + player2.name); }
             if (player3 == null) { Debug.LogError("Null References: " + player3.name); }

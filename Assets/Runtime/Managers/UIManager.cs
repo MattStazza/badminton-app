@@ -7,7 +7,8 @@ namespace Runtime.Managers
         [SerializeField] private GameObject homePage;
         [SerializeField] private GameObject setupPage;
         [SerializeField] private GameObject playersPage;
-        [SerializeField] private GameObject gamesPage;
+        [SerializeField] private GameObject allGamesPage;
+        [SerializeField] private GameObject gamePage;
         [SerializeField] private GameObject scoringPage;
         [SerializeField] private GameObject gameResultsPage;
         [SerializeField] private GameObject sessionResultsPage;
@@ -41,10 +42,15 @@ namespace Runtime.Managers
             playersPage.SetActive(true);
             notEnoughPlayersWarning.SetActive(false);
         }
-        public void ShowGamesPage()
+        public void ShowAllGamesPage()
         {
             HideAllPages();
-            gamesPage.SetActive(true);
+            allGamesPage.SetActive(true);
+        }
+        public void ShowGamePage()
+        {
+            HideAllPages();
+            gamePage.SetActive(true);
         }
         public void ShowScoringPage()
         {
@@ -67,7 +73,8 @@ namespace Runtime.Managers
             homePage.SetActive(false);
             setupPage.SetActive(false);
             playersPage.SetActive(false);
-            gamesPage.SetActive(false);
+            allGamesPage.SetActive(false);
+            gamePage.SetActive(false);
             scoringPage.SetActive(false);
             gameResultsPage.SetActive(false);
             sessionResultsPage.SetActive(false);
@@ -78,7 +85,8 @@ namespace Runtime.Managers
             if (homePage == null) { Debug.LogError("Null References: " + homePage.name); }
             if (setupPage == null) { Debug.LogError("Null References: " + setupPage.name); }
             if (playersPage == null) { Debug.LogError("Null References: " + playersPage.name); }
-            if (gamesPage == null) { Debug.LogError("Null References: " + gamesPage.name); }
+            if (allGamesPage == null) { Debug.LogError("Null References: " + allGamesPage.name); }
+            if (gamePage == null) { Debug.LogError("Null References: " + gamePage.name); }
             if (scoringPage == null) { Debug.LogError("Null References: " + scoringPage.name); }
             if (gameResultsPage == null) { Debug.LogError("Null References: " + gameResultsPage.name); }
             if (sessionResultsPage == null) { Debug.LogError("Null References: " + sessionResultsPage.name); }
