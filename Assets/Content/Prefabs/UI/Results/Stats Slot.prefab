@@ -411,6 +411,7 @@ MonoBehaviour:
   playerButton: {fileID: 7715933729933613634}
   score: {fileID: 3155058419189272392}
   gamesPlayed: {fileID: 7834925780598247330}
+  background: {fileID: 3777856603122378318}
 --- !u!222 &5472440656846974363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -620,6 +621,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 150068717101067974, guid: 3552264266a472a4b819bc74dbfd366b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1103449703756594446, guid: 3552264266a472a4b819bc74dbfd366b,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -653,6 +659,11 @@ PrefabInstance:
     - target: {fileID: 5754208257556388500, guid: 3552264266a472a4b819bc74dbfd366b,
         type: 3}
       propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155839655395430847, guid: 3552264266a472a4b819bc74dbfd366b,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Runtime.Data;
+using UnityEngine.UI;
 
 namespace Runtime.UI.Results
 {
@@ -9,6 +10,7 @@ namespace Runtime.UI.Results
         [SerializeField] private PlayerButton playerButton;
         [SerializeField] private TextMeshProUGUI score;
         [SerializeField] private TextMeshProUGUI gamesPlayed;
+        [SerializeField] private Image background;
 
         private void Awake() => ValidateRequiredVariables();
 
@@ -55,11 +57,17 @@ namespace Runtime.UI.Results
             }
         }
 
+        public void SetBackgroundColor(Color color)
+        {
+            background.color = color;
+        }
+
         private void ValidateRequiredVariables()
         {
             if (playerButton == null) { Debug.LogError("Null References: " + playerButton.name); }
             if (score == null) { Debug.LogError("Null References: " + score.name); }
             if (gamesPlayed == null) { Debug.LogError("Null References: " + gamesPlayed.name); }
+            if (background == null) { Debug.LogError("Null References: " + background.name); }
         }
     }
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 using Runtime.Data;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.UI;
 
 namespace Runtime.UI.Results
 {
@@ -28,6 +27,7 @@ namespace Runtime.UI.Results
                 SpawnPlayerSlot(player);
 
             OrderSlots();
+            ColorTopThreeSlots();
         }
 
         private void SpawnPlayerSlot(Player player)
@@ -45,18 +45,49 @@ namespace Runtime.UI.Results
                 .ThenBy(slot => slot.GetSlotGames())            
                 .ToList();
 
+            slots = orderedSlots;
+
             for (int i = 0; i < orderedSlots.Count; i++)
-            {
                 orderedSlots[i].transform.SetSiblingIndex(i);
-            }
 
             title.transform.SetSiblingIndex(0);
             information.transform.SetSiblingIndex(1);
+        }
 
-            // Color Top 3
-            transform.GetChild(2).transform.GetChild(0).GetComponent<Image>().color = firstColor;
-            transform.GetChild(3).transform.GetChild(0).GetComponent<Image>().color = secondColor;
-            transform.GetChild(4).transform.GetChild(0).GetComponent<Image>().color = thirdColor;
+        private void ColorTopThreeSlots()
+        {
+            TopThreeRanking ranking = Session.DetermineTopThreeRanking();
+
+            switch (ranking)
+            {
+                case TopThreeRanking.FirstFirstFirst:
+                    slots[0].SetBackgroundColor(firstColor);
+                    slots[1].SetBackgroundColor(firstColor);
+                    slots[2].SetBackgroundColor(firstColor);
+                    break;
+
+                case TopThreeRanking.FirstFirstSecond:
+                    slots[0].SetBackgroundColor(firstColor);
+                    slots[1].SetBackgroundColor(firstColor);
+                    slots[2].SetBackgroundColor(secondColor);
+                    break;
+
+                case TopThreeRanking.FirstSecondSecond:
+                    slots[0].SetBackgroundColor(firstColor);
+                    slots[1].SetBackgroundColor(secondColor);
+                    slots[2].SetBackgroundColor(secondColor);
+                    break;
+
+                case TopThreeRanking.FirstSecondThird:
+                    slots[0].SetBackgroundColor(firstColor);
+                    slots[1].SetBackgroundColor(secondColor);
+                    slots[2].SetBackgroundColor(thirdColor);
+                    break;
+
+                default:
+                    Debug.LogWarning("Unsupported TopThreeRanking: " + ranking);
+                    break;
+            }
         }
 
         private void ClearExistingSlots()
