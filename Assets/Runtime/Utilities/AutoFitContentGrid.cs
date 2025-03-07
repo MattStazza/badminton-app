@@ -26,7 +26,7 @@ namespace Runtime.Utilities
 
             if (gridLayout != null)
             {
-                contentHeight = (((gridLayout.spacing.y + gridLayout.cellSize.y) * transform.childCount) / 4) + gridLayout.cellSize.y;
+                contentHeight = (((gridLayout.spacing.y + gridLayout.cellSize.y) * gridLayout.transform.childCount) / 4) + gridLayout.cellSize.y;
             }
 
             contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentHeight);

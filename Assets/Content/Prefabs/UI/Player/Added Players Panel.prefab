@@ -35,11 +35,11 @@ RectTransform:
   m_Father: {fileID: 1380107919133370585}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 900, y: 1000}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &1380107918718542797
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.7903, y: -80.44568}
+  m_AnchoredPosition: {x: -13.7903, y: -80.4458}
   m_SizeDelta: {x: 900, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1380107919133370566
@@ -278,6 +278,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1380107918718542799}
     m_Modifications:
+    - target: {fileID: 150068715645880840, guid: 9d722aca25c90cf4db651195effee77f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowPlayersPage
+      objectReference: {fileID: 0}
     - target: {fileID: 150068715645880842, guid: 9d722aca25c90cf4db651195effee77f,
         type: 3}
       propertyPath: m_Name
