@@ -84,8 +84,8 @@ namespace Runtime.Managers
                             if (k != i && k != j && l != i && l != j) // Ensure players are not from Team A
                             {
                                 // Create pairs for the teams
-                                var pair1 = new Dictionary<Player, Player> { { players[i], players[j] } };
-                                var pair2 = new Dictionary<Player, Player> { { players[k], players[l] } };
+                                var pair1 = new List<Player> { players[i], players[j] };
+                                var pair2 = new List<Player> { players[k], players[l] };
 
                                 // Randomly assign Team A and Team B
                                 bool assignToTeamA = random.Next(0, 2) == 0;
@@ -94,8 +94,8 @@ namespace Runtime.Managers
                                 var teamB = assignToTeamA ? pair2 : pair1;
 
                                 // Create a unique identifier for the game
-                                string teamIdentifier = $"{teamA.Keys.First().Name},{teamA.Values.First().Name} vs {teamB.Keys.First().Name},{teamB.Values.First().Name}";
-                                string reverseIdentifier = $"{teamB.Keys.First().Name},{teamB.Values.First().Name} vs {teamA.Keys.First().Name},{teamA.Values.First().Name}";
+                                string teamIdentifier = $"{teamA[0].Name},{teamA[1].Name} vs {teamB[0].Name},{teamB[1].Name}";
+                                string reverseIdentifier = $"{teamB[0].Name},{teamB[1].Name} vs {teamA[0].Name},{teamA[1].Name}";
 
                                 // Check if the game is unique
                                 if (!uniqueGames.Contains(teamIdentifier) && !uniqueGames.Contains(reverseIdentifier))
@@ -125,7 +125,6 @@ namespace Runtime.Managers
             Dictionary<string, int> teamPairCount = new Dictionary<string, int>();
             HashSet<string> recentPairs = new HashSet<string>();
 
-
             string GetTeamKey(Player p1, Player p2)
             {
                 return string.Join(",", new List<string> { p1.Name, p2.Name }.OrderBy(name => name));
@@ -133,8 +132,8 @@ namespace Runtime.Managers
 
             foreach (var game in unorderedGames)
             {
-                string teamAKey = GetTeamKey(game.TeamA.Keys.First(), game.TeamA.Values.First());
-                string teamBKey = GetTeamKey(game.TeamB.Keys.First(), game.TeamB.Values.First());
+                string teamAKey = GetTeamKey(game.TeamA[0], game.TeamA[1]);
+                string teamBKey = GetTeamKey(game.TeamB[0], game.TeamB[1]);
 
                 teamPairCount[teamAKey] = 0;
                 teamPairCount[teamBKey] = 0;
@@ -142,8 +141,8 @@ namespace Runtime.Managers
 
             bool CanAddGame(Game game)
             {
-                string teamAKey = GetTeamKey(game.TeamA.Keys.First(), game.TeamA.Values.First());
-                string teamBKey = GetTeamKey(game.TeamB.Keys.First(), game.TeamB.Values.First());
+                string teamAKey = GetTeamKey(game.TeamA[0], game.TeamA[1]);
+                string teamBKey = GetTeamKey(game.TeamB[0], game.TeamB[1]);
 
                 if (recentPairs.Contains(teamAKey) || recentPairs.Contains(teamBKey))
                     return false;
@@ -166,8 +165,8 @@ namespace Runtime.Managers
                     {
                         balancedGames.Add(currentGame);
 
-                        string teamAKey = GetTeamKey(currentGame.TeamA.Keys.First(), currentGame.TeamA.Values.First());
-                        string teamBKey = GetTeamKey(currentGame.TeamB.Keys.First(), currentGame.TeamB.Values.First());
+                        string teamAKey = GetTeamKey(currentGame.TeamA[0], currentGame.TeamA[1]);
+                        string teamBKey = GetTeamKey(currentGame.TeamB[0], currentGame.TeamB[1]);
 
                         teamPairCount[teamAKey]++;
                         teamPairCount[teamBKey]++;
@@ -223,29 +222,25 @@ namespace Runtime.Managers
             return prioritizedGames;
         }
 
+        // Function to check if a game includes all given players
         private bool GameIncludesPlayers(Game game, List<Player> players)
         {
-            bool hasPlayers = false;
-            List<String> playerNames = new List<String>();
+            List<string> playerNames = new List<string>();
 
-            foreach (KeyValuePair<Player, Player> player in game.TeamA)
-            { playerNames.Add(player.Key.Name); playerNames.Add(player.Value.Name); }
-
-            foreach (KeyValuePair<Player, Player> player in game.TeamB)
-            { playerNames.Add(player.Key.Name); playerNames.Add(player.Value.Name); }
+            playerNames.Add(game.TeamA[0].Name);
+            playerNames.Add(game.TeamA[1].Name);
+            playerNames.Add(game.TeamB[0].Name);
+            playerNames.Add(game.TeamB[1].Name);
 
             foreach (Player player in players)
             {
-                if (playerNames.Contains(player.Name))
-                    hasPlayers = true;
-                else
+                if (!playerNames.Contains(player.Name))
                 {
-                    hasPlayers = false;
-                    break;
-                }                
+                    return false;
+                }
             }
 
-            return hasPlayers;
+            return true;
         }
 
         private void IncrementGamesAssigned(List<Player> players)

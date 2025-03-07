@@ -43,7 +43,7 @@ namespace Runtime.Managers
 
         public void SwapButton()
         {
-            Dictionary<Player, Player> team = Session.CurrentGame.TeamA; // Cache TeamA
+            List<Player> team = Session.CurrentGame.TeamA; // Cache TeamA
 
             Session.CurrentGame.TeamA = Session.CurrentGame.TeamB;
             Session.CurrentGame.TeamB = team;
@@ -113,10 +113,6 @@ namespace Runtime.Managers
         }
 
 
-
-        
-
-
         public void ShowGameResults()
         {
             if (!Session.CurrentGame.Complete)
@@ -145,6 +141,13 @@ namespace Runtime.Managers
         {
             var currentGame = Session.CurrentGame;
 
+            // Update Games Played
+            foreach (Player player in currentGame.TeamA)
+                player.GamesPlayed++;
+
+            foreach (Player player in currentGame.TeamB)
+                player.GamesPlayed++;
+
             // Determine winning and losing teams
             var winningTeam = currentGame.ScoreA > currentGame.ScoreB ? currentGame.TeamA : currentGame.TeamB;
             var losingTeam = currentGame.ScoreA > currentGame.ScoreB ? currentGame.TeamB : currentGame.TeamA;
@@ -152,38 +155,21 @@ namespace Runtime.Managers
             // Check for a deuce win
             bool isDeuceWin = Mathf.Max(currentGame.ScoreA, currentGame.ScoreB) > 21;
 
-            foreach (var player in Session.CurrentGame.TeamA) { player.Key.GamesPlayed++; player.Value.GamesPlayed++; }
-            foreach (var player in Session.CurrentGame.TeamB) { player.Key.GamesPlayed++; player.Value.GamesPlayed++; }
-
             // Update stats for the winning team
-            foreach (var player in winningTeam)
-            {
-                if (isDeuceWin)
-                {
-                    player.Key.DeuceWins++;
-                    player.Value.DeuceWins++;
-                }
-                else
-                {
-                    player.Key.Wins++;
-                    player.Value.Wins++;
-                }
-            }
+            if (isDeuceWin)
+                foreach (Player player in winningTeam)
+                    player.DeuceWins++;
+            else
+                foreach (Player player in winningTeam)
+                    player.Wins++;
 
             // Update stats for the losing team
-            foreach (var player in losingTeam)
-            {
-                if (isDeuceWin)
-                {
-                    player.Key.DeuceLosses++;
-                    player.Value.DeuceLosses++;
-                }
-                else
-                {
-                    player.Key.Losses++;
-                    player.Value.Losses++;
-                }
-            }
+            if (isDeuceWin)
+                foreach (Player player in losingTeam)
+                    player.DeuceLosses++;
+            else
+                foreach (Player player in losingTeam)
+                    player.Losses++;
         }
 
         private void CheckGameProgress()
@@ -220,11 +206,11 @@ namespace Runtime.Managers
                 ScoreB = Session.CurrentGame.ScoreB
             };
 
-            foreach (KeyValuePair<Player, Player> player in Session.CurrentGame.TeamA)
-            { round.Player2Position = player.Key.PositionOnCourt; round.Player1Position = player.Value.PositionOnCourt; }
+            round.Player1Position = Session.CurrentGame.TeamA[1].PositionOnCourt;
+            round.Player2Position = Session.CurrentGame.TeamA[0].PositionOnCourt;
 
-            foreach (KeyValuePair<Player, Player> player in Session.CurrentGame.TeamB)
-            { round.Player3Position = player.Key.PositionOnCourt; round.Player4Position = player.Value.PositionOnCourt; }
+            round.Player3Position = Session.CurrentGame.TeamB[0].PositionOnCourt;
+            round.Player4Position = Session.CurrentGame.TeamB[1].PositionOnCourt;
 
             rounds.Add(round);
             Session.CurrentGame.Rounds = rounds;

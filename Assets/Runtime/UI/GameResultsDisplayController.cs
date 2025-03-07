@@ -60,11 +60,11 @@ namespace Runtime.UI
 
         private void DisplayPlayers()
         {
-            foreach (KeyValuePair<Player, Player> player in Session.CurrentGame.TeamA)
-            { SetPlayer(player.Key, player1Button); SetPlayer(player.Value, player2Button); }
+            SetPlayer(Session.CurrentGame.TeamA[0], player1Button);
+            SetPlayer(Session.CurrentGame.TeamA[1], player2Button);
 
-            foreach (KeyValuePair<Player, Player> player in Session.CurrentGame.TeamB)
-            { SetPlayer(player.Key, player3Button); SetPlayer(player.Value, player4Button); }
+            SetPlayer(Session.CurrentGame.TeamB[0], player3Button);
+            SetPlayer(Session.CurrentGame.TeamB[1], player4Button);
         }
 
         private void SetPlayer(Player player, PlayerButton button)

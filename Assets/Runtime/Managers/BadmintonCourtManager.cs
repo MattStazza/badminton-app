@@ -52,37 +52,25 @@ namespace Runtime.Managers
         }
 
         public void SetupPlayersOnCourt(Game game)
-        {
-            Player player1Data = null;
-            Player player2Data = null;
-            Player player3Data = null;
-            Player player4Data = null;
-
-            foreach (KeyValuePair<Player, Player> player in game.TeamA)
-            {
-                player2Data = player.Key;
-                player.Value.PositionOnCourt = PlayerPosition.Left;
-                player2.transform.position = player2InitialPos;
-
-                player1Data = player.Value;
-                player.Key.PositionOnCourt = PlayerPosition.Right;
-                player1.transform.position = player1InitialPos;
-            }
-
-            foreach (KeyValuePair<Player, Player> player in game.TeamB)
-            {
-                player3Data = player.Key;
-                player.Key.PositionOnCourt = PlayerPosition.Left;
-                player3.transform.position = player3InitialPos;
-
-                player4Data = player.Value;
-                player.Value.PositionOnCourt = PlayerPosition.Right;
-                player4.transform.position = player4InitialPos;
-            }
-
+        {            
+            Player player1Data = game.TeamA[0];
+            player1Data.PositionOnCourt = PlayerPosition.Left;
+            player1.transform.position = player1InitialPos;
             player1.SetPlayerData(player1Data);
+
+            Player player2Data = game.TeamA[1];
+            player2Data.PositionOnCourt = PlayerPosition.Right;
+            player2.transform.position = player2InitialPos;
             player2.SetPlayerData(player2Data);
+
+            Player player3Data = game.TeamB[0];
+            player3Data.PositionOnCourt = PlayerPosition.Left;
+            player3.transform.position = player3InitialPos;
             player3.SetPlayerData(player3Data);
+
+            Player player4Data = game.TeamB[1];
+            player4Data.PositionOnCourt = PlayerPosition.Right;
+            player4.transform.position = player4InitialPos;    
             player4.SetPlayerData(player4Data);
         }
 

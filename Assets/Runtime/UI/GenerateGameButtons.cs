@@ -62,16 +62,11 @@ namespace Runtime.UI
             Session.Games[gameNumber].Number = gameNumber + 1;
             gameButton.SetGameNumber(Session.Games[gameNumber].Number);
 
-            Player playerOne = null;
-            Player playerTwo = null;
-            Player playerThree = null;
-            Player playerFour = null;
+            Player playerOne = Session.Games[gameNumber].TeamA[1];
+            Player playerTwo = Session.Games[gameNumber].TeamA[0];
 
-            foreach (KeyValuePair<Player, Player> player in Session.Games[gameNumber].TeamA)
-            { playerOne = player.Key; playerTwo = player.Value; }
-
-            foreach (KeyValuePair<Player, Player> player in Session.Games[gameNumber].TeamB)
-            { playerThree = player.Key; playerFour = player.Value; }
+            Player playerThree = Session.Games[gameNumber].TeamB[0];
+            Player playerFour = Session.Games[gameNumber].TeamB[1];
 
             gameButton.SetTeams(playerOne, playerTwo, playerThree, playerFour);
         }

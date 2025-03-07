@@ -8,9 +8,9 @@ namespace Runtime.Data
         private int number;
         private string duration;
         private List<Round> rounds;
-        private Dictionary<Player, Player> teamA = new Dictionary<Player, Player>();
+        private List<Player> teamA = new List<Player>(); //private Dictionary<Player, Player> teamA = new Dictionary<Player, Player>();
         private int scoreA;
-        private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
+        private List<Player> teamB = new List<Player>(); //private Dictionary<Player, Player> teamB = new Dictionary<Player, Player>();
         private int scoreB;
         private bool complete;
 
@@ -39,7 +39,7 @@ namespace Runtime.Data
             set { rounds = value; }
         }
 
-        public Dictionary<Player, Player> TeamA
+        public List<Player> TeamA
         {
             get { return teamA; }
             set { teamA = value; }
@@ -51,7 +51,7 @@ namespace Runtime.Data
             set { scoreA = value; }
         }
 
-        public Dictionary<Player, Player> TeamB
+        public List<Player> TeamB
         {
             get { return teamB; }
             set { teamB = value; }
