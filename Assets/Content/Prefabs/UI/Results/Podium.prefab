@@ -54,7 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9293d2b3a3184e469aba7478e0b0ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: 3
   middlePodiumStand: {fileID: 7545241349813673229}
   leftPodiumStand: {fileID: 4624394261878067157}
   rightPodiumStand: {fileID: 4712017756658592360}
@@ -317,6 +316,11 @@ PrefabInstance:
     - target: {fileID: 6044134092600518985, guid: dbd562209d5c36b4ba7d0e226ae441e9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735038654183313528, guid: dbd562209d5c36b4ba7d0e226ae441e9,
+        type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

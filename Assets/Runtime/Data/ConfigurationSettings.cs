@@ -13,7 +13,7 @@ namespace Runtime.Data
     public static class ConfigurationSettings
     {
         // Private Variables
-        private static ScoringMethod scoringMethod;
+        private static ScoringMethod scoringMethod = ScoringMethod.ScoreByPoints;
 
 
         // Public Functions
