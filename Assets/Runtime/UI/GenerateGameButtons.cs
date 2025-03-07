@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Runtime.Data;
-using UnityEngine.UI;
 
 namespace Runtime.UI
 {

@@ -12,37 +12,59 @@ namespace Runtime.UI
         [SerializeField] private Color winColor;
         [SerializeField] private Color lossColor;
         [Space]
-        [SerializeField] private int winScore;
-        [SerializeField] private int lossScore;
-        [SerializeField] private int dueceWinScore;
-        [SerializeField] private int dueceLossScore;
-        [Space]
         [SerializeField] private TextMeshProUGUI score;
         [SerializeField] private Image background;
 
+        private int WIN_SCORE = 3;
+        private int LOSS_SCORE = 0;
+        private int DUECE_WIN_SCORE = 2;
+        private int DUECE_LOSS_SCORE = 1;
+
         private void Awake() => ValidateRequiredVariables();
 
-        public void DisplayScoreIcon(bool win, bool duece)
+        public void DisplayScoreIcon(bool win, bool duece, int points)
         {
             SetColor(win);
 
-            if (duece)          
+            switch (ConfigurationSettings.ScoringMethod)
+            {
+                case ScoringMethod.ScoreByWins:
+                    DisplayScoreByWins(win, duece);
+                    break;
+
+                case ScoringMethod.ScoreByPoints:
+                    DisplayScoreByPoints(points);
+                    break;
+
+                default:
+                    Debug.LogWarning("Unsupported ScoringMethod");
+                    break;
+            }
+        }
+
+        private void DisplayScoreByPoints(int points)
+        {
+            score.text = "+" + points.ToString();
+        }
+
+        private void DisplayScoreByWins(bool win, bool duece)
+        {
+            if (duece)
             {
                 if (win)
-                    score.text = "+" + dueceWinScore.ToString();
+                    score.text = "+" + DUECE_WIN_SCORE.ToString();
                 else
-                    score.text = "+" + dueceLossScore.ToString();
+                    score.text = "+" + DUECE_LOSS_SCORE.ToString();
 
                 return;
             }
 
 
             if (win)
-                score.text = "+" + winScore.ToString();
+                score.text = "+" + WIN_SCORE.ToString();
             else
-                score.text = "+" + lossScore.ToString();
+                score.text = "+" + LOSS_SCORE.ToString();
         }
-
 
         private void SetColor(bool win)
         {

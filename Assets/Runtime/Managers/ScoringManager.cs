@@ -136,24 +136,29 @@ namespace Runtime.Managers
         }
 
 
-
         private void SavePlayerStats()
         {
-            var currentGame = Session.CurrentGame;
+            var completedGame = Session.CurrentGame;
 
-            // Update Games Played
-            foreach (Player player in currentGame.TeamA)
+            // Update Games Played & Points
+            foreach (Player player in completedGame.TeamA)
+            {
                 player.GamesPlayed++;
+                player.Points = player.Points + completedGame.ScoreA;
+            }
 
-            foreach (Player player in currentGame.TeamB)
+            foreach (Player player in completedGame.TeamB)
+            {
                 player.GamesPlayed++;
+                player.Points = player.Points + completedGame.ScoreB;
+            }
 
             // Determine winning and losing teams
-            var winningTeam = currentGame.ScoreA > currentGame.ScoreB ? currentGame.TeamA : currentGame.TeamB;
-            var losingTeam = currentGame.ScoreA > currentGame.ScoreB ? currentGame.TeamB : currentGame.TeamA;
+            var winningTeam = completedGame.ScoreA > completedGame.ScoreB ? completedGame.TeamA : completedGame.TeamB;
+            var losingTeam = completedGame.ScoreA > completedGame.ScoreB ? completedGame.TeamB : completedGame.TeamA;
 
             // Check for a deuce win
-            bool isDeuceWin = Mathf.Max(currentGame.ScoreA, currentGame.ScoreB) > 21;
+            bool isDeuceWin = Mathf.Max(completedGame.ScoreA, completedGame.ScoreB) > 21;
 
             // Update stats for the winning team
             if (isDeuceWin)

@@ -24,6 +24,7 @@ namespace Runtime.Data
         private int losses;
         private int deuceWins;
         private int deuceLosses;
+        private int points;
 
 
 
@@ -86,10 +87,35 @@ namespace Runtime.Data
             set { deuceLosses = value; }
         }
 
+        public int Points
+        {
+            get { return points; }
+            set { points = value; }
+        }
+
+
+
         public int Score()
         {
-            int score = (wins * 3) + (deuceWins * 2) + deuceLosses;
-            return score;
+            int score;
+
+            switch (ConfigurationSettings.ScoringMethod)
+            {
+                case ScoringMethod.ScoreByWins:
+                    score = (wins * 3) + (deuceWins * 2) + deuceLosses;
+                    break;
+
+                case ScoringMethod.ScoreByPoints:
+                    score = points;
+                    break;
+
+                default:
+                    Debug.LogWarning("Unsupported ScoringMethod");
+                    score = -1;
+                    break;
+            }
+
+            return score;          
         }
     }
 }

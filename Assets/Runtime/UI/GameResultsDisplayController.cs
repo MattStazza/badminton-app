@@ -85,10 +85,10 @@ namespace Runtime.UI
             bool teamAWon = Session.CurrentGame.ScoreA > Session.CurrentGame.ScoreB;
             bool duece = Session.CurrentGame.ScoreA > 21 || Session.CurrentGame.ScoreB > 21;
 
-            score1.DisplayScoreIcon(teamAWon, duece);
-            score2.DisplayScoreIcon(teamAWon, duece);
-            score3.DisplayScoreIcon(!teamAWon, duece);
-            score4.DisplayScoreIcon(!teamAWon, duece);
+            score1.DisplayScoreIcon(teamAWon, duece, Session.CurrentGame.ScoreA);
+            score2.DisplayScoreIcon(teamAWon, duece, Session.CurrentGame.ScoreA);
+            score3.DisplayScoreIcon(!teamAWon, duece, Session.CurrentGame.ScoreB);
+            score4.DisplayScoreIcon(!teamAWon, duece, Session.CurrentGame.ScoreB);
         }
 
         private void DisplayBackButton()

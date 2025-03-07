@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -50, y: -150}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3615137180927318102
 CanvasRenderer:
@@ -92,10 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winColor: {r: 0.003921569, g: 0.9921569, b: 0.5294118, a: 1}
   lossColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
-  winScore: 3
-  lossScore: 0
-  dueceWinScore: 2
-  dueceLossScore: 1
   score: {fileID: 9215956120026646732}
   background: {fileID: 3615137180927318097}
 --- !u!1 &5722794646519310366
@@ -192,8 +188,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
