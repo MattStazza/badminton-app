@@ -89,6 +89,9 @@ MonoBehaviour:
   - playerName: LIANAH
     profileTexture: {fileID: 21300000, guid: 9710e720f48709f4a88f8bc5e779a45a, type: 3}
     bodyTexture: {fileID: 21300000, guid: 12453986acc7e474ca993e61ca5fefd1, type: 3}
+  - playerName: HAMISH
+    profileTexture: {fileID: 21300000, guid: d0b85ef9995af4440bf778d2cff577b1, type: 3}
+    bodyTexture: {fileID: 21300000, guid: be3009905208fab44977747c38d9a095, type: 3}
   - playerName: FAITH
     profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
     bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
@@ -111,6 +114,12 @@ MonoBehaviour:
     profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
     bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
   - playerName: MEON
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
+  - playerName: LEWIS
+    profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
+    bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
+  - playerName: BEC
     profileTexture: {fileID: 21300000, guid: 907d838a4ded71a408bb9f6ea47d2a36, type: 3}
     bodyTexture: {fileID: 21300000, guid: 9e2fc0064675c024594f8496784d0768, type: 3}
   - playerName: GUEST 1
