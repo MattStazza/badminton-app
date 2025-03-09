@@ -72,6 +72,16 @@ namespace Runtime.Managers
             HideAllPages();
             hostPage.SetActive(true);
         }
+        public void ShowJoinPage()
+        {
+            HideAllPages();
+            joinPage.SetActive(true);
+        }
+        public void ShowLobbyPage()
+        {
+            HideAllPages();
+            lobbyPage.SetActive(true);
+        }
         public void ShowAllGamesPage()
         {
             HideAllPages();
@@ -107,8 +117,8 @@ namespace Runtime.Managers
             connectedPage.SetActive(false);
             //profilePage.SetActive(false);
             hostPage.SetActive(false);
-            /*joinPage.SetActive(false);
-            lobbyPage.SetActive(false);*/
+            joinPage.SetActive(false);
+            lobbyPage.SetActive(false);
             allGamesPage.SetActive(false);
             gamePage.SetActive(false);
             scoringPage.SetActive(false);
@@ -125,8 +135,8 @@ namespace Runtime.Managers
             if (connectedPage == null) { Debug.LogError("Null References: " + connectedPage.name); }
             //if (profilePage == null) { Debug.LogError("Null References: " + profilePage.name); }
             if (hostPage == null) { Debug.LogError("Null References: " + hostPage.name); }
-            /*if (joinPage == null) { Debug.LogError("Null References: " + joinPage.name); }
-            if (lobbyPage == null) { Debug.LogError("Null References: " + lobbyPage.name); }*/
+            if (joinPage == null) { Debug.LogError("Null References: " + joinPage.name); }
+            if (lobbyPage == null) { Debug.LogError("Null References: " + lobbyPage.name); }
             if (allGamesPage == null) { Debug.LogError("Null References: " + allGamesPage.name); }
             if (gamePage == null) { Debug.LogError("Null References: " + gamePage.name); }
             if (scoringPage == null) { Debug.LogError("Null References: " + scoringPage.name); }
