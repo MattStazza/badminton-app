@@ -31,7 +31,9 @@ namespace Runtime.Managers
 
         private void Awake() => ValidateRequiredVariables();
 
-        private void Start()
+        private void Start() => ShowHomePage();
+
+        public void ShowHomePage()
         {
             HideAllPages();
             notEnoughPlayersWarning.SetActive(false);
