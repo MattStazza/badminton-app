@@ -362,6 +362,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2098066320, guid: d1ade5d714c05594a8a5340b0de667dd, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 1796333840}
+    - target: {fileID: 2098066320, guid: d1ade5d714c05594a8a5340b0de667dd, type: 3}
+      propertyPath: popupMessage
+      value: 
+      objectReference: {fileID: 1886707983032603889}
+    - target: {fileID: 2098066321, guid: d1ade5d714c05594a8a5340b0de667dd, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 1796333840}
+    - target: {fileID: 2098066321, guid: d1ade5d714c05594a8a5340b0de667dd, type: 3}
+      propertyPath: popupMessage
+      value: 
+      objectReference: {fileID: 1886707983032603889}
+    - target: {fileID: 2098066321, guid: d1ade5d714c05594a8a5340b0de667dd, type: 3}
+      propertyPath: hostInputField
+      value: 
+      objectReference: {fileID: 5853293}
+    - target: {fileID: 2098066321, guid: d1ade5d714c05594a8a5340b0de667dd, type: 3}
+      propertyPath: joinInputField
+      value: 
+      objectReference: {fileID: 1866001506}
+    - target: {fileID: 2098066321, guid: d1ade5d714c05594a8a5340b0de667dd, type: 3}
+      propertyPath: spawnTransform
+      value: 
+      objectReference: {fileID: 98003180}
     - target: {fileID: 4116488925001689796, guid: d1ade5d714c05594a8a5340b0de667dd,
         type: 3}
       propertyPath: m_Name
@@ -1159,59 +1187,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d130b02a53d26489accd54ce212ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2098066318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4116488925001689796, guid: d1ade5d714c05594a8a5340b0de667dd,
+--- !u!114 &2098066320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2098066320, guid: d1ade5d714c05594a8a5340b0de667dd,
     type: 3}
   m_PrefabInstance: {fileID: 737961210}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2098066320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098066318}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96162f509b20cb943ac0061c28fe5cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIManager: {fileID: 1796333840}
-  popupMessage: {fileID: 1886707983032603889}
---- !u!114 &2098066321
+--- !u!114 &2098066321 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2098066321, guid: d1ade5d714c05594a8a5340b0de667dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 737961210}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098066318}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16cecdc2abf3177489d414b6831ad56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addPlayers: {fileID: 2098066322}
-  hostInputField: {fileID: 5853293}
-  joinInputField: {fileID: 1866001506}
-  uiManager: {fileID: 1796333840}
-  popupMessage: {fileID: 1886707983032603889}
---- !u!114 &2098066322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098066318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0133c70f68e46e549820c73421d0e2da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  networkedPlayer: {fileID: 1480166422631003139, guid: cbd1c8bea96106f41bdf01c2993cb0d9,
-    type: 3}
-  spawnTransform: {fileID: 98003180}
-  popupMessage: {fileID: 1886707983032603889}
 --- !u!1001 &155761687290147968
 PrefabInstance:
   m_ObjectHideFlags: 0

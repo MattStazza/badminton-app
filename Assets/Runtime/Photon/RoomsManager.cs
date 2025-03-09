@@ -8,7 +8,7 @@ namespace Runtime.Photon
 {
     public class RoomsManager : MonoBehaviourPunCallbacks
     {
-        [SerializeField] private AddNetworkedPlayers addPlayers;
+        [SerializeField] private GameObject networkedPlayer;
         [SerializeField] private TMP_InputField hostInputField;
         [SerializeField] private TMP_InputField joinInputField;
         [Space]
@@ -18,21 +18,22 @@ namespace Runtime.Photon
         private void Awake() => ValidateRequiredVariables();
 
         public void CreateRoom() => PhotonNetwork.CreateRoom(hostInputField.text);
-        public void JoinRoom() => PhotonNetwork.CreateRoom(joinInputField.text);
+        public void JoinRoom() => PhotonNetwork.JoinRoom(joinInputField.text);
 
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
             uiManager.ShowLobbyPage();
-            addPlayers.AddPlayer();
+            PhotonNetwork.Instantiate(networkedPlayer.name, transform.position, Quaternion.identity);
             popupMessage.DisplayPopupMessage("JOINED ROOM");
         }
         private void ValidateRequiredVariables()
         {
-            if (uiManager == null) { Debug.LogError("Null References: " + uiManager.name); }
-            if (popupMessage == null) { Debug.LogError("Null References: " + popupMessage.name); }
+            if (networkedPlayer == null) { Debug.LogError("Null References: " + networkedPlayer.name); }
             if (hostInputField == null) { Debug.LogError("Null References: " + hostInputField.name); }
             if (joinInputField == null) { Debug.LogError("Null References: " + joinInputField.name); }
+            if (uiManager == null) { Debug.LogError("Null References: " + uiManager.name); }
+            if (popupMessage == null) { Debug.LogError("Null References: " + popupMessage.name); }
         }
     }
 }
