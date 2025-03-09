@@ -5,14 +5,27 @@ namespace Runtime.Managers
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private GameObject homePage;
+        [Space]
+        [Header("Single Player Pages")]
         [SerializeField] private GameObject setupPage;
         [SerializeField] private GameObject playersPage;
+        [Space]
+        [Header("Multi Player Pages")]
+        [SerializeField] private GameObject connectingPage;
+        [SerializeField] private GameObject connectedPage;
+        [SerializeField] private GameObject profilePage;
+        [SerializeField] private GameObject hostPage;
+        [SerializeField] private GameObject joinPage;
+        [SerializeField] private GameObject lobbyPage;
+        [Space]
+        [Header("Shared Pages")]
         [SerializeField] private GameObject allGamesPage;
         [SerializeField] private GameObject gamePage;
         [SerializeField] private GameObject scoringPage;
         [SerializeField] private GameObject gameResultsPage;
         [SerializeField] private GameObject sessionResultsPage;
         [Space]
+        [Header("UI Messages")]
         [SerializeField] private GameObject popupMessage;
         [SerializeField] private GameObject notEnoughPlayersWarning;
 
@@ -41,6 +54,16 @@ namespace Runtime.Managers
             HideAllPages();
             playersPage.SetActive(true);
             notEnoughPlayersWarning.SetActive(false);
+        }
+        public void ShowConnectingPage()
+        {
+            HideAllPages();
+            connectingPage.SetActive(true);
+        }
+        public void ShowConnectedPage()
+        {
+            HideAllPages();
+            connectedPage.SetActive(true);
         }
         public void ShowAllGamesPage()
         {
@@ -73,6 +96,12 @@ namespace Runtime.Managers
             homePage.SetActive(false);
             setupPage.SetActive(false);
             playersPage.SetActive(false);
+            connectingPage.SetActive(false);
+            connectedPage.SetActive(false);
+            /*profilePage.SetActive(false);
+            hostPage.SetActive(false);
+            joinPage.SetActive(false);
+            lobbyPage.SetActive(false);*/
             allGamesPage.SetActive(false);
             gamePage.SetActive(false);
             scoringPage.SetActive(false);
@@ -85,6 +114,12 @@ namespace Runtime.Managers
             if (homePage == null) { Debug.LogError("Null References: " + homePage.name); }
             if (setupPage == null) { Debug.LogError("Null References: " + setupPage.name); }
             if (playersPage == null) { Debug.LogError("Null References: " + playersPage.name); }
+            if (connectingPage == null) { Debug.LogError("Null References: " + connectingPage.name); }
+            if (connectedPage == null) { Debug.LogError("Null References: " + connectedPage.name); }
+            /*if (profilePage == null) { Debug.LogError("Null References: " + profilePage.name); }
+            if (hostPage == null) { Debug.LogError("Null References: " + hostPage.name); }
+            if (joinPage == null) { Debug.LogError("Null References: " + joinPage.name); }
+            if (lobbyPage == null) { Debug.LogError("Null References: " + lobbyPage.name); }*/
             if (allGamesPage == null) { Debug.LogError("Null References: " + allGamesPage.name); }
             if (gamePage == null) { Debug.LogError("Null References: " + gamePage.name); }
             if (scoringPage == null) { Debug.LogError("Null References: " + scoringPage.name); }
