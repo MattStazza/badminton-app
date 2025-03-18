@@ -3,12 +3,15 @@ using Photon.Pun;
 using Runtime.Managers;
 using Runtime.UI;
 using TMPro;
+using Runtime.Data;
+using Player = Photon.Realtime.Player;
 
 namespace Runtime.Photon
 {
     public class RoomsManager : MonoBehaviourPunCallbacks
     {
         [SerializeField] private GameObject networkedPlayer;
+        [Space]
         [SerializeField] private TMP_InputField hostInputField;
         [SerializeField] private TMP_InputField joinInputField;
         [Space]
@@ -17,16 +20,61 @@ namespace Runtime.Photon
 
         private void Awake() => ValidateRequiredVariables();
 
-        public void CreateRoom() => PhotonNetwork.CreateRoom(hostInputField.text);
-        public void JoinRoom() => PhotonNetwork.JoinRoom(joinInputField.text);
+
+
+
+        public void CreateRoom()
+        {
+            SetupPlayer();
+            PhotonNetwork.CreateRoom(hostInputField.text);
+        }
+
+        public void JoinRoom()
+        {
+            SetupPlayer();
+            PhotonNetwork.JoinRoom(joinInputField.text);
+        }
+
+
+
+
+        private void SetupPlayer()
+        {
+            User user = new User();
+
+            ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable();
+            props["PlayerName"] = user.UserName.ToString();
+            PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+        }
+
+
+
+
 
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
             uiManager.ShowLobbyPage();
-            PhotonNetwork.Instantiate(networkedPlayer.name, transform.position, Quaternion.identity);
             popupMessage.DisplayPopupMessage("JOINED ROOM");
         }
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                string playerName = newPlayer.CustomProperties.ContainsKey("PlayerName") ?
+                                    (string)newPlayer.CustomProperties["PlayerName"] : "Unknown";
+
+                GameObject playerObject = PhotonNetwork.Instantiate(networkedPlayer.name, transform.position, Quaternion.identity);
+                playerObject.GetComponent<NetworkedPlayer>().SetPlayerName(playerName);
+            }
+        }
+
+
+
+
+
+
         private void ValidateRequiredVariables()
         {
             if (networkedPlayer == null) { Debug.LogError("Null References: " + networkedPlayer.name); }
